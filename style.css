@@ -1,0 +1,142 @@
+/* 基础重置 - 简洁为主 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑", sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 页面标题 */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #2c5282;
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    color: #2c5282;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* 核心导航区 */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.module {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.module-title {
+    font-size: 1.4rem;
+    color: #2c5282;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.page-num {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: normal;
+}
+
+/* 二级菜单 */
+.submenu {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.submenu li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.submenu li::before {
+    content: "•";
+    color: #3182ce;
+    position: absolute;
+    left: -15px;
+}
+
+.submenu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.submenu a:hover {
+    color: #3182ce;
+    text-decoration: underline;
+}
+
+.submenu a .page-num {
+    float: right;
+    color: #999;
+}
+
+/* 页脚 */
+.page-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 8px 12px;
+    background-color: #2c5282;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: none;
+}
+
+/* 响应式适配 - 手机端 */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    .module {
+        padding: 15px;
+    }
+    .module-title {
+        font-size: 1.2rem;
+    }
+    .submenu a {
+        font-size: 0.95rem;
+    }
+    .submenu a .page-num {
+        float: none;
+        display: inline-block;
+        margin-left: 5px;
+    }
+}
