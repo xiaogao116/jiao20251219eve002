@@ -1,142 +1,279 @@
-/* 基础重置 - 简洁为主 */
+/* 全局样式变量：统一管理主题色、通用样式，提升可维护性 */
+:root {
+    --primary-color: #0066cc;      /* 主色调 */
+    --primary-dark: #004a99;       /* 主色加深（hover） */
+    --primary-darker: #003973;     /* 主色更深（active） */
+    --primary-light: #e6f7ff;      /* 主色浅背景 */
+    --primary-light-deep: #cce7ff; /* 主色浅背景（active） */
+    --border-gray: #eee;           /* 分割线灰色 */
+    --text-gray: #666;             /* 次要文本色 */
+    --white: #fff;                 /* 白色 */
+    --bg-gray: #f5f5f5;            /* 背景灰色 */
+    --shadow: 0 2px 12px rgba(0,0,0,0.08); /* 通用阴影 */
+    --transition: all 0.3s ease;   /* 通用过渡动画 */
+}
+
+/* 全局样式重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "微软雅黑", sans-serif;
+    /* 多系统字体适配：覆盖Windows/macOS/Linux，提升跨平台显示效果 */
+    font-family: "Microsoft YaHei", "Heiti SC", "PingFang SC", 
+                 "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+}
+
+/* 全局滚动优化：提升移动端/桌面端滚动体验 */
+html {
+    scroll-behavior: smooth;                /* 平滑滚动 */
+    -webkit-overflow-scrolling: touch;      /* 移动端弹性滚动 */
 }
 
 body {
-    background-color: #f9f9f9;
+    background-color: var(--bg-gray);
     color: #333;
     line-height: 1.6;
+}
+
+/* 主目录页面样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* 页面标题 */
-.page-header {
+header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #2c5282;
+    border-bottom: 2px solid var(--primary-color);
 }
 
-.page-header h1 {
-    font-size: 1.8rem;
-    color: #2c5282;
+h1 {
+    color: var(--primary-color);
+    font-size: 28px;
     margin-bottom: 10px;
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: #666;
+    font-size: 18px;
+    color: var(--text-gray);
 }
 
-/* 核心导航区 */
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.module {
-    background-color: white;
+.chapter {
+    background-color: var(--white);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 25px;
     margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.chapter h2 {
+    color: var(--primary-color);
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.section-list {
+    list-style: none;
+}
+
+.section-list li {
+    margin-bottom: 12px;
+}
+
+.section-list a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: var(--transition);
+    cursor: pointer; /* 指针光标，提示可点击 */
+}
+
+.section-list a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    padding-left: 18px;
+}
+
+.section-list a:active {
+    background-color: var(--primary-light-deep);
+}
+
+.section-list a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: var(--text-gray);
+    border-top: 1px solid var(--border-gray);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* PDF 预览页面样式 */
+.viewer-container {
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-.module-title {
-    font-size: 1.4rem;
-    color: #2c5282;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
 }
 
-.page-num {
-    font-size: 0.9rem;
-    color: #888;
-    font-weight: normal;
-}
-
-/* 二级菜单 */
-.submenu {
-    list-style: none;
-    padding-left: 20px;
-}
-
-.submenu li {
-    margin-bottom: 12px;
-    position: relative;
-}
-
-.submenu li::before {
-    content: "•";
-    color: #3182ce;
-    position: absolute;
-    left: -15px;
-}
-
-.submenu a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.submenu a:hover {
-    color: #3182ce;
-    text-decoration: underline;
-}
-
-.submenu a .page-num {
-    float: right;
-    color: #999;
-}
-
-/* 页脚 */
-.page-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* 回到顶部按钮 */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 8px 12px;
-    background-color: #2c5282;
-    color: white;
-    border: none;
+.btn-back {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
     border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition);
     cursor: pointer;
-    font-size: 0.9rem;
-    display: none;
 }
 
-/* 响应式适配 - 手机端 */
-@media (max-width: 768px) {
-    .page-header h1 {
-        font-size: 1.5rem;
+.btn-back:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-back:active {
+    background-color: var(--primary-darker);
+}
+
+.btn-back:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.pdf-container {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.pdf-list {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.pdf-list h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+#file-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#file-list li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+#file-list li a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+#file-list li a:active {
+    background-color: var(--primary-darker);
+    color: var(--white);
+}
+
+#file-list li a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.viewer-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    color: var(--text-gray);
+    border-top: 1px solid var(--border-gray);
+}
+
+/* 响应式适配：覆盖移动端/平板/桌面端 */
+/* 平板横屏（769-1024px） */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container, .viewer-container {
+        max-width: 900px;
     }
-    .module {
+    #pdf-frame {
+        height: 700px;
+        width: 100%;
+        border: none;
+    }
+}
+
+/* 移动端（≤768px） */
+@media (max-width: 768px) {
+    .container, .viewer-container {
         padding: 15px;
     }
-    .module-title {
-        font-size: 1.2rem;
+
+    h1 {
+        font-size: 24px;
     }
-    .submenu a {
-        font-size: 0.95rem;
+
+    .chapter h2 {
+        font-size: 20px;
     }
-    .submenu a .page-num {
-        float: none;
-        display: inline-block;
-        margin-left: 5px;
+
+    .pdf-container {
+        padding: 10px;
+    }
+
+    #pdf-frame {
+        width: 100%;
+        height: 500px;
+        border: none; /* 移除默认边框，避免溢出 */
+    }
+
+    #file-list {
+        flex-direction: column;
+    }
+
+    /* 移动端头部适配：避免flex挤压 */
+    .viewer-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .btn-back {
+        width: 100%;
+        text-align: center;
     }
 }
