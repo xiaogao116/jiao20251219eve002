@@ -3,93 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF在线预览</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <title>PDF阅读器</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
         }
-        #pdfContainer {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        body {
+            background-color: #1E1E1E;
+            color: #FFFFFF;
+            overflow: hidden;
+            height: 100vh;
         }
-        canvas {
-            display: block;
-            margin: 0 auto 20px;
+        /* 整体容器（分栏） */
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        /* 左侧缩略图栏 */
+        .thumbnails-panel {
+            width: 120px;
+            height: 100%;
+            background-color: #2D2D2D;
+            overflow-y: auto;
+            padding: 10px 5px;
+            border-right: 1px solid #3D3D3D;
+            transition: width 0.3s;
+        }
+        /* 缩略图栏隐藏（全屏时） */
+        .thumbnails-panel.hidden {
+            width: 0;
+            padding: 0;
+            border: none;
+        }
+        .thumbnail {
+            width: 100px;
+            margin: 5px auto;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        .thumbnail.active {
+            border-color: #0078D4;
+        }
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+        /* 右侧预览区（支持全屏+滚动） */
+        .preview-panel {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            background-color: #1E1E1E;
+            transition: margin 0.3s;
+        }
+        /* 全屏时预览区占满屏幕 */
+        .preview-panel.fullscreen {
+            margin-left: 0;
+        }
+        .preview-wrapper {
             max-width: 100%;
-            border: 1px solid #eee;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+        /* 固定工具栏（始终在顶部） */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 120px; /* 与缩略图栏宽度一致 */
+            right: 0;
+            height: 40px;
+            background-color: #2D2D2D;
+            border-bottom: 1px solid #3D3D3D;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+            gap: 8px; /* 缩小按钮间距 */
+            z-index: 999;
+            transition: left 0.3s;
+        }
+        /* 全屏时工具栏占满宽度 */
+        .toolbar.fullscreen {
+            left: 0;
+        }
+        .toolbar button {
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #FFFFFF;
+            transition: background-color 0.2s;
+        }
+        /* 按钮统一配色（蓝色系为主，区分功能） */
+        .btn-return {
+            background-color: #2980b9;
+            border-color: #2471a3;
+        }
+        .btn-return:hover {
+            background-color: #2471a3;
+        }
+        .btn-scale {
+            background-color: #34495e;
+            border-color: #2c3e50;
+        }
+        .btn-scale:hover {
+            background-color: #2c3e50;
+        }
+        .btn-fullscreen {
+            background-color: #27ae60;
+            border-color: #219653;
+        }
+        .btn-fullscreen:hover {
+            background-color: #219653;
+        }
+        .btn-download {
+            background-color: #e67e22;
+            border-color: #d35400;
+        }
+        .btn-download:hover {
+            background-color: #d35400;
+        }
+        .btn-retry {
+            background-color: #e74c3c;
+            border-color: #c0392b;
+        }
+        .btn-retry:hover {
+            background-color: #c0392b;
+        }
+        .toolbar span {
+            color: #AAAAAA;
+            font-size: 12px;
+            margin-right: auto;
+        }
+        /* 预览内容容器（工具栏下方） */
+        .preview-content {
+            width: 100%;
+            max-width: 1200px; /* 非全屏时限制宽度 */
+            margin-top: 40px; /* 避开工具栏 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* 全屏时预览内容占满宽度 */
+        .preview-content.fullscreen {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+        /* 统一预览画布容器（A4尺寸） */
+        .preview-canvas-wrapper {
+            width: 100%;
+            max-width: 800px; /* 基础A4预览宽度 */
+            height: auto;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .preview-canvas {
+            max-width: 100%;
+            max-height: 100%;
+            transition: max-width 0.3s;
+        }
+        /* 加载提示 */
         .loading {
             text-align: center;
-            font-size: 1.2rem;
-            color: #666;
             padding: 50px 0;
+            color: #AAAAAA;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 40px;
         }
-        .back-link {
+        /* 错误提示 */
+        .error-tip {
             text-align: center;
-            margin-bottom: 20px;
-        }
-        .back-link a {
-            color: #2c5282;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
+            padding: 50px 0;
+            color: #FF4444;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 40px;
         }
     </style>
+    <!-- 引入PDF.js和PDF-lib库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 </head>
 <body>
-    <div class="back-link">
-        <a href="https://xiaogao116.github.io/jiao20251219/">← 返回目录</a>
-    </div>
-    <div id="pdfContainer">
-        <div class="loading">正在加载PDF文件，请稍候...</div>
+    <div class="container">
+        <!-- 左侧缩略图栏 -->
+        <div class="thumbnails-panel" id="thumbnailsPanel">
+            <div class="loading">加载缩略图中...</div>
+        </div>
+
+        <!-- 右侧预览区 -->
+        <div class="preview-panel" id="previewPanel">
+            <!-- 固定工具栏（按钮统一类名+配色） -->
+            <div class="toolbar" id="toolbar">
+                <span id="pageInfo">共 0 页</span>
+                <button class="btn-return" onclick="goBack()">返回</button>
+                <button class="btn-scale" onclick="zoomOut()">缩小</button>
+                <button class="btn-scale" onclick="zoomIn()">放大</button>
+                <button class="btn-fullscreen" onclick="toggleFullscreen()">全屏</button>
+                <button class="btn-download" onclick="downloadMergedPdf()">下载</button>
+                <button class="btn-retry" onclick="retryLoadPdf()">重试</button>
+            </div>
+
+            <!-- 预览内容容器 -->
+            <div class="preview-wrapper">
+                <div class="preview-content" id="previewContent">
+                    <div class="loading">加载并合并PDF中...</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // 配置PDF.js
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        const { PDFDocument } = window.PDFLib;
 
-        // 获取URL中的PDF地址参数
-        const urlParams = new URLSearchParams(window.location.search);
-        const pdfUrl = urlParams.get('file');
+        // 全局状态
+        let mergedPdfDoc = null;
+        let mergedPdfBytes = null;
+        let pdfjsDoc = null;
+        let zoomLevel = 1.0;
+        let downloadFileName = '合并后的文档.pdf';
+        let allPageCanvases = [];
+        let isFullscreen = false; // 全屏状态标识
+        let scrollPosition = 0; // 记录缩放前的滚动位置
+        const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/';
+        // A4尺寸（PDF单位：点）→ 用于预览时统一缩放
+        const A4_WIDTH = 595.28;
+        const A4_HEIGHT = 841.89;
 
-        // 渲染PDF
-        async function renderPdf() {
+        // 常量配置
+        const ZOOM_STEP = 0.4;       
+        const MIN_ZOOM = 0.3;        
+        const MAX_ZOOM = 10.0;       
+
+        // 获取URL参数
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const files = params.get('files') || '';
+            const fileList = [...new Set(files.split('|').filter(file => file.trim() !== ''))];
+            
+            let title = params.get('title') || '';
+            if (title) {
+                title = decodeURIComponent(title);
+                title = title.replace(/^\d+\.\d+\s*/, '').trim();
+                title = title.replace(/[\\/:*?"<>|]/g, '_');
+                downloadFileName = `${title}.pdf`;
+            }
+            return { fileList, title };
+        }
+
+        // 返回上一页
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // 下载合并后的PDF
+        async function downloadMergedPdf() {
+            if (!mergedPdfBytes) {
+                alert('请先等待PDF加载完成！');
+                return;
+            }
+            const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = downloadFileName;
+            setTimeout(() => {
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        // 加载并合并所有PDF（稳定的原始合并逻辑）
+        async function loadAndMergePdfs() {
+            const { fileList, title } = getUrlParams();
+            const previewContent = document.getElementById('previewContent');
+            const thumbnailsPanel = document.getElementById('thumbnailsPanel');
+            const pageInfo = document.getElementById('pageInfo');
+
+            // 重置状态+显示加载中
+            mergedPdfDoc = await PDFDocument.create();
+            mergedPdfBytes = null;
+            zoomLevel = 1.0;
+            allPageCanvases = [];
+            previewContent.innerHTML = `<div class="loading">加载PDF中...（${title || '无标题'}）</div>`;
+            thumbnailsPanel.innerHTML = '<div class="loading">加载缩略图中...</div>';
+            pageInfo.textContent = `共 0 页`;
+
+            if (fileList.length === 0) {
+                previewContent.innerHTML = '<div class="error-tip">未选择PDF文件</div>';
+                thumbnailsPanel.innerHTML = '<div class="error-tip">未选择PDF文件</div>';
+                return;
+            }
+
             try {
-                const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-                const container = document.getElementById('pdfContainer');
-                container.innerHTML = '';
+                // 遍历下载并合并PDF（原始稳定逻辑）
+                for (const filename of fileList) {
+                    const pdfUrl = GITHUB_BASE_URL + encodeURIComponent(filename);
+                    const response = await fetch(pdfUrl);
+                    // 检查请求是否成功
+                    if (!response.ok) throw new Error(`文件请求失败: ${response.status}（${filename}）`);
+                    const pdfBytes = await response.arrayBuffer();
+                    
+                    const pdfToMerge = await PDFDocument.load(pdfBytes);
+                    const copiedPages = await mergedPdfDoc.copyPages(pdfToMerge, pdfToMerge.getPageIndices());
+                    copiedPages.forEach(page => mergedPdfDoc.addPage(page));
+                }
 
-                // 渲染每一页
-                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-                    const page = await pdf.getPage(pageNum);
-                    const viewport = page.getViewport({ scale: 1.2 });
+                // 保存合并后的PDF
+                mergedPdfBytes = await mergedPdfDoc.save();
+                const mergedBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+                const mergedUrl = URL.createObjectURL(mergedBlob);
+
+                // 用PDF.js加载合并后的PDF
+                pdfjsDoc = await pdfjsLib.getDocument({
+                    url: mergedUrl,
+                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                    cMapPacked: true
+                }).promise;
+
+                // 更新页码+渲染内容
+                pageInfo.textContent = `共 ${pdfjsDoc.numPages} 页`;
+                await renderAllThumbnails();
+                await renderAllPages();
+                URL.revokeObjectURL(mergedUrl);
+            } catch (error) {
+                // 错误提示显示具体失败原因
+                previewContent.innerHTML = `<div class="error-tip">加载失败：${error.message}</div>`;
+                thumbnailsPanel.innerHTML = `<div class="error-tip">加载失败：${error.message}</div>`;
+                console.error('PDF加载/合并失败:', error);
+            }
+        }
+
+        // 重试加载PDF
+        function retryLoadPdf() {
+            loadAndMergePdfs();
+        }
+
+        // 生成所有页面的缩略图（统一缩放为A4比例）
+        async function renderAllThumbnails() {
+            if (!pdfjsDoc) return;
+            const thumbnailsPanel = document.getElementById('thumbnailsPanel');
+            thumbnailsPanel.innerHTML = '';
+
+            for (let i = 1; i <= pdfjsDoc.numPages; i++) {
+                try {
+                    const page = await pdfjsDoc.getPage(i);
+                    // 统一按A4比例计算缩略图视口
+                    const pageSize = page.getViewport({ scale: 1 });
+                    const scale = Math.min(0.2 * A4_WIDTH / pageSize.width, 0.2 * A4_HEIGHT / pageSize.height);
+                    const viewport = page.getViewport({ scale });
+                    
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.className = 'thumbnail';
+                    if (i === 1) canvas.classList.add('active');
+
+                    const context = canvas.getContext('2d');
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+
+                    // 点击缩略图跳转到对应页面
+                    canvas.addEventListener('click', () => {
+                        const targetCanvas = allPageCanvases[i - 1];
+                        targetCanvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                        canvas.classList.add('active');
+                    });
+
+                    thumbnailsPanel.appendChild(canvas);
+                } catch (error) {
+                    console.error(`渲染第${i}页缩略图失败:`, error);
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-tip';
+                    errorDiv.textContent = `第${i}页加载失败`;
+                    thumbnailsPanel.appendChild(errorDiv);
+                }
+            }
+        }
+
+        // 渲染所有页面（统一缩放到A4尺寸显示）
+        async function renderAllPages() {
+            if (!pdfjsDoc) return;
+            const previewContent = document.getElementById('previewContent');
+            previewContent.innerHTML = '';
+            allPageCanvases = [];
+
+            // 获取基础预览宽度（根据全屏状态调整）
+            const baseWidth = isFullscreen ? window.innerWidth * 0.9 : 800;
+            const baseHeight = baseWidth * (A4_HEIGHT / A4_WIDTH);
+
+            for (let i = 1; i <= pdfjsDoc.numPages; i++) {
+                try {
+                    const page = await pdfjsDoc.getPage(i);
+                    // 获取原始页面尺寸
+                    const originalViewport = page.getViewport({ scale: 1 });
+                    // 计算统一缩放比例（适配A4容器）
+                    const scale = Math.min(
+                        (baseWidth * zoomLevel) / originalViewport.width,
+                        (baseHeight * zoomLevel) / originalViewport.height
+                    );
+                    const viewport = page.getViewport({ scale });
+
+                    // 创建统一尺寸的容器+画布
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'preview-canvas-wrapper';
+                    wrapper.style.maxWidth = `${baseWidth * zoomLevel}px`;
+                    wrapper.style.height = `${baseHeight * zoomLevel}px`;
 
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
                     canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.className = 'preview-canvas';
+                    allPageCanvases.push(wrapper); // 记录容器（用于滚动定位）
 
                     await page.render({
                         canvasContext: context,
                         viewport: viewport
                     }).promise;
 
-                    container.appendChild(canvas);
+                    wrapper.appendChild(canvas);
+                    previewContent.appendChild(wrapper);
+                } catch (error) {
+                    console.error(`渲染第${i}页失败:`, error);
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-tip';
+                    errorDiv.textContent = `第${i}页加载失败`;
+                    previewContent.appendChild(errorDiv);
                 }
-            } catch (error) {
-                document.getElementById('pdfContainer').innerHTML = `<div style="color: red; text-align: center; padding: 50px;">PDF加载失败：${error.message}</div>`;
+            }
+            
+            // 恢复滚动位置
+            const previewPanel = document.getElementById('previewPanel');
+            previewPanel.scrollTop = scrollPosition;
+        }
+
+        // 缩放所有页面（保留滚动位置）
+        async function zoomAllPages() {
+            if (!pdfjsDoc) return;
+            const previewPanel = document.getElementById('previewPanel');
+            scrollPosition = previewPanel.scrollTop;
+            await renderAllPages();
+        }
+
+        // 放大/缩小
+        function zoomIn() {
+            if (zoomLevel < MAX_ZOOM) {
+                zoomLevel += ZOOM_STEP;
+                zoomLevel = Math.min(zoomLevel, MAX_ZOOM);
+                zoomAllPages();
+            }
+        }
+        function zoomOut() {
+            if (zoomLevel > MIN_ZOOM) {
+                zoomLevel -= ZOOM_STEP;
+                zoomLevel = Math.max(zoomLevel, MIN_ZOOM);
+                zoomAllPages();
             }
         }
 
-        renderPdf();
+        // 切换全屏/退出全屏（保留滚动位置）
+        function toggleFullscreen() {
+            const previewPanel = document.getElementById('previewPanel');
+            scrollPosition = previewPanel.scrollTop;
+            
+            isFullscreen = !isFullscreen;
+            const thumbnailsPanel = document.getElementById('thumbnailsPanel');
+            const toolbar = document.getElementById('toolbar');
+            const previewContent = document.getElementById('previewContent');
+
+            if (isFullscreen) {
+                thumbnailsPanel.classList.add('hidden');
+                previewPanel.classList.add('fullscreen');
+                toolbar.classList.add('fullscreen');
+                previewContent.classList.add('fullscreen');
+            } else {
+                thumbnailsPanel.classList.remove('hidden');
+                previewPanel.classList.remove('fullscreen');
+                toolbar.classList.remove('fullscreen');
+                previewContent.classList.remove('fullscreen');
+            }
+            zoomAllPages();
+        }
+
+        // 页面初始化
+        window.onload = loadAndMergePdfs;
     </script>
 </body>
 </html>
