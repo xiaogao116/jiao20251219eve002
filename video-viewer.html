@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放 - 教学成果奖申报网站</title>
+    <style>
+        /* 复用首页全局样式 */
+        :root {
+            --primary-color: #B71C1C;
+            --bg-card: #ffffff;
+            --border-color: #E0E0E0;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* 导航栏（仅返回按钮） */
+        .nav-bar {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 60px;
+            box-shadow: var(--shadow);
+            z-index: 99;
+        }
+        .btn-return {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-return:hover {
+            background-color: #9F0000;
+        }
+        /* 视频容器 */
+        .video-container {
+            flex: 1;
+            width: 100vw;
+            height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-card);
+            padding: 30px;
+        }
+        .video-player {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 0 20px;
+                height: 50px;
+            }
+            .btn-return {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .video-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <button class="btn-return" onclick="goBack()">返回</button>
+    </div>
+    <div class="video-container">
+        <!-- 视频播放区域 -->
+        <video class="video-player" controls autoplay muted>
+            <source src="https://xiaogao116.github.io/jiao20251219/学生李响北航.mp4" type="video/mp4">
+            您的浏览器不支持视频播放，请更换浏览器后重试。
+        </video>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.length > 1 ? window.history.back() : window.location.href = 'student.html';
+        }
+    </script>
+</body>
+</html>
