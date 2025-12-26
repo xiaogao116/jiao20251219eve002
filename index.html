@@ -7,7 +7,7 @@
     <meta name="description" content="基于'知识再发现'的本科生数学创新能力协同培养新范式教学成果应用及效果证明材料目录">
     <title>教学成果奖申报网站 - 基于“知识再发现”的数学创新能力培养</title>
     <style>
-        /* 基础样式重置与全局配置 */
+        /* 全局重置与基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -15,424 +15,1111 @@
             font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
         }
         :root {
-            --primary-color: #B71C1C; /* 深庄重红主色 */
-            --secondary-color: #880E4F; /* 深玫红辅助色 */
-            --accent-color: #E64A19; /* 橙红强调色 */
-            --text-dark: #121212; /* 正文深色 */
-            --text-light: #333333; /* 正文浅色 */
-            --text-gray: #666666; /* 辅助文字色 */
-            --bg-main: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%); /* 深红色渐变背景 */
-            --bg-card: #ffffff; /* 卡片背景色 */
-            --border-color: #E0E0E0; /* 边框色 */
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 深色阴影 */
+            --primary-blue: #1976D2; /* 主蓝色（明亮愉快） */
+            --dark-blue: #0D47A1;    /* 深蓝色 */
+            --deep-blue: #0A3D8C;    /* 更深蓝色 */
+            --light-blue: #E3F2FD;   /* 浅蓝色 */
+            --text-white: #FFFFFF;   /* 白色文字 */
+            --text-dark: #333333;    /* 深色文字 */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 阴影 */
+            --item-bg: #F0F7FF;      /* 统一列表项背景色 */
+            --item-border: #D1E7FF;  /* 统一列表项边框色 */
         }
         body {
-            background: var(--bg-main);
+            width: 100vw; /* 视口宽度 */
+            min-height: 100vh;
+            margin: 0; /* 移除默认边距 */
+            padding: 0; /* 移除默认内边距 */
+            /* 明亮的蓝色渐变背景+细微纹理 */
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--primary-blue) 100%);
+            background-attachment: fixed;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
             color: var(--text-dark);
-            padding: 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-x: hidden; /* 防止横向滚动 */
         }
 
-        /* 顶部成果标识栏（突出申报书核心信息） */
-        .成果-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 25px 40px;
-            box-shadow: var(--shadow);
-            position: relative;
+        /* 页面容器（统一风格 - 全屏宽度） */
+        .page-container {
+            width: 100vw; /* 全屏宽度 */
+            background: #FFFFFF;
+            box-shadow: none; /* 移除阴影避免边缘问题 */
+            margin: 0; /* 移除外边距 */
             overflow: hidden;
         }
-        .成果-title {
-            font-size: 32px; /* 放大主标题 */
-            font-weight: 700;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        .成果-subtitle {
-            font-size: 24px; /* 大幅放大副标题 */
-            font-weight: 600;
-            letter-spacing: 1px; /* 增加字间距 */
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-            line-height: 1.4;
-        }
-        .成果-meta {
-            margin-top: 15px;
-            font-size: 14px;
-            opacity: 0.8;
-            display: flex;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-        }
-        .成果-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .成果-meta span::before {
-            content: "•";
-            font-size: 18px;
-        }
 
-        /* 导航栏（适配国际教育分类标准，新增成果归属导航项） */
-        .nav-bar {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 40px;
+        /* 头部区域（Logo + 标题 - 全屏宽度） */
+        header {
+            width: 100vw; /* 全屏宽度 */
+            padding: 0; /* 移除内边距，确保导航栏对齐 */
+            background: rgba(13, 71, 161, 0.03);
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
+        }
+        .head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 99;
+            padding: 25px 40px; /* 仅保留左右内边距，与背景图对齐 */
+            max-width: 100%; /* 确保不超出容器 */
         }
-        .nav-category {
-            display: flex;
-            gap: 25px;
-        }
-        .nav-item {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            height: 100%;
+        .logo-group {
             display: flex;
             align-items: center;
-            padding: 0 5px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
-        }
-        .nav-item:hover, .nav-item.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-        .nav-search {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nav-search input {
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 13px;
-            width: 220px;
-            transition: border-color 0.2s;
-        }
-        .nav-search input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        .nav-search button {
-            padding: 6px 12px;
-            border: none;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .nav-search button:hover {
-            background-color: #9F0000;
-        }
-
-        /* 成果信息模块（优化排版） */
-        .owner-section {
-            padding: 40px;
-            background-color: var(--bg-card);
-            margin: 30px 40px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
-        }
-        .owner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-        .owner-card {
-            background-color: #FAFAFA;
-            padding: 25px;
+        .logo-group a {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .logo-group a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .logo-group img {
+            height: 70px;
+            border: 0;
             border-radius: 6px;
-            border-left: 3px solid var(--secondary-color);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-        .owner-card h3 {
-            font-size: 18px;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-weight: 600;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #F0F0F0;
-        }
-        .owner-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .owner-list li {
-            font-size: 15px;
-            color: var(--text-light);
-            padding: 6px 12px;
-            background-color: white;
-            border-radius: 4px;
-            border: 1px solid #F0F0F0;
-            transition: all 0.2s;
-        }
-        .owner-list li:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 1px 3px rgba(183, 28, 28, 0.1);
-        }
-        .owner-list li a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        .owner-list li a:hover {
-            text-decoration: underline;
+        .head-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: right;
+            letter-spacing: 2px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* 成果亮点模块 */
-        .highlight-section {
-            padding: 40px;
-            background-color: var(--bg-card);
-            margin: 0 40px 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
+        /* 导航栏 - 与背景图左边齐平，无空白（移除媒体报道） */
+        nav {
+            width: 100vw; /* 强制全屏宽度 */
+            background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            height: 70px; /* 增高导航栏，更醒目 */
+            line-height: 70px;
+            padding: 0 40px; /* 内边距与背景图对齐 */
+            margin: 0; /* 移除外边距 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* 增强阴影 */
+            position: relative;
+            z-index: 20;
         }
-        .highlight-title {
-            font-size: 22px;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
+        nav ul {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .highlight-title::before {
-            content: "";
-            width: 8px;
-            height: 22px;
-            background-color: var(--primary-color);
-        }
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .highlight-card {
-            background-color: #FAFAFA;
-            padding: 25px;
-            border-radius: 6px;
-            border-left: 3px solid var(--secondary-color);
-        }
-        .highlight-card h3 {
-            font-size: 16px;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .highlight-card h3::before {
-            content: "";
-            width: 4px;
-            height: 18px;
-            background-color: var(--secondary-color);
-        }
-        .highlight-list {
             list-style: none;
+            width: 100%;
+            justify-content: flex-start; /* 左对齐 */
+            margin: 0;
+            padding: 0;
         }
-        .highlight-item {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            padding-left: 18px;
+        nav ul li {
+            margin-right: 45px; /* 加大间距 */
             position: relative;
         }
-        .highlight-item::before {
-            content: "✓";
-            color: var(--secondary-color);
-            font-weight: 700;
+        nav ul li a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 20px; /* 进一步放大字体 */
+            padding: 0 18px; /* 加大内边距 */
+            display: block;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 导航链接hover效果 */
+        nav ul li a::before {
+            content: "";
             position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        nav ul li a:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-2px); /* 上移效果 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav ul li a:hover::before {
             left: 0;
         }
-        .highlight-item strong {
+        nav ul li a.active {
+            background-color: var(--deep-blue);
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 21px; /* 激活态更大 */
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        /* 导航下划线装饰 - 优化样式 */
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 横幅Banner - 自动轮播 + 调亮背景图 */
+        .banner {
+            width: 100vw; /* 全屏宽度 */
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
+        }
+        .banner-slider {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 调亮+模糊，凸显标题（亮度提升至0.95） */
+            filter: brightness(0.95) contrast(1.0) blur(0.8px);
+        }
+        .banner .banner-text {
+            position: absolute;
+            top: 15%; /* 更靠上 */
+            left: 5%;
+            width: 90%;
+            z-index: 10; /* 确保标题在轮播图上方 */
+        }
+        .banner .banner-text .main-title {
+            font-size: 46px; /* 大幅放大标题 */
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 3px;
+            color: var(--text-white); /* 白色标题 */
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* 增强阴影凸显 */
+            padding: 10px 20px;
+        }
+        /* 轮播指示器 */
+        .banner-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .banner-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .banner-indicator.active {
+            background-color: var(--text-white);
+            width: 30px;
+            border-radius: 6px;
+            transform: scale(1.1);
+        }
+
+        /* 内容区通用样式 - 全屏宽度 */
+        .content {
+            width: 100vw; /* 全屏宽度 */
+            padding: 0 40px; /* 调整内边距，与导航栏/背景图对齐 */
+        }
+
+        /* 视频+成果简介模块 - 基础布局 */
+        .video-intro-section {
+            padding: 40px 0;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: stretch; /* 保持高度一致 */
+        }
+        /* 视频模块（左侧）- 固定宽度 */
+        .video-module {
+            flex: 0 0 calc(50% - 15px); /* 固定宽度 */
+            min-width: 450px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            display: flex;
+            flex-direction: column;
+        }
+        .video-module h3 {
+            font-size: 26px;
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-weight: bold;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-blue);
+            text-align: center;
+        }
+        /* 视频容器适配16:9比例 */
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            flex-grow: 1;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* 成果简介模块（右侧）- 固定宽度，滚动查看内容 */
+        .intro-module {
+            flex: 0 0 calc(50% - 15px); /* 与视频模块等宽 */
+            min-width: 450px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 0 35px 35px; /* 顶部padding设为0，给标题容器预留空间 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            max-height: 600px; /* 固定高度 */
+            overflow-y: auto; /* 垂直滚动 */
+            /* 优化滚动效果 - 平滑滚动 */
+            scroll-behavior: smooth;
+            /* 自定义滚动条样式 */
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-blue) var(--light-blue);
+        }
+        /* 成果简介标题容器 - 固定在顶部 */
+        .intro-title-wrap {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 35px 0 15px; /* 还原原有padding */
+            z-index: 2;
+            border-bottom: 2px solid var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        .intro-module h3 {
+            font-size: 26px;
+            color: var(--dark-blue);
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
+        /* 自定义滚动条 - Chrome/Safari */
+        .intro-module::-webkit-scrollbar {
+            width: 8px;
+        }
+        .intro-module::-webkit-scrollbar-track {
+            background: var(--light-blue);
+            border-radius: 4px;
+        }
+        .intro-module::-webkit-scrollbar-thumb {
+            background-color: var(--primary-blue);
+            border-radius: 4px;
+            border: 2px solid var(--light-blue);
+            /* 滚动条圆角更顺滑 */
+            transition: background-color 0.2s ease;
+        }
+        .intro-module::-webkit-scrollbar-thumb:hover {
+            background-color: var(--dark-blue);
+        }
+        .intro-content {
+            font-size: 20px;
+            line-height: 2.2em;
             color: var(--text-dark);
+            text-align: justify;
+            /* 添加上边距，避免内容紧贴标题 */
+            padding-top: 5px;
+        }
+        .intro-content .highlight {
+            font-weight: bold;
+            color: var(--deep-blue);
+        }
+
+        /* 专家+完成人模块 - 基础布局 */
+        .expert-owner-section {
+            padding: 30px 0;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: stretch; /* 保持高度一致 */
+        }
+        /* 领衔专家模块 - 重构布局：图片固定，文字单独滚动 */
+        .expert-small-module {
+            flex: 0 0 calc(50% - 15px); /* 固定宽度 */
+            min-width: 400px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 0 30px 30px; /* 顶部padding设为0 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            max-height: 600px; /* 固定高度 */
+            /* 微调位置，与完成人模块对齐 */
+            margin-top: -5px;
+            margin-left: -5px;
+            /* 父容器相对定位 */
+            position: relative;
+            overflow: hidden;
+        }
+        /* 领衔专家标题容器 - 固定在顶部 */
+        .expert-title-wrap {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 30px 0 10px; /* 还原原有padding */
+            z-index: 10;
+            border-bottom: 2px solid var(--primary-blue);
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .expert-small-module h3 {
+            font-size: 26px;
+            color: var(--dark-blue);
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
+        /* 专家内容外层容器 - 分栏布局 */
+        .expert-content-wrapper {
+            display: flex;
+            gap: 25px;
+            height: calc(100% - 110px); /* 减去标题高度 */
+            padding: 0 5px;
+        }
+        /* 专家图片 - 绝对固定位置+放大 */
+        .expert-small-avatar {
+            width: 190px; /* 放大图片宽度 */
+            flex-shrink: 0;
+            /* 绝对定位固定 */
+            position: absolute;
+            left: 35px;
+            top: 120px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 图片与链接间距 */
+        }
+        .expert-small-avatar img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--light-blue);
+        }
+        /* 专家主页链接样式 */
+        .expert-avatar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .expert-avatar-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            background-color: var(--light-blue);
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .expert-avatar-links a:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+        }
+        /* 专家文字内容 - 单独滚动区域 */
+        .expert-small-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8em;
+            /* 文字区域单独滚动 */
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            /* 自定义滚动条 */
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-blue) var(--light-blue);
+            /* 向右偏移避开图片 */
+            margin-left: 200px;
+            height: 100%;
+            padding-right: 5px;
+        }
+        /* 文字区域滚动条样式 */
+        .expert-small-text::-webkit-scrollbar {
+            width: 8px;
+        }
+        .expert-small-text::-webkit-scrollbar-track {
+            background: var(--light-blue);
+            border-radius: 4px;
+        }
+        .expert-small-text::-webkit-scrollbar-thumb {
+            background-color: var(--primary-blue);
+            border-radius: 4px;
+            border: 2px solid var(--light-blue);
+            transition: background-color 0.2s ease;
+        }
+        .expert-small-text::-webkit-scrollbar-thumb:hover {
+            background-color: var(--dark-blue);
+        }
+        /* 专家信息重点标黑 */
+        .expert-highlight {
+            font-weight: bold;
+            color: var(--deep-blue);
+        }
+        .expert-detail {
+            margin-top: 15px;
+            font-size: 17px;
+            line-height: 1.8em;
+        }
+
+        /* 完成人+完成单位模块 - 固定宽度，与领衔专家模块等宽 */
+        .owner-combine-module {
+            flex: 0 0 calc(50% - 15px); /* 固定宽度 */
+            min-width: 400px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 40px 30px; /* 增加内边距 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            display: flex;
+            flex-direction: column;
+            max-height: 600px; /* 与专家模块高度一致 */
+        }
+        .owner-combine-grid {
+            display: flex;
+            gap: 40px; /* 增大模块间距 */
+            width: 100%;
+            flex-grow: 1;
+        }
+        /* 完成人/单位子模块 - 优化左侧蓝线样式 + 增大尺寸 */
+        .owner-card {
+            flex: 1;
+            padding: 30px 25px; /* 增大内边距 */
+            background-color: rgba(25, 118, 210, 0.03);
+            border-radius: 10px; /* 增大圆角 */
+            /* 优化左侧蓝线 - 适配模块高度 */
+            position: relative;
+            /* 移除原有的border-left */
+            border-left: none;
+            box-shadow: 0 3px 10px rgba(25, 118, 210, 0.08); /* 增加轻微阴影 */
+        }
+        /* 自定义左侧蓝线 - 适配模块内容高度 */
+        .owner-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 30px; /* 调整顶部位置 */
+            bottom: 30px; /* 改为bottom定位，精确控制长度 */
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            border-radius: 0 4px 4px 0; /* 右侧圆角 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* 标题样式调整，避开蓝线 */
+        .owner-card h4 {
+            font-size: 26px; /* 增大标题字体 */
+            color: var(--dark-blue);
+            margin-bottom: 25px; /* 增大标题下间距 */
+            padding-bottom: 15px; /* 增大下划线间距 */
+            border-bottom: 2px solid var(--primary-blue);
+            text-align: center;
+            position: relative;
+            font-weight: bold;
+            /* 标题左侧padding，避开蓝线 */
+            padding-left: 10px;
+        }
+        /* 成果完成人列表 - 多列布局 + 增大间距 */
+        .person-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 调整为2列，增大每列宽度 */
+            gap: 18px; /* 增大列表项间距 */
+            /* 列表左侧padding，避开蓝线 */
+            padding-left: 10px;
+        }
+        /* 成果完成单位列表 - 单列布局 + 增大间距 */
+        .unit-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* 增大列表项间距 */
+            /* 列表左侧padding，避开蓝线 */
+            padding-left: 10px;
+        }
+        /* 统一列表项样式 - 增大尺寸 */
+        .person-list li, .unit-list li {
+            font-size: 18px; /* 增大字体 */
+            padding: 15px 12px; /* 增大内边距 */
+            background-color: var(--item-bg);
+            border-radius: 8px; /* 增大圆角 */
+            border: 1px solid var(--item-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.08); /* 增加阴影 */
+            text-align: center;
+        }
+        /* 单位名称换行样式 - 统一字体大小 */
+        .unit-list li .line-break {
+            display: block;
+            font-size: 1em; /* 与主文本字体大小一致 */
+            margin-top: 4px;
+        }
+        .person-list li a, .unit-list li a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+        }
+        .person-list li:hover, .unit-list li:hover {
+            background-color: #E1F0FF;
+            border-color: var(--primary-blue);
+            box-shadow: 0 5px 12px rgba(25, 118, 210, 0.15);
+            transform: translateY(-3px);
         }
 
         /* 响应式适配 */
         @media (max-width: 1200px) {
-            .owner-grid {
+            /* 大屏适配 */
+            .video-module, .intro-module, .expert-small-module, .owner-combine-module {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .person-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .person-list {
                 grid-template-columns: 1fr;
             }
-            .highlight-grid {
-                grid-template-columns: 1fr;
+            .banner .banner-text .main-title {
+                font-size: 38px;
             }
-            .成果-subtitle {
-                font-size: 20px;
+            .video-intro-section, .expert-owner-section {
+                flex-direction: column;
+            }
+            .owner-combine-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+            /* 移动端调整蓝线高度 */
+            .owner-card::before {
+                top: 25px;
+                bottom: 25px;
+            }
+            /* 移动端专家模块布局调整 */
+            .expert-small-avatar {
+                position: static;
+                width: 180px;
+                margin: 0 auto 20px;
+            }
+            .expert-content-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+            .expert-small-text {
+                margin-left: 0;
+                height: auto;
+                max-height: 400px;
+            }
+            .media-image-item {
+                flex: 0 0 200px;
+                height: 140px;
             }
         }
         @media (max-width: 768px) {
-            .成果-header {
-                padding: 20px 20px;
+            .head {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 25px 15px;
             }
-            .成果-title {
-                font-size: 26px;
+            .logo-group {
+                justify-content: center;
+                gap: 20px;
             }
-            .成果-subtitle {
-                font-size: 18px;
+            .logo-group img {
+                height: 60px;
             }
-            .成果-meta {
+            .head-title {
+                text-align: center;
+                font-size: 20px;
+            }
+            nav {
+                height: auto;
+                padding: 0 15px;
+            }
+            nav ul {
                 flex-wrap: wrap;
-                gap: 10px;
+                justify-content: center;
             }
-            .nav-bar {
-                padding: 0 20px;
+            nav ul li {
+                margin-right: 20px;
+                margin-bottom: 5px;
             }
-            .nav-category {
-                gap: 10px;
-                overflow-x: auto;
-                padding: 0 5px;
+            nav ul li a {
+                font-size: 18px;
+                padding: 0 10px;
             }
-            .nav-search input {
-                width: 140px;
+            nav ul li a.active {
+                font-size: 19px;
             }
-            .owner-section {
-                margin: 15px 20px;
-                padding: 25px;
+            .banner {
+                height: 250px;
             }
-            .highlight-section {
-                margin: 0 20px 15px;
-                padding: 25px;
+            .banner .banner-text .main-title {
+                font-size: 30px;
+                padding: 8px 15px;
             }
-            .owner-list {
-                gap: 10px;
+            .banner .banner-text {
+                top: 10%;
             }
-            .owner-list li {
+            .content {
+                padding: 0 15px;
+            }
+            .video-module, .intro-module, .expert-small-module, .owner-combine-module {
+                min-width: 100%;
+                max-height: none; /* 移动端取消固定高度 */
+            }
+            /* 移动端蓝线进一步调整 */
+            .owner-card::before {
+                top: 20px;
+                bottom: 20px;
+            }
+            .media-image-item {
+                flex: 0 0 180px;
+                height: 120px;
+            }
+            .copyright {
                 font-size: 14px;
-                padding: 5px 10px;
+                padding: 0 10px;
             }
-            .highlight-item {
-                font-size: 13px;
+            .copyright p::before, .copyright p::after {
+                width: 30px;
             }
+        }
+
+        /* 媒体报道模块 */
+        .media-section {
+            padding: 30px 0 50px;
+        }
+        .media-module {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+        }
+        /* 媒体图片滚动 */
+        .media-image-scroll {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+        .media-image-track {
+            display: flex;
+            gap: 25px;
+            animation: scroll 35s linear infinite;
+        }
+        .media-image-item {
+            flex: 0 0 250px;
+            height: 160px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .media-image-item:hover {
+            transform: scale(1.05);
+        }
+        .media-image-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .media-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            width: 100vw;
+            background: linear-gradient(90deg, var(--deep-blue) 0%, var(--dark-blue) 100%);
+            padding: 25px 0;
+            border-top: 3px solid var(--primary-blue);
+        }
+        .copyright {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-white);
+            line-height: 1.8;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .copyright p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .copyright p::before, .copyright p::after {
+            content: "";
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--text-white) 50%, transparent 100%);
         }
     </style>
 </head>
 <body>
-    <!-- 顶部成果标识栏（突出申报书核心信息） -->
-    <div class="成果-header">
-        <div class="成果-title">教学成果奖申报网站</div>
-        <div class="成果-subtitle">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
-        <div class="成果-meta">
-            <span>成果分类：基础学科人才培养（高等教育类）</span>
-            <span>学科归属：理学（数学类）</span>
-            <span>成果起止时间：2010.01--2020.12</span>
-            <span>实践检验期：5年（2020.12-2025.12）</span>
-        </div>
+    <!-- 页面主容器 -->
+    <div class="page-container">
+        <!-- 头部区域 -->
+        <header>
+            <div class="head">
+                <div class="logo-group">
+                    <a href="https://www.shu.edu.cn/" target="_blank">
+                        <!-- 替换为GitHub仓库中“上大图标.png”的原始文件URL -->
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E5%9B%BE%E6%A0%87.png" alt="上海大学图标" title="上海大学">
+                    </a>
+                    <a href="https://www.cahe.edu.cn/site/content/13309.html" target="_blank">
+                        <!-- 替换为GitHub仓库中“专委会图标.jpg”的原始文件URL -->
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%93%E5%A7%94%E4%BC%9A%E5%9B%BE%E6%A0%87.jpg" alt="中国高等教育学会教育数学专业委员会" title="中国高等教育学会教育数学专业委员会">
+                    </a>
+                </div>
+                <div class="head-title">
+                    教学成果奖申报网站
+                </div>
+            </div>
+
+            <!-- 导航栏 -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="student.html">学生成长</a></li>
+                    <li><a href="teacher.html">教师进阶</a></li>
+                    <li><a href="resource.html">资源建设</a></li>
+                    <li><a href="digital.html">数智赋能</a></li>
+                    <li><a href="stage.html">学段贯通</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- 横幅Banner -->
+        <section class="banner">
+            <div class="banner-slider">
+                <div class="banner-slide">
+                    <!-- 替换为GitHub仓库中“上大背景1.png”的原始文件URL -->
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF1.png" alt="上海大学背景1">
+                </div>
+                <div class="banner-slide">
+                    <!-- 替换为GitHub仓库中“上大背景2.png”的原始文件URL -->
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF2.png" alt="上海大学背景2">
+                </div>
+                <div class="banner-slide">
+                    <!-- 替换为GitHub仓库中“上大背景3.png”的原始文件URL -->
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF3.png" alt="上海大学背景3">
+                </div>
+                <div class="banner-slide">
+                    <!-- 替换为GitHub仓库中“上大背景4.png”的原始文件URL -->
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF4.png" alt="上海大学背景4">
+                </div>
+                <div class="banner-slide">
+                    <!-- 替换为GitHub仓库中“上大背景5.png”的原始文件URL -->
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF5.png" alt="上海大学背景5">
+                </div>
+            </div>
+            <div class="banner-text">
+                <div class="main-title">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
+            </div>
+            <div class="banner-indicators">
+                <div class="banner-indicator active" data-index="0"></div>
+                <div class="banner-indicator" data-index="1"></div>
+                <div class="banner-indicator" data-index="2"></div>
+                <div class="banner-indicator" data-index="3"></div>
+                <div class="banner-indicator" data-index="4"></div>
+            </div>
+        </section>
+
+        <!-- 内容区 -->
+        <section class="content">
+            <!-- 视频+成果简介模块 -->
+            <div class="video-intro-section">
+                <!-- 视频模块 -->
+                <div class="video-module">
+                    <h3>何为“知识再发现”</h3>
+                    <div class="video-container">
+                        <video controls autoplay muted loop>
+                            <!-- 替换为GitHub仓库中“视频知识再发现.mp4”的原始文件URL -->
+                            <source src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E5%86%8D%E5%8F%91%E7%8E%B0.mp4" type="video/mp4">
+                            您的浏览器不支持HTML5视频播放，请升级浏览器！
+                        </video>
+                    </div>
+                </div>
+                <!-- 成果简介模块 - 滚动查看 -->
+                <div class="intro-module">
+                    <div class="intro-title-wrap">
+                        <h3>成果简介</h3>
+                    </div>
+                    <div class="intro-content">
+                        <span class="highlight">数学</span>是科研根基，本质为探索未知、构建逻辑、发现规律，而非公式定理的机械记忆；作为<span class="highlight">国家科创关键基础学科</span>，其创新能力培养直接影响<span class="highlight">“卡脖子”领域突破</span>。本成果面向数学与非数学专业本科生，聚焦数学创新能力培育，提出<span class="highlight">“知识再发现”育人理念</span>——引领学生以“准研究者”身份重历已有知识生成轨迹，进而培养数学创新能力。针对传统培养痛点，打造<span class="highlight">协同育人新范式</span>，推动数学素养与创新能力全域提升。
+                        <br><br>
+                        <span class="highlight">上海大学作为中国高等教育学会教育数学专业委员会理事长单位</span>，牵头北大、北航等50余所会员单位，经<span class="highlight">十五年系统探索</span>，构建起以“知识再发现”为核心，集<span class="highlight">“科学思维、理工交融、学段贯通、数智赋能”</span>于一体的培养新范式。该范式通过还原数学概念与定理的生成轨迹，引导学生亲历<span class="highlight">“提出问题—猜想验证—抽象建构—实践应用”</span>完整过程，依托<span class="highlight">“重构教学体系、融通理工资源、贯通学段衔接、整合优质内容、拓展实践载体”</span>五大集成举措精准破解培养痛点，围绕能力培育实现<span class="highlight">“教—学—评”全链条变革</span>，推动学生从知识被动接收者转变为主动建构者与创新实践者。
+                        <br><br>
+                        成果依托<span class="highlight">2个教育部虚拟教研室</span>实现跨校协同，打造<span class="highlight">“专委会30门金课矩阵”</span>，编写探究式数字和新形态教材及专著37部，建成<span class="highlight">“锐捷通AI智学平台”与“网络画板”</span>动态工具，<span class="highlight">服务师生超千万人次。已覆盖全国200余所高校、300余所中学</span>，形成可复制推广的基础学科创新人才培养新模式，为我国自主培养各类高层次人才提供坚实支撑。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 专家+完成人模块 -->
+            <div class="expert-owner-section">
+                <!-- 领衔专家模块 - 图片固定，文字单独滚动 -->
+                <div class="expert-small-module">
+                    <div class="expert-title-wrap">
+                        <h3>领衔专家</h3>
+                    </div>
+                    <div class="expert-content-wrapper">
+                        <div class="expert-small-avatar">
+                            <!-- 替换为GitHub仓库中“王卿文01.png”的原始文件URL -->
+                            <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E7%8E%8B%E5%8D%BF%E6%96%8701.png" alt="王卿文教授">
+                            <!-- 主页链接放在图片下方 -->
+                            <div class="expert-avatar-links">
+                                <a href="https://scicol.shu.edu.cn/szdw/faculty/wqw.htm" target="_blank">中文主页</a>
+                                <a href="https://math.shu.edu.cn/Portals/721/teacher/Qing-WenWang/Qing-WenWang.htm" target="_blank">英文主页</a>
+                            </div>
+                        </div>
+                        <div class="expert-small-text">
+                            <p><span class="expert-highlight">王卿文</span></p>
+                            <p><span class="expert-highlight">国家万人计划教学名师</span></p>
+                            <p><span class="expert-highlight">上海领军人才、上海市教书育人楷模</span></p>
+                            <p><span class="expert-highlight">上海大学二级教授、博士生导师、伟长学者</span></p>
+                            <p><span class="expert-highlight">中国高等教育学会教育数学专业委员会理事长</span></p>
+                            <p><span class="expert-highlight">上海市教育系统王卿文劳模创新工作室负责人</span></p>
+                            <p><span class="expert-highlight">上海大学张量与矩阵理论国际研究中心主任</span></p>
+                            <p><span class="expert-highlight">韩国成均馆大学应用代数与优化研究中心学术委员</span></p>
+                            <div class="expert-detail">
+                                <p><span class="expert-highlight">研究领域：</span>线性和多重线性代数、矩阵理论及应用、数值代数、量子计算、四元数统计</p>
+                                <p><span class="expert-highlight">教育经历与工作经历：</span>中国科学技术大学基础数学博士、上海大学二级教授、博士生导师、伟长学者特聘教授、上海领军人才、国家万人计划教学名师、上海市教书育人楷模。2005-2018任上海大学数学系主任，现任中国高等教育学会教育数学专业委员会理事长、上海大学张量与矩阵理论国际研究中心主任、世界华人数学家联盟成员、韩国成均馆大学应用代数与优化研究中心学术委员、中国高等教育学会理事、中国数学会第12届和第13届理事会理事、上海市学位委员会第五届学科评议组成员、多个国际数学期刊的主编及编委、上海市教育系统王卿文劳模创新工作室负责人。</p>
+                                <p><span class="expert-highlight">荣誉奖项：</span>获首届吴兴华数学奖、宝钢优秀教师奖、王宽诚育才奖、上海市育才奖、上海市高等学校优秀教材奖、上海市自然科学奖二等奖和三等奖（均排名第一）、广西自然科学二等奖（排名第二）、三次获上海市级教学成果奖一等奖（均排名第一）、国家教学成果二等奖（排名第二）。</p>
+                                <p><span class="expert-highlight">学术成果：</span>主要研究线性和多重线性代数、矩阵代数及应用、量子计算。近年来在高等教育出版社、科学出版社等出版学术著作6部，在国际著名学术期刊Automatica、Math. Comput.、SIAM J. Matrix Anal. Appl. 等上发表学术论文200多篇，连续11次入选中国高被引学者，入选2022-2025年全球顶级科学家（数学）、连续入选全球前2%顶尖科学家和“终身科学影响力排行榜（1960-2025）”；负责国际合作项目、国家自然科学基金项目、教育部博士点基金项目和上海市自然科学基金项目等20多项；担任大型国际学术会议的主席、学术委员及在大型国际学术会议作大会报告和邀请报告30多次。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 完成人+完成单位模块 -->
+                <div class="owner-combine-module">
+                    <div class="owner-combine-grid">
+                        <!-- 成果完成人模块 -->
+                        <div class="owner-card">
+                            <h4>成果完成人</h4>
+                            <ul class="person-list">
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA1%E7%8E%8B%E5%8D%BF%E6%96%87.pdf" target="_blank">王卿文</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA2%E5%88%98%E6%98%A5%E5%87%A1.pdf" target="_blank">刘春凤</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA3%E6%9D%A8%E4%B9%89%E5%B7%9D.pdf" target="_blank">杨义川</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA4%E6%9D%8E%E7%BB%A7%E6%88%90.pdf" target="_blank">李继成</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA5%E9%99%88%E5%BB%BA%E9%BE%99.pdf" target="_blank">陈建龙</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA6%E5%86%AF%E8%8D%A3%E6%9D%83.pdf" target="_blank">冯荣权</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA7%E5%91%A8%E5%85%A8.pdf" target="_blank">周全</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA8%E9%80%9B%E6%B0%B8%E7%94%9F.pdf" target="_blank">饶永生</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA9%E4%BD%95%E5%8D%83%E8%A1%A1.pdf" target="_blank">何卓衡</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E4%BA%BA10%E9%A9%AC%E9%94%85.pdf" target="_blank">马锐</a></li>
+                            </ul>
+                        </div>
+                        <!-- 成果完成单位模块 -->
+                        <div class="owner-card">
+                            <h4>成果完成单位</h4>
+                            <ul class="unit-list">
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E5%8D%95%E4%BD%8D1%E4%B8%8A%E5%A4%A7%E7%90%86%E5%AD%A6%E9%99%A2.pdf" target="_blank">上海大学理学院</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E5%8D%95%E4%BD%8D2%E4%B8%8A%E5%A4%A7%E9%92%B1%E4%BC%9F%E9%95%BF%E5%AD%A6%E9%99%A2.pdf" target="_blank">上海大学钱伟长学院</a></li>
+                                <li><a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AE%8C%E6%88%90%E5%8D%95%E4%BD%8D3%E4%B8%93%E5%A7%94%E4%BC%9A.pdf" target="_blank">
+                                    中国高等教育学会<span class="line-break">教育数学专业委员会</span>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 媒体报道模块 -->
+            <div class="media-section">
+                <div class="media-module">
+                    <div class="media-image-scroll">
+                        <div class="media-image-track">
+                            <div class="media-image-item">
+                                <a href="https://tech.ifeng.com/c/8ZYTJ9tnAcX" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-凤凰网-王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E5%87%A4%E5%87%B0%E7%BD%91-%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="凤凰网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%9C%E6%96%B9%E6%95%99%E8%82%B2%E6%97%B6%E6%8A%A5.pdf" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-东方教育时报.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%9C%E6%96%B9%E6%95%99%E8%82%B2%E6%97%B6%E6%8A%A5.jpg" alt="东方教育时报报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://www.shobserver.com/staticsg/res/html/journal/detail.html?code=jfrb&date=2025-09-10&id=459645&page=04" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-解放日报.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E8%A7%A3%E6%94%BE%E6%97%A5%E6%8A%A5.jpg" alt="解放日报报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://web.shobserver.com/sgh/detail?id=913735" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-上.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%8A.jpg" alt="上观新闻报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://cn.chinadaily.com.cn/a/202405/15/WS66443c85a3109f7860ddd7c4.html" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-中国日报-王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E4%B8%AD%E5%9B%BD%E6%97%A5%E6%8A%A5-%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="中国日报网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="http://guoqing.china.com.cn/2024-05/13/content_117184873.htm?f=pad&a=true" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-中国网王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E4%B8%AD%E5%9B%BD%E7%BD%91%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="中国网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E6%96%87%E6%B1%87%E6%8A%A5.pdf" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E6%96%87.jpg" alt="文汇报报道">
+                                </a>
+                            </div>
+                            <!-- 重复滚动 -->
+                            <div class="media-image-item">
+                                <a href="https://tech.ifeng.com/c/8ZYTJ9tnAcX" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-凤凰网-王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E5%87%A4%E5%87%B0%E7%BD%91-%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="凤凰网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%9C%E6%96%B9%E6%95%99%E8%82%B2%E6%97%B6%E6%8A%A5.pdf" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-东方教育时报.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%9C%E6%96%B9%E6%95%99%E8%82%B2%E6%97%B6%E6%8A%A5.jpg" alt="东方教育时报报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://www.shobserver.com/staticsg/res/html/journal/detail.html?code=jfrb&date=2025-09-10&id=459645&page=04" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-解放日报.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E8%A7%A3%E6%94%BE%E6%97%A5%E6%8A%A5.jpg" alt="解放日报报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://web.shobserver.com/sgh/detail?id=913735" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-上.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E4%B8%8A.jpg" alt="上观新闻报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://cn.chinadaily.com.cn/a/202405/15/WS66443c85a3109f7860ddd7c4.html" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-中国日报-王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E4%B8%AD%E5%9B%BD%E6%97%A5%E6%8A%A5-%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="中国日报网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="http://guoqing.china.com.cn/2024-05/13/content_117184873.htm?f=pad&a=true" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-中国网王卿文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E4%B8%AD%E5%9B%BD%E7%BD%91%E7%8E%8B%E5%8D%BF%E6%96%87.jpg" alt="中国网报道">
+                                </a>
+                            </div>
+                            <div class="media-image-item">
+                                <a href="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E6%96%87%E6%B1%87%E6%8A%A5.pdf" target="_blank">
+                                    <!-- 替换为GitHub仓库中“媒体-王卿文-文.jpg”的原始文件URL -->
+                                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E5%AA%92%E4%BD%93-%E7%8E%8B%E5%8D%BF%E6%96%87-%E6%96%87.jpg" alt="文汇报报道">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="copyright">
+                <p>通讯地址：上海市宝山区上大路99号 | 邮编：200444 | 邮箱：zhuohenghe@shu.edu.cn</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- 导航栏 -->
-    <div class="nav-bar">
-        <div class="nav-category">
-            <a href="index.html" class="nav-item active">首页</a>
-            <a href="student.html" class="nav-item">学生成长</a>
-            <a href="teacher.html" class="nav-item">教师进阶</a>
-            <a href="resource.html" class="nav-item">资源建设</a>
-            <a href="digital.html" class="nav-item">数智赋能</a>
-            <a href="stage.html" class="nav-item">学段贯通</a>
-            <a href="media.html" class="nav-item">媒体报导</a>
-        </div>
-        <div class="nav-search">
-            <input type="text" placeholder="搜索成果内容...">
-            <button>搜索</button>
-        </div>
-    </div>
-
-    <!-- 成果信息模块（直接展示完成人/单位/推荐单位） -->
-    <div class="owner-section">
-        <div class="owner-grid">
-            <!-- 成果完成人 -->
-            <div class="owner-card">
-                <h3>成果完成人</h3>
-                <ul class="owner-list">
-                    <li><a href="pdf-viewer.html?files=完成人1王卿文.pdf&title=成果完成人：王卿文" target="_blank">王卿文</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人2刘春凤.pdf&title=成果完成人：刘春凤" target="_blank">刘春凤</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人3杨义川.pdf&title=成果完成人：杨义川" target="_blank">杨义川</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人4李继成.pdf&title=成果完成人：李继成" target="_blank">李继成</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人5陈建龙.pdf&title=成果完成人：陈建龙" target="_blank">陈建龙</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人6冯荣权.pdf&title=成果完成人：冯荣权" target="_blank">冯荣权</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人7周全.pdf&title=成果完成人：周全" target="_blank">周全</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人8饶永生.pdf&title=成果完成人：饶永生" target="_blank">饶永生</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人9何卓衡.pdf&title=成果完成人：何卓衡" target="_blank">何卓衡</a></li>
-                    <li><a href="pdf-viewer.html?files=完成人10马锐.pdf&title=成果完成人：马锐" target="_blank">马锐</a></li>
-                </ul>
-            </div>
-
-            <!-- 成果完成单位 -->
-            <div class="owner-card">
-                <h3>成果完成单位</h3>
-                <ul class="owner-list">
-                    <li><a href="pdf-viewer.html?files=完成单位1上大理学院.pdf&title=成果完成单位：上海大学理学院" target="_blank">上海大学理学院</a></li>
-                    <li><a href="pdf-viewer.html?files=完成单位2上大钱伟长学院.pdf&title=成果完成单位：上海大学钱伟长学院" target="_blank">上海大学钱伟长学院</a></li>
-                    <li><a href="pdf-viewer.html?files=完成单位3专委会.pdf&title=成果完成单位：中国高等教育学会教育数学专业委员会" target="_blank">中国高等教育学会教育数学专业委员会</a></li>
-                </ul>
-            </div>
-
-            <!-- 成果推荐单位 -->
-            <div class="owner-card">
-                <h3>成果推荐单位</h3>
-                <ul class="owner-list">
-                    <li><a href="pdf-viewer.html?files=推荐单位1上大理学院.pdf&title=成果推荐单位：上海大学理学院" target="_blank">上海大学理学院</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- 成果亮点与辐射范围模块 -->
-    <div class="highlight-section">
-        <h2 class="highlight-title">成果核心亮点与辐射范围</h2>
-        <div class="highlight-grid">
-            <!-- 核心成果亮点 -->
-            <div class="highlight-card">
-                <h3>核心成果亮点</h3>
-                <ul class="highlight-list">
-                    <li class="highlight-item"><strong>理念创新</strong>：首创“知识再发现”育人范式，重构数学教学逻辑</li>
-                    <li class="highlight-item"><strong>团队实力</strong>：4名国家级教学名师，4名长江学者，8个全国教学竞赛一等奖团队</li>
-                    <li class="highlight-item"><strong>资源矩阵</strong>：30门国家级一流课程，37部探究式教材，2个教育部虚拟教研室</li>
-                    <li class="highlight-item"><strong>学生成效</strong>：78项全国数学竞赛一等奖，35篇本科生SCI论文，1项美赛特等奖</li>
-                </ul>
-            </div>
-            <!-- 成果辐射范围 -->
-            <div class="highlight-card">
-                <h3>成果辐射范围</h3>
-                <ul class="highlight-list">
-                    <li class="highlight-item"><strong>高校覆盖</strong>：全国200余所高校，含北大、北航、东南等顶尖院校</li>
-                    <li class="highlight-item"><strong>中学衔接</strong>：300余所中学，1000+实验班，惠及4万余名中学生</li>
-                    <li class="highlight-item"><strong>技术赋能</strong>：网络画板服务70国500万人次，锐捷通AI平台覆盖60余校</li>
-                    <li class="highlight-item"><strong>社会认可</strong>：《解放日报》《文汇报》等主流媒体专题报道，获上海市教书育人楷模</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <!-- JS功能 -->
     <script>
-        // 搜索功能
-        document.querySelector('.nav-search button').addEventListener('click', function() {
-            const searchText = document.querySelector('.nav-search input').value.trim().toLowerCase();
-            if (!searchText) return;
-            alert(`搜索关键词：${searchText}\n请在对应子页面查看搜索结果`);
+        // 轮播效果
+        const slider = document.querySelector('.banner-slider');
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.banner-indicator');
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        const slideInterval = 5000;
+
+        function goToSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            currentIndex = index;
+        }
+
+        function startAutoSlide() {
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % slideCount;
+                goToSlide(nextIndex);
+            }, slideInterval);
+        }
+
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const index = parseInt(indicator.dataset.index);
+                goToSlide(index);
+            });
+        });
+
+        startAutoSlide();
+
+        // 优化滚动体验 - 平滑滚动
+        document.querySelectorAll('.intro-module, .expert-small-text').forEach(container => {
+            container.style.scrollBehavior = 'smooth';
+            
+            // 滚动条hover效果增强
+            container.addEventListener('mouseenter', () => {
+                container.style.scrollbarColor = `${getComputedStyle(document.documentElement).getPropertyValue('--dark-blue')} var(--light-blue)`;
+            });
+            container.addEventListener('mouseleave', () => {
+                container.style.scrollbarColor = `${getComputedStyle(document.documentElement).getPropertyValue('--primary-blue')} var(--light-blue)`;
+            });
         });
     </script>
 </body>

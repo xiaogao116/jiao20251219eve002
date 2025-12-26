@@ -6,40 +6,66 @@
     --primary-light: #e6f7ff;      /* 主色浅背景 */
     --primary-light-deep: #cce7ff; /* 主色浅背景（active） */
     --border-gray: #eee;           /* 分割线灰色 */
+    --border-gray-deep: #ddd;      /* 深色分割线（补充） */
     --text-gray: #666;             /* 次要文本色 */
+    --text-gray-light: #999;       /* 浅文本色（补充） */
     --white: #fff;                 /* 白色 */
     --bg-gray: #f5f5f5;            /* 背景灰色 */
+    --bg-gray-deep: #f0f0f0;       /* 深色背景灰（补充） */
     --shadow: 0 2px 12px rgba(0,0,0,0.08); /* 通用阴影 */
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.12); /* hover 增强阴影（补充） */
     --transition: all 0.3s ease;   /* 通用过渡动画 */
+    --radius-sm: 4px;              /* 小圆角（补充） */
+    --radius-md: 8px;              /* 中等圆角（补充） */
+    --radius-lg: 12px;             /* 大圆角（补充） */
 }
 
-/* 全局样式重置 */
+/* 全局样式重置：增强跨浏览器一致性 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 多系统字体适配：覆盖Windows/macOS/Linux，提升跨平台显示效果 */
+    /* 多系统字体适配：覆盖Windows/macOS/Linux/移动端，提升跨平台显示效果 */
     font-family: "Microsoft YaHei", "Heiti SC", "PingFang SC", 
-                 "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+                 "Hiragino Sans GB", "WenQuanYi Micro Hei", 
+                 "Roboto", "Helvetica Neue", sans-serif;
+    /* 禁止文本选中（按需开启），提升交互体验 */
+    /* user-select: none; */
 }
 
 /* 全局滚动优化：提升移动端/桌面端滚动体验 */
 html {
     scroll-behavior: smooth;                /* 平滑滚动 */
     -webkit-overflow-scrolling: touch;      /* 移动端弹性滚动 */
+    font-size: 16px;                        /* 基准字号，适配rem */
 }
 
 body {
     background-color: var(--bg-gray);
     color: #333;
     line-height: 1.6;
+    min-height: 100vh;                      /* 确保body占满视口高度 */
+    overflow-x: hidden;                     /* 防止横向滚动 */
 }
+
+/* 通用工具类（补充）：提升代码复用性 */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.mt-10 { margin-top: 10px; }
+.mb-10 { margin-bottom: 10px; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
 
 /* 主目录页面样式 */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    /* 适配小屏幕最小宽度 */
+    min-width: 320px;
 }
 
 header {
@@ -47,25 +73,52 @@ header {
     margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 2px solid var(--primary-color);
+    /* 增加头部内边距，提升视觉层次 */
+    padding-top: 10px;
 }
 
 h1 {
     color: var(--primary-color);
     font-size: 28px;
     margin-bottom: 10px;
+    font-weight: 600; /* 调整字重，避免过粗 */
+    /* 文本阴影，提升可读性 */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* 响应式标题字号 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
 }
 
 .subtitle {
     font-size: 18px;
     color: var(--text-gray);
+    line-height: 1.5; /* 优化行高 */
 }
 
 .chapter {
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 25px;
     margin-bottom: 30px;
     box-shadow: var(--shadow);
+    /* 过渡动画，hover时增强阴影 */
+    transition: var(--transition);
+    border: 1px solid var(--border-gray); /* 增加边框，提升质感 */
+}
+
+.chapter:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
 }
 
 .chapter h2 {
@@ -74,14 +127,40 @@ h1 {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border-gray);
+    font-weight: 600;
+    position: relative;
+    /* 标题下划线装饰 */
+}
+
+.chapter h2::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background-color: var(--primary-color);
 }
 
 .section-list {
     list-style: none;
+    padding-left: 10px; /* 增加左侧内边距，优化对齐 */
 }
 
 .section-list li {
     margin-bottom: 12px;
+    /* 避免li之间的间距塌陷 */
+    display: flex;
+    align-items: center;
+}
+
+/* 列表项前缀装饰（补充）：提升视觉层次 */
+.section-list li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-right: 8px;
+    line-height: 1;
 }
 
 .section-list a {
@@ -89,25 +168,45 @@ h1 {
     text-decoration: none;
     font-size: 16px;
     display: block;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 15px; /* 增大点击区域 */
+    border-radius: var(--radius-sm);
     transition: var(--transition);
     cursor: pointer; /* 指针光标，提示可点击 */
+    width: 100%; /* 占满父容器，提升点击体验 */
+    /* 无障碍适配：焦点样式增强 */
+    outline: none;
 }
 
 .section-list a:hover {
     background-color: var(--primary-light);
     color: var(--primary-color);
-    padding-left: 18px;
+    padding-left: 20px; /* hover 缩进效果增强 */
+    transform: translateX(2px); /* 轻微位移，提升交互感 */
 }
 
 .section-list a:active {
     background-color: var(--primary-light-deep);
+    transform: translateX(0); /* 点击后复位 */
 }
 
 .section-list a:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+/* 禁用/不可点击的链接样式（补充） */
+.section-list a.disabled {
+    color: var(--text-gray-light);
+    cursor: not-allowed;
+    background-color: var(--bg-gray);
+}
+
+.section-list a.disabled:hover {
+    padding-left: 15px;
+    transform: none;
+    background-color: var(--bg-gray);
+    color: var(--text-gray-light);
 }
 
 footer {
@@ -116,11 +215,25 @@ footer {
     padding: 20px;
     color: var(--text-gray);
     border-top: 1px solid var(--border-gray);
+    /* 页脚固定在底部（可选），如需开启取消注释
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    z-index: 999;
+    */
 }
 
 footer a {
     color: var(--primary-color);
     text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
 }
 
 /* PDF 预览页面样式 */
@@ -128,6 +241,7 @@ footer a {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
+    min-width: 320px; /* 适配小屏幕 */
 }
 
 .viewer-header {
@@ -137,51 +251,103 @@ footer a {
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 2px solid var(--primary-color);
+    flex-wrap: wrap; /* 适配小屏幕换行 */
+    gap: 15px; /* 换行后间距 */
+}
+
+.viewer-header h2 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 600;
+    /* 防止标题溢出 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .btn-back {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--primary-color);
     color: var(--white);
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     transition: var(--transition);
     cursor: pointer;
+    border: none; /* 移除默认边框 */
+    font-size: 16px;
+    font-weight: 500;
+    /* 增大点击区域 */
+    min-height: 44px;
+    min-width: 100px;
+    /* 图标占位（如需添加返回图标） */
+    gap: 8px;
 }
 
 .btn-back:hover {
     background-color: var(--primary-dark);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
 }
 
 .btn-back:active {
     background-color: var(--primary-darker);
+    transform: translateY(0);
 }
 
 .btn-back:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
 }
+
+/* 返回按钮图标（补充），如需使用取消注释并添加图标字体
+.btn-back::before {
+    content: "←";
+    font-size: 14px;
+}
+*/
 
 .pdf-container {
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 20px;
     box-shadow: var(--shadow);
     margin-bottom: 30px;
+    border: 1px solid var(--border-gray);
+    /* PDF 容器最小高度，避免内容为空时塌陷 */
+    min-height: 600px;
+}
+
+/* PDF 嵌入框架样式增强 */
+#pdf-frame {
+    width: 100%;
+    height: 800px; /* 桌面端默认高度 */
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+    /* 过渡动画，适配高度变化 */
+    transition: height 0.3s ease;
 }
 
 .pdf-list {
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 20px;
     box-shadow: var(--shadow);
+    border: 1px solid var(--border-gray);
 }
 
 .pdf-list h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
     font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-gray);
 }
 
 #file-list {
@@ -189,31 +355,47 @@ footer a {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    padding-left: 5px;
+}
+
+#file-list li {
+    /* 确保li包裹链接，提升点击体验 */
+    flex: 1 1 calc(33.333% - 15px); /* 桌面端3列布局 */
+    min-width: 200px; /* 最小宽度，避免过窄 */
 }
 
 #file-list li a {
     color: var(--primary-color);
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 10px 15px; /* 增大点击区域 */
     border: 1px solid var(--primary-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: var(--transition);
     cursor: pointer;
+    display: block; /* 占满li宽度 */
+    text-align: center; /* 文字居中 */
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
 }
 
 #file-list li a:hover {
     background-color: var(--primary-color);
     color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 #file-list li a:active {
     background-color: var(--primary-darker);
     color: var(--white);
+    transform: translateY(0);
 }
 
 #file-list li a:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
 }
 
 .viewer-footer {
@@ -235,6 +417,9 @@ footer a {
         width: 100%;
         border: none;
     }
+    #file-list li {
+        flex: 1 1 calc(50% - 15px); /* 平板端2列布局 */
+    }
 }
 
 /* 移动端（≤768px） */
@@ -253,6 +438,7 @@ footer a {
 
     .pdf-container {
         padding: 10px;
+        min-height: 500px; /* 移动端减小最小高度 */
     }
 
     #pdf-frame {
@@ -262,7 +448,12 @@ footer a {
     }
 
     #file-list {
-        flex-direction: column;
+        flex-direction: column; /* 移动端单列布局 */
+        gap: 10px; /* 减小间距 */
+    }
+
+    #file-list li {
+        min-width: 100%; /* 占满宽度 */
     }
 
     /* 移动端头部适配：避免flex挤压 */
@@ -275,5 +466,101 @@ footer a {
     .btn-back {
         width: 100%;
         text-align: center;
+    }
+
+    /* 移动端章节样式优化 */
+    .chapter {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+
+    .section-list a {
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}
+
+/* 小屏移动端（≤480px） */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    .chapter h2 {
+        font-size: 18px;
+    }
+
+    #pdf-frame {
+        height: 400px; /* 小屏进一步减小高度 */
+    }
+
+    .btn-back {
+        padding: 8px 15px;
+        min-height: 40px;
+    }
+
+    .pdf-container {
+        min-height: 400px;
+    }
+}
+
+/* 打印样式适配（补充）：优化打印效果 */
+@media print {
+    body {
+        background-color: var(--white);
+    }
+
+    .chapter, .pdf-container, .pdf-list {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .btn-back {
+        display: none; /* 打印时隐藏返回按钮 */
+    }
+
+    footer {
+        border-top: 1px solid #ddd;
+        color: #333;
+    }
+}
+
+/* 暗黑模式适配（可选，补充）：提升夜间使用体验 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #4096ff;
+        --primary-dark: #1e88e5;
+        --primary-darker: #0d6efd;
+        --primary-light: #1e293b;
+        --primary-light-deep: #334155;
+        --border-gray: #334155;
+        --border-gray-deep: #475569;
+        --text-gray: #94a3b8;
+        --text-gray-light: #cbd5e1;
+        --white: #0f172a;
+        --bg-gray: #020617;
+        --bg-gray-deep: #1e293b;
+    }
+
+    body {
+        color: #e2e8f0;
+    }
+
+    .section-list a {
+        color: #e2e8f0;
+    }
+
+    #file-list li a {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    #file-list li a:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
     }
 }

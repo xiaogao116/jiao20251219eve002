@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,王卿文,学生成长">
+    <meta name="description" content="学生成长 - 基于'知识再发现'的本科生数学创新能力协同培养新范式教学成果应用及效果证明材料">
     <title>学生成长 - 教学成果奖申报网站</title>
     <style>
-        /* 复用index.html的全局CSS变量和基础样式 */
+        /* 全局重置与基础样式（完全复用首页） */
         * {
             margin: 0;
             padding: 0;
@@ -13,352 +15,511 @@
             font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
         }
         :root {
-            --primary-color: #B71C1C; /* 深庄重红主色 */
-            --secondary-color: #880E4F; /* 深玫红辅助色 */
-            --accent-color: #E64A19; /* 橙红强调色 */
-            --text-dark: #121212; /* 正文深色 */
-            --text-light: #333333; /* 正文浅色 */
-            --text-gray: #666666; /* 辅助文字色 */
-            --bg-main: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%); /* 深红色渐变背景 */
-            --bg-card: #ffffff; /* 卡片背景色 */
-            --border-color: #E0E0E0; /* 边框色 */
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 深色阴影 */
+            --primary-blue: #1976D2; /* 主蓝色（明亮愉快） */
+            --dark-blue: #0D47A1;    /* 深蓝色 */
+            --deep-blue: #0A3D8C;    /* 更深蓝色（渐变） */
+            --light-blue: #E3F2FD;   /* 浅蓝色 */
+            --text-white: #FFFFFF;   /* 白色文字 */
+            --text-dark: #333333;    /* 深色文字 */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 阴影 */
+            --item-bg: #F0F7FF;      /* 统一列表项背景色 */
+            --item-border: #D1E7FF;  /* 统一列表项边框色 */
         }
         body {
-            background: var(--bg-main);
+            width: 100vw; /* 视口宽度 */
+            min-height: 100vh;
+            margin: 0; /* 移除默认边距 */
+            padding: 0; /* 移除默认内边距 */
+            /* 明亮的蓝色渐变背景+细微纹理 */
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--primary-blue) 100%);
+            background-attachment: fixed;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
             color: var(--text-dark);
-            padding: 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-x: hidden; /* 防止横向滚动 */
         }
 
-        /* 顶部成果标识栏（与index.html完全一致） */
-        .成果-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 25px 40px;
-            box-shadow: var(--shadow);
-            position: relative;
+        /* 页面容器（完全复用首页） */
+        .page-container {
+            width: 100vw; /* 全屏宽度 */
+            background: #FFFFFF;
+            box-shadow: none; /* 移除阴影避免边缘问题 */
+            margin: 0; /* 移除外边距 */
             overflow: hidden;
         }
-        .成果-title {
-            font-size: 32px; /* 与index.html一致 */
-            font-weight: 700;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        .成果-subtitle {
-            font-size: 24px; /* 与index.html一致 */
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-            line-height: 1.4;
-        }
-        .成果-meta {
-            margin-top: 15px;
-            font-size: 14px;
-            opacity: 0.8;
-            display: flex;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-        }
-        .成果-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .成果-meta span::before {
-            content: "•";
-            font-size: 18px;
-        }
 
-        /* 导航栏（与index.html完全一致） */
-        .nav-bar {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 40px;
+        /* 头部区域（完全复用首页） */
+        header {
+            width: 100vw; /* 全屏宽度 */
+            padding: 0; /* 移除内边距，确保导航栏对齐 */
+            background: rgba(13, 71, 161, 0.03);
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
+        }
+        .head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 99;
+            padding: 25px 40px; /* 仅保留左右内边距，与背景图对齐 */
+            max-width: 100%; /* 确保不超出容器 */
         }
-        .nav-category {
-            display: flex;
-            gap: 25px;
-        }
-        .nav-item {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            height: 100%;
+        .logo-group {
             display: flex;
             align-items: center;
-            padding: 0 5px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            gap: 30px;
         }
-        .nav-item:hover, .nav-item.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
+        .logo-group a {
+            display: inline-block;
+            transition: all 0.3s ease;
         }
-        .nav-search {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .logo-group a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        .nav-search input {
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 13px;
-            width: 220px;
-            transition: border-color 0.2s;
+        .logo-group img {
+            height: 70px;
+            border: 0;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-        .nav-search input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        .nav-search button {
-            padding: 6px 12px;
-            border: none;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .nav-search button:hover {
-            background-color: #9F0000;
+        .head-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: right;
+            letter-spacing: 2px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* 学生成长内容区样式（保留原有功能，样式适配全局） */
-        .main-container {
-            padding: 40px;
-            margin: 30px 40px;
-            background-color: var(--bg-card);
+        /* 导航栏（完全复用首页，仅激活学生成长） */
+        nav {
+            width: 100vw; /* 强制全屏宽度 */
+            background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            height: 70px; /* 增高导航栏，更醒目 */
+            line-height: 70px;
+            padding: 0 40px; /* 内边距与背景图对齐 */
+            margin: 0; /* 移除外边距 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* 增强阴影 */
+            position: relative;
+            z-index: 20;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: flex-start; /* 左对齐 */
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 45px; /* 加大间距 */
+            position: relative;
+        }
+        nav ul li a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 20px; /* 进一步放大字体 */
+            padding: 0 18px; /* 加大内边距 */
+            display: block;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
             border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
         }
-        .catalog-title {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
+        /* 导航链接hover效果（复用首页） */
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.4s ease;
+            z-index: -1;
         }
-        .category-wrapper {
-            margin-bottom: 20px;
+        nav ul li a:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-2px); /* 上移效果 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .level-1 {
-            font-size: 18px;
+        nav ul li a:hover::before {
+            left: 0;
+        }
+        nav ul li a.active {
+            background-color: var(--deep-blue);
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 21px; /* 激活态更大 */
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        /* 导航下划线装饰（复用首页） */
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 内容区通用样式（复用首页） */
+        .content {
+            width: 100vw; /* 全屏宽度 */
+            padding: 0 40px; /* 调整内边距，与导航栏/背景图对齐 */
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+
+        /* 学生成长内容模块（匹配首页模块风格） */
+        .student-module {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+        }
+        .student-module h3 {
+            font-size: 26px;
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-weight: bold;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-blue);
+            text-align: center;
+        }
+
+        /* 分类标题样式（匹配首页模块标题风格） */
+        .category-title {
+            font-size: 22px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--dark-blue);
             margin: 0 0 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: rgba(25, 118, 210, 0.1);
         }
-        .level-1::before {
+        .category-title::before {
             content: "▶";
-            font-size: 14px;
-            transition: transform 0.2s;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            color: var(--primary-blue);
         }
-        .level-1.active::before {
+        .category-title.active::before {
             transform: rotate(90deg);
         }
-        .category-list {
-            display: block;
-            margin-left: 25px;
-            padding-left: 10px;
-            border-left: 1px dashed var(--border-color);
-        }
-        .level-2 {
-            font-size: 15px;
-            color: var(--text-dark);
-            margin: 18px 0 10px;
-            display: block;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            font-weight: 500;
-            position: relative;
-            padding-left: 18px;
-        }
-        .level-2::before {
-            content: "•";
-            color: var(--primary-color);
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-        .level-2:hover {
-            color: var(--primary-color);
-            transform: translateX(3px);
-        }
-        .page-num {
-            font-size: 12px;
-            color: var(--text-gray);
-            margin-left: 10px;
-            font-weight: normal;
+        .category-title:hover {
+            background-color: rgba(25, 118, 210, 0.2);
         }
 
-        /* 响应式适配（与index.html完全一致） */
+        /* 列表项样式（完全匹配首页完成人/单位列表风格） */
+        .student-list {
+            list-style: none;
+            margin-left: 25px;
+            padding-left: 15px;
+            border-left: 2px solid var(--item-border);
+        }
+        .student-list li {
+            font-size: 18px;
+            padding: 12px 10px;
+            background-color: var(--item-bg);
+            border-radius: 6px;
+            border: 1px solid var(--item-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+        }
+        .student-list li a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding-left: 10px;
+        }
+        .student-list li:hover {
+            background-color: #E1F0FF;
+            border-color: var(--primary-blue);
+            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* 页脚（完全复用首页） */
+        footer {
+            width: 100vw; /* 全屏宽度 */
+            background: linear-gradient(90deg, var(--deep-blue) 0%, var(--dark-blue) 100%);
+            padding: 25px 0; /* 减少内边距 */
+            border-top: 3px solid var(--primary-blue);
+        }
+        .copyright {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-white);
+            line-height: 1.8;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .copyright p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .copyright p::before, .copyright p::after {
+            content: "";
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--text-white) 50%, transparent 100%);
+        }
+
+        /* 响应式适配（完全复用首页） */
         @media (max-width: 1200px) {
-            .成果-subtitle {
+            nav ul li {
+                margin-right: 35px;
+            }
+            nav ul li a {
+                font-size: 19px;
+                padding: 0 15px;
+            }
+            nav ul li a.active {
                 font-size: 20px;
             }
         }
+        @media (max-width: 992px) {
+            .student-list li {
+                font-size: 17px;
+            }
+        }
         @media (max-width: 768px) {
-            .成果-header {
-                padding: 20px 20px;
+            .head {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 25px 15px;
             }
-            .成果-title {
-                font-size: 26px;
+            .logo-group {
+                justify-content: center;
+                gap: 20px;
             }
-            .成果-subtitle {
-                font-size: 18px;
+            .logo-group img {
+                height: 60px;
             }
-            .成果-meta {
+            .head-title {
+                text-align: center;
+                font-size: 20px;
+            }
+            nav {
+                height: auto;
+                padding: 0 15px;
+            }
+            nav ul {
                 flex-wrap: wrap;
-                gap: 10px;
+                justify-content: center;
             }
-            .nav-bar {
-                padding: 0 20px;
+            nav ul li {
+                margin-right: 20px;
+                margin-bottom: 5px;
             }
-            .nav-category {
-                gap: 10px;
-                overflow-x: auto;
-                padding: 0 5px;
+            nav ul li a {
+                font-size: 18px;
+                padding: 0 10px;
             }
-            .nav-search input {
-                width: 140px;
+            nav ul li a.active {
+                font-size: 19px;
             }
-            .main-container {
-                margin: 15px 20px;
+            .content {
+                padding: 0 15px;
+                padding-top: 30px;
+                padding-bottom: 40px;
+            }
+            .student-module {
                 padding: 25px;
+            }
+            .student-module h3 {
+                font-size: 24px;
+            }
+            .category-title {
+                font-size: 20px;
+            }
+            .student-list li {
+                font-size: 16px;
+            }
+            .copyright {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+            .copyright p::before, .copyright p::after {
+                width: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 顶部成果标识栏（与index.html完全一致） -->
-    <div class="成果-header">
-        <div class="成果-title">教学成果奖申报网站</div>
-        <div class="成果-subtitle">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
-        <div class="成果-meta">
-            <span>成果分类：基础学科人才培养（高等教育类）</span>
-            <span>学科归属：理学（数学类）</span>
-            <span>成果起止时间：2010.01--2020.12</span>
-            <span>实践检验期：5年（2020.12-2025.12）</span>
-        </div>
-    </div>
-
-    <!-- 导航栏（与index.html一致，仅学生成长为激活态） -->
-    <div class="nav-bar">
-        <div class="nav-category">
-            <a href="index.html" class="nav-item">首页</a>
-            <a href="student.html" class="nav-item active">学生成长</a>
-            <a href="teacher.html" class="nav-item">教师进阶</a>
-            <a href="resource.html" class="nav-item">资源建设</a>
-            <a href="digital.html" class="nav-item">数智赋能</a>
-            <a href="stage.html" class="nav-item">学段贯通</a>
-            <a href="media.html" class="nav-item">媒体报导</a>
-        </div>
-        <div class="nav-search">
-            <input type="text" placeholder="搜索学生成长相关内容...">
-            <button>搜索</button>
-        </div>
-    </div>
-
-    <!-- 学生成长内容区 -->
-    <div class="main-container">
-        <h2 class="catalog-title">学生成长 - 教学成果应用及效果证明材料</h2>
-        <div class="category-wrapper">
-            <div class="level-1 active" onclick="toggleCategory('student')">
-                1 学生成长
+    <!-- 页面主容器（完全复用首页结构） -->
+    <div class="page-container">
+        <!-- 头部区域（完全保留首页抬头） -->
+        <header>
+            <div class="head">
+                <div class="logo-group">
+                    <!-- 上大图标添加链接（复用首页） -->
+                    <a href="https://www.shu.edu.cn/" target="_blank">
+                        <img src="Figures/上大图标.png" alt="上海大学图标" title="上海大学">
+                    </a>
+                    <!-- 委员会图标添加链接（复用首页） -->
+                    <a href="https://www.cahe.edu.cn/site/content/13309.html" target="_blank">
+                        <img src="Figures/专委会图标.jpg" alt="中国高等教育学会教育数学专业委员会" title="中国高等教育学会教育数学专业委员会">
+                    </a>
+                </div>
+                <div class="head-title">
+                    国家级教学成果奖申报网站
+                </div>
             </div>
-            <div id="student" class="category-list">
-                <a href="pdf-viewer.html?files=近十年获奖情况统计三种.pdf|学生竞赛近十年获奖情况统计.pdf&title=2014年-2024年全国大学生数学竞赛、建模竞赛、美赛情况统计" target="_blank" class="level-2">
-                    1.1 2014年-2024年全国大学生数学竞赛、建模竞赛、美赛情况统计
-                </a>
-                <a href="pdf-viewer.html?files=学生-数学竞赛-28.pdf|学生竞赛2022-7.pdf|学生数学竞赛14.pdf&title=2021年-2025年全国大学生数学竞赛一等奖(49+29=78项)" target="_blank" class="level-2">
-                    1.2 2021年-2025年全国大学生数学竞赛一等奖(49+29=78项) <span class="page-num">申报书P13</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生竞赛决赛一等奖上海大学.pdf|学生竞赛决赛一等奖贵州大学.pdf|学生竞赛决赛一等奖北航.pdf|学生竞赛决赛一等奖东南.pdf&title=2024年-2025年全国大学生数学竞赛决赛一等奖(4项)" target="_blank" class="level-2">
-                    1.3 2024年-2025年全国大学生数学竞赛决赛一等奖(4项) <span class="page-num">申报书P13</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生-国赛-3.pdf|学生建模国赛一等奖2024.pdf|学生建模国赛一等奖2025.pdf&title=2021年-2024年全国大学生数学建模竞赛一等奖(5项)" target="_blank" class="level-2">
-                    1.4 2021年-2024年全国大学生数学建模竞赛一等奖(5项)
-                </a>
-                <a href="pdf-viewer.html?files=学生-美赛-35.pdf|学生美赛2024.pdf|学生美赛2025.pdf&title=2021年-2025年美国国际大学生数学建模竞赛一等奖及以上(62项)" target="_blank" class="level-2">
-                    1.5 2021年-2025年美国国际大学生数学建模竞赛一等奖及以上(62项)
-                </a>
-                <a href="pdf-viewer.html?files=学生-SCI论文封面整合.pdf|学生-SCI论文封面整合2025.pdf&title=2021年-2025年本科生发表SCI论文(35篇)" target="_blank" class="level-2">
-                    1.6 2021年-2025年本科生发表SCI论文(35篇) <span class="page-num">申报书P13</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生-戴希楠-美赛特等奖.pdf|学生美赛O奖北航.pdf|学生-戴希楠-美赛特等奖报道.pdf|学生美赛北航报道.pdf&title=本科生戴希楠等获得美国数学建模竞赛特等奖(2项)" target="_blank" class="level-2">
-                    1.7 本科生戴希楠等获得美国数学建模竞赛特等奖(2项) <span class="page-num">申报书P13</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生-任百颖-高被引.pdf|学生-任百颖-首页.pdf&title=本科生任百颖发表ESI高被引论文" target="_blank" class="level-2">
-                    1.8 本科生任百颖发表ESI高被引论文 <span class="page-num">申报书P22</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生-何卓衡-改进定理.pdf|学生-何卓衡-顶刊.pdf&title=何卓衡本科改进研究生教材定理、硕士顶刊《Automatica》发表论文" target="_blank" class="level-2">
-                    1.9 何卓衡本科改进研究生教材定理、硕士顶刊《Automatica》发表论文 <span class="page-num">申报书P22</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生科学北航.pdf&title=本科生李响在《Science》上发表研究论文" target="_blank" class="level-2">
-                    1.10 本科生李响在《Science》上发表研究论文 <span class="page-num">申报书P13</span>
-                </a>
-               <a href="video-viewer.html?title=知识再发现育人价值:李响跨学科科研的思维溯源" target="_blank" class="level-2">
-    1.11 "知识再发现"育人价值:李响跨学科科研的思维溯源
-         </a>
-                <a href="pdf-viewer.html?files=学生--谈方琳-人民日报.pdf&title=中学生谈方琳参加世界顶尖科学家大会" target="_blank" class="level-2">
-                    1.12 中学生谈方琳参加世界顶尖科学家大会 <span class="page-num">申报书P22</span>
-                </a>
-                <a href="pdf-viewer.html?files=学生谈胜利知识再发现育人实效谈方琳案例证明.pdf&title=知识再发现育人实效:谈方琳案例证明" target="_blank" class="level-2">
-                    1.13 "知识再发现"育人实效:谈方琳案例证明 <span class="page-num">申报书P22</span>
-                </a>
+
+            <!-- 导航栏（复用首页，仅激活学生成长） -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="student.html" class="active">学生成长</a></li>
+                    <li><a href="teacher.html">教师进阶</a></li>
+                    <li><a href="resource.html">资源建设</a></li>
+                    <li><a href="digital.html">数智赋能</a></li>
+                    <li><a href="stage.html">学段贯通</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- 内容区（学生成长专属内容） -->
+        <section class="content">
+            <!-- 学生成长模块（匹配首页模块视觉风格） -->
+            <div class="student-module">
+                <h3>学生成长 - 教学成果应用及效果证明材料</h3>
+                
+                <!-- 分类标题 -->
+                <div class="category-title active" id="categoryToggle">
+                    1 学生成长成果列表
+                </div>
+                
+                <!-- 学生成长列表（移除申报书页码标注） -->
+                <ul class="student-list" id="studentList">
+                    <li>
+                        <a href="pdf-viewer.html?files=近十年获奖情况统计三种.pdf|学生竞赛近十年获奖情况统计.pdf&title=2014年-2024年全国大学生数学竞赛、建模竞赛、美赛情况统计" target="_blank">
+                            1.1 2014年-2024年全国大学生数学竞赛、建模竞赛、美赛情况统计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-数学竞赛-28.pdf|学生竞赛2022-7.pdf|学生数学竞赛14.pdf&title=2021年-2025年全国大学生数学竞赛一等奖(49+29=78项)" target="_blank">
+                            1.2 2021年-2025年全国大学生数学竞赛一等奖(49+29=78项)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生竞赛决赛一等奖上海大学.pdf|学生竞赛决赛一等奖贵州大学.pdf|学生竞赛决赛一等奖北航.pdf|学生竞赛决赛一等奖东南.pdf&title=2024年-2025年全国大学生数学竞赛决赛一等奖(4项)" target="_blank">
+                            1.3 2024年-2025年全国大学生数学竞赛决赛一等奖(4项)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-国赛-3.pdf|学生建模国赛一等奖2024.pdf|学生建模国赛一等奖2025.pdf&title=2021年-2024年全国大学生数学建模竞赛一等奖(5项)" target="_blank">
+                            1.4 2021年-2024年全国大学生数学建模竞赛一等奖(5项)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-美赛-35.pdf|学生美赛2024.pdf|学生美赛2025.pdf&title=2021年-2025年美国国际大学生数学建模竞赛一等奖及以上(62项)" target="_blank">
+                            1.5 2021年-2025年美国国际大学生数学建模竞赛一等奖及以上(62项)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-SCI论文封面整合.pdf|学生-SCI论文封面整合2025.pdf&title=2021年-2025年本科生发表SCI论文(35篇)" target="_blank">
+                            1.6 2021年-2025年本科生发表SCI论文(35篇)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-戴希楠-美赛特等奖.pdf|学生美赛O奖北航.pdf|学生-戴希楠-美赛特等奖报道.pdf|学生美赛北航报道.pdf&title=本科生戴希楠等获得美国数学建模竞赛特等奖(2项)" target="_blank">
+                            1.7 本科生戴希楠等获得美国数学建模竞赛特等奖(2项)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-任百颖-高被引.pdf|学生-任百颖-首页.pdf&title=本科生任百颖发表ESI高被引论文" target="_blank">
+                            1.8 本科生任百颖发表ESI高被引论文
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生-何卓衡-改进定理.pdf|学生-何卓衡-顶刊.pdf&title=何卓衡本科改进研究生教材定理、硕士顶刊《Automatica》发表论文" target="_blank">
+                            1.9 何卓衡本科改进研究生教材定理、硕士顶刊《Automatica》发表论文
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生科学北航.pdf&title=本科生李响在《Science》上发表研究论文" target="_blank">
+                            1.10 本科生李响在《Science》上发表研究论文
+                        </a>
+                    </li>
+                    <li>
+                        <a href="video-viewer.html?title=知识再发现育人价值:李响跨学科科研的思维溯源" target="_blank">
+                            1.11 "知识再发现"育人价值:李响跨学科科研的思维溯源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生--谈方琳-人民日报.pdf&title=中学生谈方琳参加世界顶尖科学家大会" target="_blank">
+                            1.12 中学生谈方琳参加世界顶尖科学家大会
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdf-viewer.html?files=学生谈胜利知识再发现育人实效谈方琳案例证明.pdf&title=知识再发现育人实效:谈方琳案例证明" target="_blank">
+                            1.13 "知识再发现"育人实效:谈方琳案例证明
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </section>
+
+        <!-- 页脚（完全保留首页的通讯地址邮编邮箱） -->
+        <footer>
+            <div class="copyright">
+                <p>通讯地址：上海市宝山区上大路99号 | 邮编：200444 | 邮箱：zhuohenghe@shu.edu.cn</p>
+            </div>
+        </footer>
     </div>
 
+    <!-- JS功能（列表展开/收起） -->
     <script>
-        // 展开/收起功能
-        function toggleCategory(id) {
-            const el = document.getElementById(id);
-            const trigger = document.querySelector(`.level-1[onclick="toggleCategory('${id}')"]`);
-            el.classList.toggle('active');
-            trigger.classList.toggle('active');
-        }
-        // 搜索功能
-        document.querySelector('.nav-search button').addEventListener('click', function() {
-            const searchText = document.querySelector('.nav-search input').value.trim().toLowerCase();
-            if (!searchText) return;
-            document.querySelectorAll('.level-2').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    item.style.backgroundColor = 'rgba(183, 28, 28, 0.1)';
-                    item.style.borderLeft = '3px solid var(--primary-color)';
-                } else {
-                    item.style.backgroundColor = '';
-                    item.style.borderLeft = '';
-                }
-            });
+        // 分类列表展开/收起功能
+        const categoryToggle = document.getElementById('categoryToggle');
+        const studentList = document.getElementById('studentList');
+        let listExpanded = true;
+
+        categoryToggle.addEventListener('click', () => {
+            listExpanded = !listExpanded;
+            if (listExpanded) {
+                studentList.style.display = 'block';
+                categoryToggle.classList.add('active');
+            } else {
+                studentList.style.display = 'none';
+                categoryToggle.classList.remove('active');
+            }
+            
+            // 添加过渡动画
+            studentList.style.transition = 'all 0.3s ease';
+            studentList.style.opacity = listExpanded ? '1' : '0';
         });
+
+        // 初始化列表为展开状态
+        studentList.style.display = 'block';
+        studentList.style.opacity = '1';
     </script>
 </body>
 </html>
