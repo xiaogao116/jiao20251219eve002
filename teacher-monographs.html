@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,学段贯通,本硕博培养,数学衔接">
-    <meta name="description" content="学段贯通 - 基于'知识再发现'的本科生数学创新能力协同培养新范式教学成果应用及效果证明材料">
-    <title>学段贯通 - 教学成果奖申报网站</title>
+    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,教师专著">
+    <meta name="description" content="代表性专著 - 基于'知识再发现'的本科生数学创新能力协同培养新范式">
+    <title>代表性专著 - 教学成果奖申报网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 全局样式变量 */
+        /* 全局样式变量 - 与教师进阶页面完全一致 */
         :root {
             --primary-blue: #1976D2;
             --dark-blue: #0D47A1;
@@ -20,14 +20,12 @@
             --item-bg: #F0F7FF;
             --item-border: #D1E7FF;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
         }
-
         body {
             width: 100vw;
             min-height: 100vh;
@@ -48,7 +46,6 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         /* 页面容器 */
         .page-container {
             width: 100vw;
@@ -57,8 +54,7 @@
             margin: 0;
             overflow: hidden;
         }
-
-        /* 头部区域 */
+        /* 头部区域 - 与教师进阶页面完全一致 */
         header {
             width: 100vw;
             padding: 0;
@@ -120,8 +116,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-transform: uppercase;
         }
-
-        /* 导航栏 */
+        /* 导航栏 - 与教师进阶页面完全一致 */
         nav {
             width: 100vw;
             background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
@@ -196,8 +191,7 @@
             border-radius: 2px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-
-        /* 横幅Banner */
+        /* 横幅Banner - 与教师进阶页面完全一致 */
         .banner {
             width: 100vw;
             height: 320px;
@@ -262,8 +256,7 @@
             border-radius: 6px;
             transform: scale(1.1);
         }
-
-        /* 核心内容区 */
+        /* 核心内容区 - 保持布局一致，适配专著展示（移除页码相关样式） */
         .content {
             max-width: 1200px;
             margin: 0 auto;
@@ -298,153 +291,68 @@
             line-height: 1.8;
         }
         
-        /* 模块列表 */
-        .modules-list {
+        /* 专著列表样式 - 移除页码相关布局和样式 */
+        .monographs-list {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
         
-        /* 模块卡片 */
-        .module-card {
-            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--item-border);
-            overflow: hidden;
-            transition: all 0.5s ease;
-            position: relative;
+        .monograph-item {
+            background: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
         
-        .module-card::before {
-            content: attr(data-index);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 70px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            color: var(--text-white);
-            font-size: 40px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+        .monograph-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(25, 118, 210, 0.15);
+            border-left-color: var(--dark-blue);
         }
         
-        .module-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(25, 118, 210, 0.2);
-            border-color: var(--primary-blue);
-        }
-        
-        .module-content {
-            padding: 30px;
-            padding-left: 90px;
-        }
-        
-        .module-title {
-            font-size: 24px;
-            color: var(--deep-blue);
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.6;
+        .monograph-title {
+            font-size: 18px;
+            color: var(--text-dark);
             transition: color 0.3s ease;
         }
         
-        .module-card:hover .module-title {
+        .monograph-item:hover .monograph-title {
             color: var(--primary-blue);
         }
         
-        .module-divider {
-            height: 3px;
-            background: linear-gradient(90deg, transparent 0%, var(--light-blue) 50%, transparent 100%);
-            margin: 10px 0;
-            border-radius: 3px;
-        }
-        
-        .module-desc {
-            font-size: 18px;
-            color: #555555;
-            line-height: 1.8;
-        }
-        
-        /* 链接样式 */
-        .resource-link {
-            color: var(--primary-blue);
-            text-decoration: underline;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .resource-link:hover {
+        /* 返回按钮 - 与teacher-papers完全一致 */
+        .back-btn {
+            align-self: flex-start;
+            margin-bottom: 25px;
+            padding: 15px 35px;
+            background-color: var(--light-blue);
             color: var(--dark-blue);
-            transform: translateX(5px);
-        }
-        
-        .module-icon {
-            position: absolute;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--light-blue);
-            border-radius: 50%;
-            display: flex;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 24px;
-            transition: all 0.4s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            gap: 0;
+            z-index: 5;
         }
         
-        .module-card:hover .module-icon {
-            background: var(--primary-blue);
+        .back-btn:hover {
+            background-color: var(--primary-blue);
             color: var(--text-white);
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+            border-color: var(--deep-blue);
         }
-/* 页脚 - 与student.txt（学生成长）完全一致 */
-footer {
-    width: 100vw;
-    background: linear-gradient(90deg, var(--deep-blue) 0%, var(--dark-blue) 100%);
-    padding: 30px 0;
-    border-top: 4px solid var(--primary-blue);
-    margin-top: 50px;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-}
-.copyright {
-    text-align: center;
-    font-size: 18px;
-    color: var(--text-white);
-    line-height: 2;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    padding: 0 20px;
-}
-.copyright p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-.copyright p::before, .copyright p::after {
-    content: "";
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--text-white) 50%, transparent 100%);
-}
-
-
-        /* 响应式适配 */
+        
+        /* 响应式适配 - 同步返回按钮与teacher-papers一致，其余保持不变 */
         @media (max-width: 1200px) {
             .head {
                 padding: 25px 30px;
@@ -470,17 +378,18 @@ footer {
             nav ul li a.active {
                 font-size: 21px;
             }
-            .contact-bar {
-                font-size: 12px;
+            .content {
+                padding: 40px 30px 60px;
+            }
+            .back-btn {
+                padding: 14px 30px;
+                font-size: 19px;
             }
         }
         
         @media (max-width: 992px) {
             .banner .banner-text .main-title {
                 font-size: 38px;
-            }
-            .contact-bar {
-                padding: 8px 10px;
             }
         }
         
@@ -541,45 +450,33 @@ footer {
             .section-desc {
                 font-size: 18px;
             }
-            .module-card::before {
-                width: 60px;
-                font-size: 32px;
+            .monograph-item {
+                padding: 15px;
             }
-            .module-content {
-                padding: 20px;
-                padding-left: 75px;
-            }
-            .module-title {
-                font-size: 20px;
-            }
-            .module-desc {
+            .monograph-title {
                 font-size: 16px;
             }
-            .module-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                right: 20px;
-            }
-            .contact-bar {
-                font-size: 11px;
-                line-height: 1.5;
+            .back-btn {
+                padding: 12px 25px;
+                font-size: 18px;
+                margin-bottom: 20px;
+                width: 100%;
+                justify-content: center;
             }
         }
         
-@media (max-width: 480px) {
-    .module-icon {
-        display: none;
-    }
-    /* 移动端通讯栏适配 - 与student.txt一致 */
-    .copyright p {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .copyright p::before, .copyright p::after {
-        display: none;
-    }
-}
+        @media (max-width: 480px) {
+            .copyright p {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .copyright p::before, .copyright p::after {
+                display: none;
+            }
+            .content {
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -598,19 +495,17 @@ footer {
                     教学成果奖申报网站
                 </div>
             </div>
-
             <nav>
                 <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="student.html">学生成长</a></li>
-                    <li><a href="teacher.html">教师进阶</a></li>
+                    <li><a href="teacher.html" class="active">教师进阶</a></li>
                     <li><a href="resource.html">资源建设</a></li>
                     <li><a href="digital.html">数智赋能</a></li>
-                    <li><a href="stage.html" class="active">学段贯通</a></li>
+                    <li><a href="stage.html">学段贯通</a></li>
                 </ul>
             </nav>
         </header>
-
         <section class="banner">
             <div class="banner-slider">
                 <div class="banner-slide">
@@ -640,74 +535,46 @@ footer {
                 <div class="banner-indicator" data-index="4"></div>
             </div>
         </section>
-
         <main class="content">
-            <div class="section-header">
-                <h2 class="section-title">学段贯通 衔接共育</h2>
-                <p class="section-desc">以“知识再发现”为核心导向，打通基础教育与高等教育、本科与研究生阶段的数学教学壁垒，构建本基贯通、本研贯通、本硕博一体化的拔尖人才培养体系，实现数学创新能力的连贯式培养。</p>
-            </div>
-            <div class="modules-list">
-                <!-- 学段贯通模块1：本科数学教育与基础数学教育素养衔接指南 -->
-                <div class="module-card" data-index="01" onclick="window.open('pdf-viewer.html?files=学段指南.pdf&title=本科数学教育与基础数学教育素养衔接指南', '_blank')">
-                    <div class="module-content">
-                        <h3 class="module-title">本科数学教育与基础数学教育素养衔接指南</h3>
-                        <div class="module-divider"></div>
-                        <p class="module-desc">制定本科与基础数学教育素养衔接的核心指南，明确不同学段数学能力培养的衔接要点，为中小学与大学数学教学的连贯化实施提供标准化参考依据。</p>
-                    </div>
-                    <div class="module-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
+            <!-- 标题区域容器 - 与teacher-papers一致 -->
+            <div class="section-header-wrap">
+                <!-- 返回按钮 - 与teacher-papers完全一致 -->
+                <a href="teacher.html" class="back-btn">
+                    <span>返回教师进阶</span>
+                </a>
+            
+                <div class="section-header">
+                    <h2 class="section-title">代表性专著</h2>
+                    <p class="section-desc">团队出版高水平专著5部，涵盖大学与中学数学教学融合、数学核心素养培养、数学实验教学等核心领域，具有重要的学术价值和实践指导意义</p>
                 </div>
-
-                <!-- 学段贯通模块2：上海大学钱伟长学院本硕博一体化拔尖人才培养管理办法 -->
-                <div class="module-card" data-index="02" onclick="window.open('pdf-viewer.html?files=学段钱伟长学院直博培养.pdf&title=上海大学钱伟长学院本硕博一体化拔尖人才培养管理办法', '_blank')">
-                    <div class="module-content">
-                        <h3 class="module-title">上海大学钱伟长学院本硕博一体化拔尖人才培养管理办法</h3>
-                        <div class="module-divider"></div>
-                        <p class="module-desc">出台钱伟长学院本硕博一体化拔尖人才培养管理办法，构建从本科到博士阶段的贯通式培养体系，为数学领域拔尖人才的成长提供制度保障。</p>
+                <div class="monographs-list">
+                    <!-- 专著1-5 移除页码显示标签 -->
+                    <div class="monograph-item" onclick="window.open('pdf-viewer.html?files=18-大学视角下的中学教学.pdf&title=李尚志著，大学视角下的中学数学，华东师范大学出版社，2022年', '_blank')">
+                        <div class="monograph-title">2.13.1 李尚志著，大学视角下的中学数学，华东师范大学出版社，2022年</div>
                     </div>
-                    <div class="module-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div class="monograph-item" onclick="window.open('pdf-viewer.html?files=19-数学大观扫描件.pdf&title=李尚志著，数学大观，高等教育出版社，2015年', '_blank')">
+                        <div class="monograph-title">2.13.2 李尚志著，数学大观，高等教育出版社，2015年</div>
                     </div>
-                </div>
-
-                <!-- 学段贯通模块3："知识再发现"导向的本—基数学贯通中学教学实验总结报告 -->
-                <div class="module-card" data-index="03" onclick="window.open('pdf-viewer.html?files=学段-盖章更新_“知识再发现”导向的本科与基础教育数学贯通中学教学实验总结报告(新教材盖章).pdf&title=知识再发现导向的本—基数学贯通中学教学实验总结报告', '_blank')">
-                    <div class="module-content">
-                        <h3 class="module-title">"知识再发现"导向的本—基数学贯通中学教学实验总结报告</h3>
-                        <div class="module-divider"></div>
-                        <p class="module-desc">基于“知识再发现”理念开展本-基数学贯通中学教学实验，总结实验成果、教学方法及学生能力提升效果，验证贯通式教学模式的实践价值。</p>
+                    <div class="monograph-item" onclick="window.open('pdf-viewer.html?files=28-高中数学核心素养.pdf&title=王国江主编，高中数学核心素养，上海社会科学院出版社，2020年', '_blank')">
+                        <div class="monograph-title">2.13.3 王国江主编，高中数学核心素养，上海社会科学院出版社，2020年</div>
                     </div>
-                    <div class="module-icon">
-                        <i class="fas fa-flask"></i>
+                    <div class="monograph-item" onclick="window.open('pdf-viewer.html?files=29-高中数学实验.pdf&title=张霖、王国江等编著，高中数学实验，上海社会科学院出版社，2019年', '_blank')">
+                        <div class="monograph-title">2.13.4 张霖、王国江等编著，高中数学实验，上海社会科学院出版社，2019年</div>
                     </div>
-                </div>
-
-                <!-- 学段贯通模块4："知识再发现"导向的本—研数学贯通教学实践总结报告 -->
-                <div class="module-card" data-index="04" onclick="window.open('pdf-viewer.html?files=学段钱伟长学院数学与应用数学专业本硕博贯通培养实践总结报告.pdf&title=知识再发现导向的本—研数学贯通教学实践总结报告', '_blank')">
-                    <div class="module-content">
-                        <h3 class="module-title">"知识再发现"导向的本—研数学贯通教学实践总结报告</h3>
-                        <div class="module-divider"></div>
-                        <p class="module-desc">总结“知识再发现”导向的本-研数学贯通教学实践成果，梳理本科与研究生阶段数学教学的衔接策略，为高层次数学人才培养提供实践参考。</p>
-                    </div>
-                    <div class="module-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="monograph-item" onclick="window.open('pdf-viewer.html?files=30-高中数学新课标新教材学习活动设计研究.pdf&title=王国江主编，高中数学新课标新教材学习活动设计研究，同济大学出版社，2021年', '_blank')">
+                        <div class="monograph-title">2.13.5 王国江主编，高中数学新课标新教材学习活动设计研究，同济大学出版社，2021年</div>
                     </div>
                 </div>
             </div>
         </main>
-
-        <!-- 通讯信息栏 -->
-<!-- 通讯栏 - 与student.txt（学生成长）完全一致 -->
-<footer>
-    <div class="copyright">
-        <p>通讯地址：上海市宝山区上大路99号 | 邮编：200444 | 邮箱：zhuohenghe@shu.edu.cn</p>
+        <footer>
+            <div class="copyright">
+                <p>上海大学 © 2025 基于"知识再发现"的本科生数学创新能力协同培养新范式</p>
+            </div>
+        </footer>
     </div>
-</footer>
-    </div>
-
     <script>
-        // Banner轮播功能
+        // Banner轮播功能 - 与教师进阶页面完全一致
         let currentSlide = 0;
         const slides = document.querySelectorAll('.banner-slide');
         const indicators = document.querySelectorAll('.banner-indicator');
@@ -717,7 +584,6 @@ footer {
             currentSlide = index;
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
             
-            // 更新指示器状态
             indicators.forEach((indicator, i) => {
                 if (i === currentSlide) {
                     indicator.classList.add('active');
@@ -727,13 +593,11 @@ footer {
             });
         }
         
-        // 自动轮播
         setInterval(() => {
             currentSlide = (currentSlide + 1) % slides.length;
             goToSlide(currentSlide);
         }, 5000);
         
-        // 点击指示器切换轮播
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 goToSlide(index);

@@ -3,136 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,王卿文,PDF预览">
+    <meta name="description" content="教学成果奖申报网站 - PDF预览页面">
     <title>PDF预览 - 教学成果奖申报网站</title>
     <style>
         /* 复用首页全局变量 */
         :root {
-            --primary-color: #B71C1C; /* 深庄重红主色 */
-            --secondary-color: #880E4F; /* 深玫红辅助色 */
-            --text-dark: #121212; /* 正文深色 */
-            --text-light: #333333; /* 正文浅色 */
-            --text-gray: #666666; /* 辅助文字色 */
-            --bg-main: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%); /* 深红色渐变背景 */
-            --bg-card: #ffffff; /* 卡片背景色 */
-            --border-color: #E0E0E0; /* 边框色 */
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 深色阴影 */
+            --primary-blue: #1976D2; /* 主蓝色（明亮愉快） */
+            --dark-blue: #0D47A1;    /* 深蓝色 */
+            --deep-blue: #0A3D8C;    /* 更深蓝色（渐变） */
+            --light-blue: #E3F2FD;   /* 浅蓝色 */
+            --text-white: #FFFFFF;   /* 白色文字 */
+            --text-dark: #333333;    /* 深色文字 */
+            --text-gray: #666666;    /* 辅助文字色 */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 阴影 */
+            --item-bg: #F0F7FF;      /* 列表项背景色 */
+            --item-border: #D1E7FF;  /* 列表项边框色 */
         }
+        
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
             font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif; 
         }
+        
         body { 
-            background: var(--bg-main);
-            color: var(--text-dark);
-            height: 100vh; 
+            /* 复用首页背景样式 */
             width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--primary-blue) 100%);
+            background-attachment: fixed;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: var(--text-dark);
             display: flex; 
             flex-direction: column; 
             overflow: hidden; 
-            margin: 0;
-            padding: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
-        /* 复用首页导航栏样式（仅保留返回按钮） */
+        /* 导航栏：匹配首页导航风格 */
         .nav-bar {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
+            /* 复用首页导航栏渐变背景 */
+            background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            height: 70px;
+            line-height: 70px;
             padding: 0 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            height: 60px;
-            box-shadow: var(--shadow);
             position: relative;
             z-index: 99;
         }
+        
         .btn-return {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--text-white);
+            color: var(--dark-blue);
             border: none;
-            border-radius: 4px;
-            padding: 8px 16px;
-            font-size: 14px;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 18px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
+        
         .btn-return:hover {
-            background-color: #9F0000;
+            background-color: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            color: var(--deep-blue);
         }
 
-        /* PDF容器：单滚动条 + 匹配首页风格 */
+        /* PDF容器：扩大显示区域 */
         .pdf-container {
             flex: 1;
             width: 100vw;
-            height: calc(100vh - 60px);
-            overflow: hidden; 
-            background-color: var(--bg-card);
-            padding: 30px 40px;
+            height: calc(100vh - 70px);
+            overflow: auto; /* 容器自身滚动，适配大尺寸PDF */
+            padding: 20px 40px; /* 减少内边距，扩大可用空间 */
             margin: 0;
             position: relative;
         }
-        /* PDF预览区域：单滚动条 + 适配首页卡片风格 */
+        
+        /* PDF预览区域：全屏适配+自动缩放 */
         #pdf-iframe {
             width: 100%;
-            max-width: 1400px;
+            min-width: 100%;
             height: 100%;
+            min-height: calc(100vh - 110px); /* 确保高度占满容器 */
             display: block;
             border: none;
-            background-color: #FAFAFA;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            overflow: auto; 
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            overflow: visible; /* 允许PDF内容自然显示 */
             margin: 0 auto;
         }
 
         /* 加载提示：匹配首页风格 */
         .loading-overlay {
             position: absolute;
-            top: 60px;
+            top: 70px;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: var(--bg-card);
+            background-color: rgba(255, 255, 255, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 97;
         }
+        
         .loading-text {
-            font-size: 16px;
-            color: var(--text-gray);
-            padding: 20px;
-            background-color: #FAFAFA;
+            font-size: 20px;
+            color: var(--dark-blue);
+            padding: 30px 40px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            border-top: 4px solid var(--primary-blue);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .loading-text button {
+            margin-top: 15px;
+            padding: 12px 24px;
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            border: none;
             border-radius: 6px;
-            box-shadow: var(--shadow);
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.2);
+        }
+        
+        .loading-text button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
         }
 
-        /* 响应式适配（与首页一致） */
+        /* 响应式适配（与首页完全一致） */
+        @media (max-width: 992px) {
+            .pdf-container {
+                padding: 20px 20px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-bar {
                 padding: 0 20px;
-                height: 50px;
+                height: 60px;
+                line-height: 60px;
             }
+            
             .btn-return {
-                padding: 6px 12px;
-                font-size: 13px;
+                padding: 8px 20px;
+                font-size: 16px;
             }
+            
             .pdf-container {
-                padding: 15px 20px;
-                height: calc(100vh - 50px);
+                padding: 15px 15px;
+                height: calc(100vh - 60px);
             }
+            
             #pdf-iframe {
-                max-width: 100%;
+                min-height: calc(100vh - 90px);
+                border-radius: 8px;
+            }
+            
+            .loading-overlay {
+                top: 60px;
+            }
+            
+            .loading-text {
+                font-size: 18px;
+                padding: 20px 30px;
+            }
+            
+            .loading-text button {
+                padding: 10px 20px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
-    <!-- 导航栏：仅保留返回按钮 -->
+    <!-- 导航栏：匹配首页风格 -->
     <div class="nav-bar">
-        <button class="btn-return" onclick="goBack()">返回</button>
+        <button class="btn-return" onclick="goBack()">返回首页</button>
     </div>
 
     <!-- PDF预览容器 -->
@@ -147,6 +220,7 @@
     </div>
 
     <script>
+        // 获取URL参数
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             const files = params.get('files') || '';
@@ -159,10 +233,12 @@
             };
         }
 
+        // 返回首页/上一页
         function goBack() {
             window.history.length > 1 ? window.history.back() : window.location.href = 'index.html';
         }
 
+        // 隐藏加载提示
         function hideLoading() {
             document.getElementById('loadingOverlay').style.display = 'none';
         }
@@ -170,9 +246,10 @@
         // 初始化加载PDF
         const { pdfUrl, title } = getUrlParams();
         const iframe = document.getElementById('pdf-iframe');
+        
         if (pdfUrl) {
-            // 隐藏PDF默认工具栏 + 适配宽度
-            const pdfUrlWithParam = pdfUrl + (pdfUrl.includes('#') ? '&' : '#') + 'toolbar=0&view=FitW';
+            // 优化PDF显示参数：自适应宽度+100%高度+隐藏工具栏
+            const pdfUrlWithParam = pdfUrl + (pdfUrl.includes('#') ? '&' : '#') + 'toolbar=0&view=FitW&scrollbar=1&statusbar=0&messages=0';
             iframe.src = pdfUrlWithParam;
             document.title = `${title} - 教学成果奖申报网站`;
             document.getElementById('loadingText').textContent = `加载${title}中...`;
@@ -182,27 +259,32 @@
                 if (document.getElementById('loadingOverlay').style.display !== 'none') {
                     document.getElementById('loadingText').innerHTML = `
                         加载超时<br>
-                        <button onclick="reloadPdf()" style="margin-top:10px; padding:6px 12px; background:var(--primary-color); color:white; border:none; border-radius:4px; font-size:13px;">点击重试</button>
+                        <button onclick="reloadPdf()">点击重试</button>
                     `;
                 }
             }, 15000);
         } else {
             hideLoading();
-            iframe.srcdoc = `<div style="text-align:center; padding:50px; color:var(--text-gray); font-size:16px;">
-                未找到PDF文件
+            iframe.srcdoc = `<div style="text-align:center; padding:80px 20px; color:var(--text-gray); font-size:20px; line-height:2em;">
+                <div style="color:var(--dark-blue); font-weight:bold; margin-bottom:20px;">未找到PDF文件</div>
+                <button onclick="goBack()" style="padding:12px 24px; background-color:var(--primary-blue); color:white; border:none; border-radius:6px; font-size:18px; cursor:pointer;">返回首页</button>
             </div>`;
         }
 
         // 重试加载
         function reloadPdf() {
             document.getElementById('loadingText').textContent = `重新加载${title}中...`;
-            const pdfUrlWithParam = pdfUrl + (pdfUrl.includes('#') ? '&' : '#') + `toolbar=0&view=FitW&t=${new Date().getTime()}`;
+            const pdfUrlWithParam = pdfUrl + (pdfUrl.includes('#') ? '&' : '#') + `toolbar=0&view=FitW&scrollbar=1&statusbar=0&messages=0&t=${new Date().getTime()}`;
             iframe.src = pdfUrlWithParam;
         }
 
-        // 禁用打印/下载快捷键
+        // 禁用打印/下载/审查元素快捷键
         document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p') || (e.ctrlKey && e.shiftKey && e.key === 'i')) {
+            if ((e.ctrlKey && e.key === 's') || 
+                (e.ctrlKey && e.key === 'p') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'i') ||
+                (e.key === 'F12') ||
+                (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
                 return false;
             }

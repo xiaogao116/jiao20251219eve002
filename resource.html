@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,资源建设,虚拟教研室,一流课程">
+    <meta name="description" content="资源建设 - 基于'知识再发现'的本科生数学创新能力协同培养新范式教学成果应用及效果证明材料">
     <title>资源建设 - 教学成果奖申报网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 全局样式变量，与student.html保持一致 */
+        /* 全局样式变量 */
         :root {
-            --primary-color: #B71C1C;
-            --text-dark: #121212;
-            --text-light: #333333;
-            --text-gray: #666666;
-            --bg-main: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%);
-            --bg-card: #ffffff;
-            --border-color: #E0E0E0;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --primary-blue: #1976D2;
+            --dark-blue: #0D47A1;
+            --deep-blue: #0A3D8C;
+            --light-blue: #E3F2FD;
+            --text-white: #FFFFFF;
+            --text-dark: #333333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --item-bg: #F0F7FF;
+            --item-border: #D1E7FF;
         }
 
         * {
@@ -25,365 +29,812 @@
         }
 
         body {
-            background: var(--bg-main);
-            color: var(--text-dark);
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
             padding: 0;
-            max-width: 1400px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--primary-blue) 100%);
+            background-attachment: fixed;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: var(--text-dark);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* 顶部成果标识栏，与index.html/student.html完全一致 */
-        .成果-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 25px 40px;
-            box-shadow: var(--shadow);
-            position: relative;
+        /* 页面容器 */
+        .page-container {
+            width: 100vw;
+            background: #FFFFFF;
+            box-shadow: none;
+            margin: 0;
             overflow: hidden;
         }
 
-        .成果-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        /* 头部区域 */
+        header {
+            width: 100vw;
+            padding: 0;
+            background-image: url("https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
             position: relative;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
             z-index: 1;
         }
-
-        .成果-subtitle {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-            line-height: 1.4;
-        }
-
-        .成果-meta {
-            margin-top: 15px;
-            font-size: 14px;
-            opacity: 0.8;
-            display: flex;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-        }
-
-        .成果-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .成果-meta span::before {
-            content: "•";
-            font-size: 18px;
-        }
-
-        /* 导航栏样式，与student.html完全一致 */
-        .nav-bar {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 40px;
+        
+        .head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 99;
+            padding: 30px 50px;
+            max-width: 100%;
+            position: relative;
+            z-index: 2;
         }
-
-        .nav-category {
+        .logo-group {
             display: flex;
-            gap: 25px;
+            align-items: center;
+            gap: 35px;
+        }
+        .logo-group a {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .logo-group a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .logo-group img {
+            height: 80px;
+            border: 2px solid var(--light-blue);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .head-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-blue);
+            text-align: right;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
         }
 
-        .nav-item {
-            color: var(--text-light);
+        /* 导航栏 */
+        nav {
+            width: 100vw;
+            background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            height: 80px;
+            line-height: 80px;
+            padding: 0 50px;
+            margin: 0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 20;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 50px;
+            position: relative;
+        }
+        nav ul li a {
+            color: var(--text-white);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 22px;
+            padding: 0 20px;
+            display: block;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        nav ul li a:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        nav ul li a:hover::before {
+            left: 0;
+        }
+        nav ul li a.active {
+            background-color: var(--deep-blue);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 23px;
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 横幅Banner */
+        .banner {
+            width: 100vw;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
+        }
+        .banner-slider {
+            width: 100%;
             height: 100%;
             display: flex;
-            align-items: center;
-            padding: 0 5px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            transition: transform 0.8s ease-in-out;
         }
-
-        .nav-item:hover, .nav-item.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
         }
-
-        .nav-search {
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95) contrast(1.0) blur(0.8px);
+        }
+        .banner .banner-text {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 90%;
+            z-index: 10;
+        }
+        .banner .banner-text .main-title {
+            font-size: 46px;
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 3px;
+            color: var(--text-white);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+        }
+        .banner-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            align-items: center;
-            gap: 8px;
+            gap: 10px;
+            z-index: 10;
         }
-
-        .nav-search input {
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 13px;
-            width: 220px;
-            transition: border-color 0.2s;
-        }
-
-        .nav-search input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .nav-search button {
-            padding: 6px 12px;
-            border: none;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-size: 13px;
+        .banner-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .banner-indicator.active {
+            background-color: var(--text-white);
+            width: 30px;
+            border-radius: 6px;
+            transform: scale(1.1);
         }
 
-        .nav-search button:hover {
-            background-color: #9F0000;
+        /* 核心内容区 */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 50px 80px;
+            position: relative;
+            z-index: 10;
         }
-
-        /* 主内容区样式，与student.html完全一致 */
-        .main-container {
-            padding: 40px;
-            margin: 30px 40px;
-            background-color: var(--bg-card);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
-
-        .catalog-title {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin-bottom: 30px;
+        
+        .section-title {
+            font-size: 36px;
+            color: var(--dark-blue);
+            font-weight: bold;
+            display: inline-block;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        /* 一级分类样式，与student.html一致 */
-        .level-1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 0 0 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            border-left: 3px solid var(--primary-color);
-        }
-
-        .level-1::before {
-            content: "▶";
-            font-size: 14px;
-            transition: transform 0.2s;
-        }
-
-        .level-1.active::before {
-            transform: rotate(90deg);
-        }
-
-        .toggle-tip {
-            font-size: 12px;
-            color: var(--text-gray);
-            font-weight: normal;
-            margin-left: 10px;
-        }
-
-        /* 分类列表样式 */
-        .category-list {
-            display: none;
-            margin-left: 25px;
-            padding-left: 10px;
-            border-left: 1px dashed var(--border-color);
+            border-bottom: 5px solid var(--primary-blue);
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-
-        .category-list.active {
-            display: block;
+        
+        .section-desc {
+            font-size: 20px;
+            color: #555555;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
-
-        /* 二级分类样式，与student.html一致 */
-        .level-2 {
-            font-size: 15px;
-            color: var(--text-dark);
-            margin: 18px 0 10px;
-            display: block;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            font-weight: 500;
+        
+        /* 模块列表 */
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* 模块卡片 */
+        .module-card {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--item-border);
+            overflow: hidden;
+            transition: all 0.5s ease;
             position: relative;
-            padding: 6px 18px;
-            border-radius: 2px;
+            cursor: pointer;
         }
-
-        .level-2::before {
-            content: "•";
-            color: var(--primary-color);
-            font-size: 18px;
+        
+        .module-card::before {
+            content: attr(data-index);
             position: absolute;
+            top: 0;
             left: 0;
-            top: 6px;
+            width: 70px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--text-white);
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(25, 118, 210, 0.2);
+            border-color: var(--primary-blue);
+        }
+        
+        .module-content {
+            padding: 30px;
+            padding-left: 90px;
+        }
+        
+        .module-title {
+            font-size: 24px;
+            color: var(--deep-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        
+        .module-card:hover .module-title {
+            color: var(--primary-blue);
+        }
+        
+        .module-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, var(--light-blue) 50%, transparent 100%);
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        
+        .module-desc {
+            font-size: 18px;
+            color: #555555;
+            line-height: 1.8;
+        }
+        
+        /* 链接样式 */
+        .resource-link {
+            color: var(--primary-blue);
+            text-decoration: underline;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--dark-blue);
+            transform: translateX(5px);
+        }
+        
+        .module-icon {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 24px;
+            transition: all 0.4s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-card:hover .module-icon {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .level-2:hover {
-            color: var(--primary-color);
-            background-color: #f0f0f0;
-            transform: translateX(3px);
-        }
-
-        /* 响应式适配，与student.html一致 */
+        /* 通讯信息栏样式 */
+/* 页脚 - 与student.txt（学生成长）完全一致 */
+footer {
+    width: 100vw;
+    background: linear-gradient(90deg, var(--deep-blue) 0%, var(--dark-blue) 100%);
+    padding: 30px 0;
+    border-top: 4px solid var(--primary-blue);
+    margin-top: 50px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+.copyright {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-white);
+    line-height: 2;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+.copyright p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.copyright p::before, .copyright p::after {
+    content: "";
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--text-white) 50%, transparent 100%);
+}
+        /* 响应式适配 */
         @media (max-width: 1200px) {
-            .成果-subtitle {
+            .head {
+                padding: 25px 30px;
+            }
+            .logo-group img {
+                height: 70px;
+            }
+            .head-title {
+                font-size: 24px;
+            }
+            nav {
+                height: 70px;
+                line-height: 70px;
+                padding: 0 30px;
+            }
+            nav ul li {
+                margin-right: 40px;
+            }
+            nav ul li a {
                 font-size: 20px;
+                padding: 0 15px;
+            }
+            nav ul li a.active {
+                font-size: 21px;
             }
         }
-
+        
+        @media (max-width: 992px) {
+            .banner .banner-text .main-title {
+                font-size: 38px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .成果-header {
-                padding: 20px 20px;
+            .head {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 20px 15px;
             }
-
-            .成果-title {
-                font-size: 26px;
+            .logo-group {
+                justify-content: center;
+                gap: 20px;
             }
-
-            .成果-subtitle {
+            .logo-group img {
+                height: 60px;
+            }
+            .head-title {
+                text-align: center;
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+            nav {
+                height: auto;
+                padding: 0 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin-right: 20px;
+                margin-bottom: 5px;
+            }
+            nav ul li a {
+                font-size: 18px;
+                padding: 0 10px;
+            }
+            nav ul li a.active {
+                font-size: 19px;
+            }
+            .banner {
+                height: 250px;
+            }
+            .banner .banner-text .main-title {
+                font-size: 30px;
+                padding: 8px 15px;
+            }
+            .banner .banner-text {
+                top: 10%;
+            }
+            .content {
+                padding: 40px 15px 60px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .section-desc {
                 font-size: 18px;
             }
-
-            .成果-meta {
-                flex-wrap: wrap;
-                gap: 10px;
+            .module-card::before {
+                width: 60px;
+                font-size: 32px;
             }
-
-            .nav-bar {
-                padding: 0 20px;
+            .module-content {
+                padding: 20px;
+                padding-left: 75px;
             }
-
-            .nav-category {
-                gap: 10px;
-                overflow-x: auto;
-                padding: 0 5px;
+            .module-title {
+                font-size: 20px;
             }
-
-            .nav-search input {
-                width: 140px;
+            .module-desc {
+                font-size: 16px;
             }
-
-            .main-container {
-                margin: 15px 20px;
-                padding: 25px;
-            }
-
-            .level-1, .level-2 {
-                font-size: 14px;
-            }
-
-            .toggle-tip {
-                font-size: 10px;
+            .module-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                right: 20px;
             }
         }
+        
+@media (max-width: 480px) {
+    .module-icon {
+        display: none;
+    }
+    /* 移动端通讯栏适配 - 与student.txt一致 */
+    .copyright p {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .copyright p::before, .copyright p::after {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
-    <!-- 顶部成果标识栏，与index.html/student.html完全一致 -->
-    <div class="成果-header">
-        <div class="成果-title">教学成果奖申报网站</div>
-        <div class="成果-subtitle">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
-        <div class="成果-meta">
-            <span>成果分类：基础学科人才培养（高等教育类）</span>
-            <span>学科归属：理学（数学类）</span>
-            <span>成果起止时间：2010.01--2020.12</span>
-            <span>实践检验期：5年（2020.12-2025.12）</span>
-        </div>
+    <div class="page-container">
+        <header>
+            <div class="head">
+                <div class="logo-group">
+                    <a href="https://www.shu.edu.cn/" target="_blank">
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E5%9B%BE%E6%A0%87.png" alt="上海大学图标" title="上海大学">
+                    </a>
+                    <a href="https://www.cahe.edu.cn/site/content/13309.html" target="_blank">
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%93%E5%A7%94%E4%BC%9A%E5%9B%BE%E6%A0%87.jpg" alt="中国高等教育学会教育数学专业委员会" title="中国高等教育学会教育数学专业委员会">
+                    </a>
+                </div>
+                <div class="head-title">
+                    教学成果奖申报网站
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="student.html">学生成长</a></li>
+                    <li><a href="teacher.html">教师进阶</a></li>
+                    <li><a href="resource.html" class="active">资源建设</a></li>
+                    <li><a href="digital.html">数智赋能</a></li>
+                    <li><a href="stage.html">学段贯通</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="banner">
+            <div class="banner-slider">
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF1.png" alt="上海大学背景1">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF2.png" alt="上海大学背景2">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF3.png" alt="上海大学背景3">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF4.png" alt="上海大学背景4">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF5.png" alt="上海大学背景5">
+                </div>
+            </div>
+            <div class="banner-text">
+                <div class="main-title">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
+            </div>
+            <div class="banner-indicators">
+                <div class="banner-indicator active" data-index="0"></div>
+                <div class="banner-indicator" data-index="1"></div>
+                <div class="banner-indicator" data-index="2"></div>
+                <div class="banner-indicator" data-index="3"></div>
+                <div class="banner-indicator" data-index="4"></div>
+            </div>
+        </section>
+
+        <main class="content">
+            <div class="section-header">
+                <h2 class="section-title">资源建设 聚力共享 </h2>
+                <p class="section-desc">聚焦数学教育优质资源的建设、整合与共享，打造涵盖虚拟教研室、一流课程、精品教材、教学案例等多维度的资源体系，以高质量资源支撑“知识再发现”教学模式落地，推动数学教育创新发展。</p>
+            </div>
+
+            <div class="modules-list">
+                <!-- 资源模块1：首批虚拟教研室(2个) -->
+                <div class="module-card" data-index="01" onclick="window.open('pdf-viewer.html?files=资源-虚拟教研室-教育部办公厅关于公布首批虚拟教研室建设试点名单的通知.pdf|资源虚拟教研室02.pdf&title=首批虚拟教研室(2个)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">首批虚拟教研室(2个)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">入选教育部首批虚拟教研室建设试点，依托现代信息技术构建跨时空教研模式，聚焦课程教学与专业建设创新，推动优质教学资源共建共享。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-users-gear"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块2：上海市教育系统王卿文劳模创新工作室 -->
+                <div class="module-card" data-index="02" onclick="window.open('pdf-viewer.html?files=资源-王卿文-劳模工作室.pdf&title=上海市教育系统王卿文劳模创新工作室', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海市教育系统王卿文劳模创新工作室</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">以上海大学理学院为依托，由国家级教学名师王卿文领衔，专注数学理论在人工智能、系统控制等领域的应用研究及基础课程教学改革，团队成果获多项省部级以上奖项。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块3：国家级一流本科课程(30门) -->
+                <div class="module-card" data-index="03" onclick="window.open('pdf-viewer.html?files=资源-一流本科课程（国家）（一二批）教育数学专业委员会会员主持获批国家级一流本科课程名单.pdf|资源精品课程转一流课程.pdf|资源-一流本科课程（国家）-王卿文-上海大学.pdf|资源一流本科刘春凤.pdf|资源-一流本科课程陈建龙.pdf|资源-一流本科杨义川李尚志.pdf|资源-一流本科李02.pdf|资源-一流本科李01.pdf|资源-一流本科冯.pdf|资源-一流本科罗.pdf|资源一流课程张几何画板.pdf&title=国家级一流本科课程(30门)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">国家级一流本科课程(30门)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">涵盖数学分析、线性代数、概率论与数理统计等多门基础课程，由教育数学专业委员会会员主持建设，彰显团队在课程体系改革与优质教学资源建设中的引领作用。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块4：上海市级一流本科课程(2门) -->
+                <div class="module-card" data-index="04" onclick="window.open('pdf-viewer.html?files=资源上海高等学校一流本科课程.pdf|资源上海一流.pdf&title=上海市级一流本科课程(2门)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海市级一流本科课程(2门)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">入选上海市高校市级一流本科课程，聚焦课程内容优化与教学方法创新，贴合地方教育发展需求，为区域高校课程建设提供示范参考。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块5：首届全国教材建设奖二等奖(2项) -->
+                <div class="module-card" data-index="05" onclick="window.open('pdf-viewer.html?files=资源-教材（全国优秀教材2021）-张景中、李尚志（高中教材数学必修1）.pdf|资源-教材-全国优秀教材2021-陈建龙.pdf&title=首届全国教材建设奖二等奖(2项)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">首届全国教材建设奖二等奖(2项)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">张景中、李尚志主编的高中数学教材及陈建龙相关教材获此殊荣，教材紧扣核心素养培养目标，体现教育数学理论与实践融合的创新成果。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块6：上海市首届高校本科示范性课堂(王卿文) -->
+                <div class="module-card" data-index="06" onclick="window.open('pdf-viewer.html?files=资源-教学-王卿文-上海高校示范性本科课堂-线性代数-.pdf&title=上海市首届高校本科示范性课堂(王卿文)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海市首届高校本科示范性课堂(王卿文)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文教授主讲的《线性代数》课程获评上海市首届高校本科示范性课堂，以“知识再发现”为核心设计教学流程，展现高超教学艺术与创新教学模式。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块7：上海普通高校优秀教材奖(王卿文) -->
+                <div class="module-card" data-index="07" onclick="window.open('pdf-viewer.html?files=教师-2015优秀教材王卿文.pdf&title=上海普通高校优秀教材奖(王卿文)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海普通高校优秀教材奖(王卿文)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文教授编写的教材获上海普通高校优秀教材奖，教材内容贴合学生认知规律，融入教育数学创新理念，为高校数学基础课程教学提供优质资源支撑。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-book-journal-whills"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块8：北京高等学校优质本科教材课件(杨川) -->
+                <div class="module-card" data-index="08" onclick="window.open('pdf-viewer.html?files=资源杨优质课件.pdf&title=北京高等学校优质本科教材课件(杨川)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">北京高等学校优质本科教材课件(杨川)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">杨川团队开发的本科教材课件获评北京高等学校优质资源，课件融合多媒体技术与数学教学需求，提升课程教学的直观性与互动性，助力学生高效学习。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块9：中国高等教育学会课题立项(重大课题2项、重点课题1项) -->
+                <div class="module-card" data-index="09" onclick="window.open('pdf-viewer.html?files=资源-重大课题2022.pdf|资源-重大课题2025(中国高等教育学会)-教育数学与大学数学教学改革.pdf&title=中国高等教育学会课题立项(重大课题2项、重点课题1项)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">中国高等教育学会课题立项(重大课题2项、重点课题1项)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">获中国高等教育学会重大课题2项、重点课题1项立项，聚焦教育数学与大学数学教学改革等核心方向，研究成果为高等数学教育高质量发展提供理论支撑。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-magnifying-glass-chart"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块10：线上课程—学习强国课程信息(王卿文、张景中) -->
+                <div class="module-card" data-index="10" onclick="window.open('pdf-viewer.html?files=资源-学习强国-王卿文、张景中.pdf&title=线上课程—学习强国课程信息(王卿文、张景中)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">线上课程—学习强国课程信息(王卿文、张景中)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文、张景中教授开发的课程入选“学习强国”平台，课程内容涵盖数学教育创新理念与实践案例，面向全国学习者传播优质数学教学资源。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块11：理工资源融通案例(540项) -->
+                <div class="module-card" data-index="11" onclick="window.open('pdf-viewer.html?files=资源华北理工融合目录.pdf|资源-课程-北航应用案例构建.pdf&title=理工资源融通案例(540项)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">理工资源融通案例(540项)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">收录华北理工大学、北京航空航天大学等高校的540项理工资源融通案例，涵盖课程融合、实践项目设计等方向，推动数学与理工科专业的跨学科教学创新。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-cubes-stacked"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块12：理工实践基地(22个) -->
+                <div class="module-card" data-index="12" onclick="window.open('pdf-viewer.html?files=资源实践基地华北理工.pdf|资源实践基地北航.pdf&title=理工实践基地(22个)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">理工实践基地(22个)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">联合华北理工大学、北京航空航天大学等单位建设22个理工实践基地，为学生提供数学理论应用与理工科实践结合的平台，强化实践创新能力培养。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-flask-vial"></i>
+                    </div>
+                </div>
+
+                <!-- 资源模块13：“知识再发现”教学案例优选(上海高校示范性本科课堂) -->
+                <div class="module-card" data-index="13" onclick="window.open('pdf-viewer.html?files=教学论文-优秀案例.pdf&title=知识再发现教学案例优选(上海高校示范性本科课堂)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">“知识再发现”教学案例优选(上海高校示范性本科课堂)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">精选上海高校示范性本科课堂中的“知识再发现”教学案例，案例聚焦学生自主探究能力培养，为高校数学课程教学改革提供可复制、可推广的实践范式。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+<!-- 通讯栏 - 与student.txt（学生成长）完全一致 -->
+<footer>
+    <div class="copyright">
+        <p>通讯地址：上海市宝山区上大路99号 | 邮编：200444 | 邮箱：zhuohenghe@shu.edu.cn</p>
+    </div>
+</footer>
     </div>
 
-    <!-- 导航栏，资源建设为激活态 -->
-    <div class="nav-bar">
-        <div class="nav-category">
-            <a href="index.html" class="nav-item">首页</a>
-            <a href="student.html" class="nav-item">学生成长</a>
-            <a href="teacher.html" class="nav-item">教师进阶</a>
-            <a href="resource.html" class="nav-item active">资源建设</a>
-            <a href="digital.html" class="nav-item">数智赋能</a>
-            <a href="stage.html" class="nav-item">学段贯通</a>
-            <a href="media.html" class="nav-item">媒体报导</a>
-        </div>
-        <div class="nav-search">
-            <input type="text" placeholder="搜索资源建设相关内容...">
-            <button>搜索</button>
-        </div>
-    </div>
-
-    <!-- 主内容区 -->
-    <div class="main-container">
-        <h2 class="catalog-title">资源建设 - 教学成果应用及效果证明材料</h2>
-
-        <!-- 三、资源建设 -->
-        <div class="level-1 active" onclick="toggleCategory('resource')">
-            3 资源建设 <span class="toggle-tip">点击展开/收起</span>
-        </div>
-        <div id="resource" class="category-list active">
-            <a href="pdf-viewer.html?files=资源-虚拟教研室-教育部办公厅关于公布首批虚拟教研室建设试点名单的通知.pdf|资源虚拟教研室02.pdf&title=首批虚拟教研室(2个)" target="_blank" class="level-2">3.1 首批虚拟教研室(2个)</a>
-            <a href="pdf-viewer.html?files=资源-王卿文-劳模工作室.pdf&title=上海市教育系统王卿文劳模创新工作室" target="_blank" class="level-2">3.2 上海市教育系统王卿文劳模创新工作室</a>
-            <a href="pdf-viewer.html?files=资源-一流本科课程（国家）（一二批）教育数学专业委员会会员主持获批国家级一流本科课程名单.pdf|资源精品课程转一流课程.pdf|资源-一流本科课程（国家）-王卿文-上海大学.pdf|资源一流本科刘春凤.pdf|资源-一流本科课程陈建龙.pdf|资源-一流本科杨义川李尚志.pdf|资源-一流本科李02.pdf|资源-一流本科李01.pdf|资源-一流本科冯.pdf|资源-一流本科罗.pdf|资源一流课程张几何画板.pdf&title=国家级一流本科课程(30门)" target="_blank" class="level-2">3.3 国家级一流本科课程(30门)</a>
-            <a href="pdf-viewer.html?files=资源上海高等学校一流本科课程.pdf|资源上海一流.pdf&title=上海市级一流本科课程(2门)" target="_blank" class="level-2">3.4 上海市级一流本科课程(2门)</a>
-            <a href="pdf-viewer.html?files=资源-教材（全国优秀教材2021）-张景中、李尚志（高中教材数学必修1）.pdf|资源-教材-全国优秀教材2021-陈建龙.pdf&title=首届全国教材建设奖二等奖(2项)" target="_blank" class="level-2">3.5 首届全国教材建设奖二等奖(2项)</a>
-            <a href="pdf-viewer.html?files=资源-教学-王卿文-上海高校示范性本科课堂-线性代数-.pdf&title=上海市首届高校本科示范性课堂(王卿文)" target="_blank" class="level-2">3.6 上海市首届高校本科示范性课堂(王卿文)</a>
-            <a href="pdf-viewer.html?files=教师-2015优秀教材王卿文.pdf&title=上海普通高校优秀教材奖(王卿文)" target="_blank" class="level-2">3.7 上海普通高校优秀教材奖(王卿文)</a>
-            <a href="pdf-viewer.html?files=资源杨优质课件.pdf&title=北京高等学校优质本科教材课件(杨川)" target="_blank" class="level-2">3.8 北京高等学校优质本科教材课件(杨川)</a>
-            <a href="pdf-viewer.html?files=资源-重大课题2022.pdf|资源-重大课题2025(中国高等教育学会)-教育数学与大学数学教学改革.pdf&title=中国高等教育学会课题立项(重大课题2项、重点课题1项)" target="_blank" class="level-2">3.9 中国高等教育学会课题立项(重大课题2项、重点课题1项)</a>
-            <a href="pdf-viewer.html?files=资源-学习强国-王卿文、张景中.pdf&title=线上课程—学习强国课程信息(王卿文、张景中)" target="_blank" class="level-2">3.10 线上课程—学习强国课程信息(王卿文、张景中)</a>
-            <a href="pdf-viewer.html?files=资源华北理工融合目录.pdf|资源-课程-北航应用案例构建.pdf&title=理工资源融通案例(540项)" target="_blank" class="level-2">3.11 理工资源融通案例(540项)</a>
-            <a href="pdf-viewer.html?files=资源实践基地华北理工.pdf|资源实践基地北航.pdf&title=理工实践基地(22个)" target="_blank" class="level-2">3.12 理工实践基地(22个)</a>
-            <a href="pdf-viewer.html?files=教学论文-优秀案例.pdf&title=知识再发现教学案例优选(上海高校示范性本科课堂)" target="_blank" class="level-2">3.13 "知识再发现"教学案例优选(上海高校示范性本科课堂)</a>
-        </div>
-    </div>
-
-    <!-- 交互脚本，与student.html逻辑一致 -->
     <script>
-        // 一级分类展开/收起
-        function toggleCategory(id) {
-            const el = document.getElementById(id);
-            const trigger = document.querySelector(`.level-1[onclick="toggleCategory('${id}')"]`);
-            el.classList.toggle('active');
-            trigger.classList.toggle('active');
-        }
-
-        // 搜索功能
-        document.querySelector('.nav-search button').addEventListener('click', function() {
-            const searchText = document.querySelector('.nav-search input').value.trim().toLowerCase();
-            if (!searchText) return;
-
-            // 高亮匹配的内容项
-            document.querySelectorAll('.level-2').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    item.style.backgroundColor = 'rgba(183, 28, 28, 0.1)';
-                    item.style.borderLeft = '3px solid var(--primary-color)';
+        // Banner轮播功能
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.banner-indicator');
+        const slider = document.querySelector('.banner-slider');
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // 更新指示器状态
+            indicators.forEach((indicator, i) => {
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
                 } else {
-                    item.style.backgroundColor = '';
-                    item.style.borderLeft = '';
+                    indicator.classList.remove('active');
                 }
+            });
+        }
+        
+        // 自动轮播
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            goToSlide(currentSlide);
+        }, 5000);
+        
+        // 点击指示器切换轮播
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
             });
         });
     </script>

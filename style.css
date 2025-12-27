@@ -209,30 +209,56 @@ h1 {
     color: var(--text-gray-light);
 }
 
+/* ========== 重点修改：通讯栏样式 ========== */
 footer {
-    text-align: center;
+    width: 100vw; /* 全屏宽度 */
+    background: linear-gradient(90deg, var(--primary-darker) 0%, var(--primary-dark) 100%); /* 主色渐变背景 */
+    padding: 30px 0;
     margin-top: 50px;
-    padding: 20px;
-    color: var(--text-gray);
-    border-top: 1px solid var(--border-gray);
-    /* 页脚固定在底部（可选），如需开启取消注释
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2); /* 底部阴影增强 */
+    border-top: 4px solid var(--primary-color); /* 顶部主色边框 */
+    /* 如需固定在底部，取消以下注释
     position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
-    background-color: var(--white);
     z-index: 999;
     */
 }
 
+.copyright {
+    text-align: center;
+    font-size: 18px;
+    color: var(--white); /* 白色文字 */
+    line-height: 2;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+
+.copyright p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* 通讯信息前后装饰线 */
+.copyright p::before, .copyright p::after {
+    content: "";
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--white) 50%, transparent 100%);
+}
+
 footer a {
-    color: var(--primary-color);
+    color: var(--primary-light);
     text-decoration: none;
     transition: var(--transition);
 }
 
 footer a:hover {
-    color: var(--primary-dark);
+    color: var(--white);
     text-decoration: underline;
 }
 
@@ -506,6 +532,18 @@ footer a:hover {
     .pdf-container {
         min-height: 400px;
     }
+
+    /* 移动端通讯栏适配 */
+    .copyright {
+        font-size: 16px;
+    }
+    .copyright p {
+        flex-direction: column; /* 纵向排列 */
+        gap: 10px;
+    }
+    .copyright p::before, .copyright p::after {
+        display: none; /* 隐藏装饰线 */
+    }
 }
 
 /* 打印样式适配（补充）：优化打印效果 */
@@ -526,6 +564,14 @@ footer a:hover {
     footer {
         border-top: 1px solid #ddd;
         color: #333;
+        background: var(--white) !important; /* 打印时取消渐变背景 */
+    }
+    .copyright {
+        color: #333;
+        text-shadow: none;
+    }
+    .copyright p::before, .copyright p::after {
+        display: none;
     }
 }
 
@@ -562,5 +608,14 @@ footer a:hover {
     #file-list li a:hover {
         background-color: var(--primary-color);
         color: var(--white);
+    }
+
+    /* 暗黑模式通讯栏适配 */
+    footer {
+        background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+        border-top-color: var(--primary-color);
+    }
+    .copyright {
+        color: #e2e8f0;
     }
 }

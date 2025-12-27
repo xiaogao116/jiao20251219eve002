@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="知识再发现,数学创新能力,教学成果,上海大学,王卿文,教师进阶">
+    <meta name="description" content="教师进阶 - 基于'知识再发现'的本科生数学创新能力协同培养新范式教学成果应用及效果证明材料">
     <title>教师进阶 - 教学成果奖申报网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 全局样式变量，与student.html保持一致 */
+        /* 全局样式变量 */
         :root {
-            --primary-color: #B71C1C;
-            --text-dark: #121212;
-            --text-light: #333333;
-            --text-gray: #666666;
-            --bg-main: linear-gradient(135deg, #8B0000 0%, #B71C1C 100%);
-            --bg-card: #ffffff;
-            --border-color: #E0E0E0;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --primary-blue: #1976D2;
+            --dark-blue: #0D47A1;
+            --deep-blue: #0A3D8C;
+            --light-blue: #E3F2FD;
+            --text-white: #FFFFFF;
+            --text-dark: #333333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --item-bg: #F0F7FF;
+            --item-border: #D1E7FF;
         }
 
         * {
@@ -25,521 +29,816 @@
         }
 
         body {
-            background: var(--bg-main);
-            color: var(--text-dark);
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
             padding: 0;
-            max-width: 1400px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--primary-blue) 100%);
+            background-attachment: fixed;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            color: var(--text-dark);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* 顶部成果标识栏，与index.html/student.html完全一致 */
-        .成果-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 25px 40px;
-            box-shadow: var(--shadow);
-            position: relative;
+        /* 页面容器 */
+        .page-container {
+            width: 100vw;
+            background: #FFFFFF;
+            box-shadow: none;
+            margin: 0;
             overflow: hidden;
         }
 
-        .成果-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        /* 头部区域 */
+        header {
+            width: 100vw;
+            padding: 0;
+            background-image: url("https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
             position: relative;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
             z-index: 1;
         }
-
-        .成果-subtitle {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-            line-height: 1.4;
-        }
-
-        .成果-meta {
-            margin-top: 15px;
-            font-size: 14px;
-            opacity: 0.8;
-            display: flex;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-        }
-
-        .成果-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .成果-meta span::before {
-            content: "•";
-            font-size: 18px;
-        }
-
-        /* 导航栏样式，与student.html完全一致 */
-        .nav-bar {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 40px;
+        
+        .head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 99;
+            padding: 30px 50px;
+            max-width: 100%;
+            position: relative;
+            z-index: 2;
         }
-
-        .nav-category {
+        .logo-group {
             display: flex;
-            gap: 25px;
+            align-items: center;
+            gap: 35px;
+        }
+        .logo-group a {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .logo-group a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .logo-group img {
+            height: 80px;
+            border: 2px solid var(--light-blue);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .head-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-blue);
+            text-align: right;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
         }
 
-        .nav-item {
-            color: var(--text-light);
+        /* 导航栏 */
+        nav {
+            width: 100vw;
+            background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            height: 80px;
+            line-height: 80px;
+            padding: 0 50px;
+            margin: 0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 20;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 50px;
+            position: relative;
+        }
+        nav ul li a {
+            color: var(--text-white);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 22px;
+            padding: 0 20px;
+            display: block;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        nav ul li a:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        nav ul li a:hover::before {
+            left: 0;
+        }
+        nav ul li a.active {
+            background-color: var(--deep-blue);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 23px;
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 横幅Banner */
+        .banner {
+            width: 100vw;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(25, 118, 210, 0.1);
+        }
+        .banner-slider {
+            width: 100%;
             height: 100%;
             display: flex;
-            align-items: center;
-            padding: 0 5px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            transition: transform 0.8s ease-in-out;
         }
-
-        .nav-item:hover, .nav-item.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
         }
-
-        .nav-search {
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95) contrast(1.0) blur(0.8px);
+        }
+        .banner .banner-text {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 90%;
+            z-index: 10;
+        }
+        .banner .banner-text .main-title {
+            font-size: 46px;
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 3px;
+            color: var(--text-white);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+        }
+        .banner-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            align-items: center;
-            gap: 8px;
+            gap: 10px;
+            z-index: 10;
         }
-
-        .nav-search input {
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 13px;
-            width: 220px;
-            transition: border-color 0.2s;
-        }
-
-        .nav-search input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .nav-search button {
-            padding: 6px 12px;
-            border: none;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-size: 13px;
+        .banner-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .banner-indicator.active {
+            background-color: var(--text-white);
+            width: 30px;
+            border-radius: 6px;
+            transform: scale(1.1);
         }
 
-        .nav-search button:hover {
-            background-color: #9F0000;
+        /* 核心内容区 */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 50px 80px;
+            position: relative;
+            z-index: 10;
         }
-
-        /* 主内容区样式，与student.html完全一致 */
-        .main-container {
-            padding: 40px;
-            margin: 30px 40px;
-            background-color: var(--bg-card);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
-
-        .catalog-title {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin-bottom: 30px;
+        
+        .section-title {
+            font-size: 36px;
+            color: var(--dark-blue);
+            font-weight: bold;
+            display: inline-block;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        /* 一级分类样式，与student.html一致 */
-        .level-1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 0 0 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            border-left: 3px solid var(--primary-color);
-        }
-
-        .level-1::before {
-            content: "▶";
-            font-size: 14px;
-            transition: transform 0.2s;
-        }
-
-        .level-1.active::before {
-            transform: rotate(90deg);
-        }
-
-        .toggle-tip {
-            font-size: 12px;
-            color: var(--text-gray);
-            font-weight: normal;
-            margin-left: 10px;
-        }
-
-        /* 分类列表样式 */
-        .category-list {
-            display: none;
-            margin-left: 25px;
-            padding-left: 10px;
-            border-left: 1px dashed var(--border-color);
+            border-bottom: 5px solid var(--primary-blue);
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-
-        .category-list.active {
-            display: block;
+        
+        .section-desc {
+            font-size: 20px;
+            color: #555555;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
-
-        /* 二级分类样式，与student.html一致 */
-        .level-2 {
-            font-size: 15px;
-            color: var(--text-dark);
-            margin: 18px 0 10px;
-            display: block;
-            text-decoration: none;
-            transition: all 0.2s;
+        
+        /* 模块列表 */
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* 模块卡片 */
+        .module-card {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--item-border);
+            overflow: hidden;
+            transition: all 0.5s ease;
+            position: relative;
             cursor: pointer;
-            font-weight: 500;
-            position: relative;
-            padding: 6px 18px;
-            border-radius: 2px;
         }
-
-        .level-2::before {
-            content: "•";
-            color: var(--primary-color);
+        
+        .module-card::before {
+            content: attr(data-index);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--text-white);
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(25, 118, 210, 0.2);
+            border-color: var(--primary-blue);
+        }
+        
+        .module-content {
+            padding: 30px;
+            padding-left: 90px;
+        }
+        
+        .module-title {
+            font-size: 24px;
+            color: var(--deep-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        
+        .module-card:hover .module-title {
+            color: var(--primary-blue);
+        }
+        
+        .module-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, var(--light-blue) 50%, transparent 100%);
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        
+        .module-desc {
             font-size: 18px;
+            color: #555555;
+            line-height: 1.8;
+        }
+        
+        /* 链接样式 */
+        .resource-link {
+            color: var(--primary-blue);
+            text-decoration: underline;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--dark-blue);
+            transform: translateX(5px);
+        }
+        
+        .module-icon {
             position: absolute;
-            left: 0;
-            top: 6px;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 24px;
+            transition: all 0.4s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-card:hover .module-icon {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .level-2:hover {
-            color: var(--primary-color);
-            background-color: #f0f0f0;
-            transform: translateX(3px);
-        }
+   
+/* 页脚 - 与student.txt（学生成长）完全一致 */
+footer {
+    width: 100vw;
+    background: linear-gradient(90deg, var(--deep-blue) 0%, var(--dark-blue) 100%);
+    padding: 30px 0;
+    border-top: 4px solid var(--primary-blue);
+    margin-top: 50px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+.copyright {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-white);
+    line-height: 2;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+.copyright p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.copyright p::before, .copyright p::after {
+    content: "";
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--text-white) 50%, transparent 100%);
+}
 
-        /* 二级可展开分类样式 */
-        .level-2.collapsible {
-            background-color: #f5f5f5;
-            border-left: 2px solid #ddd;
-        }
-
-        /* 三级分类样式，与student.html一致 */
-        .level-3 {
-            font-size: 13px;
-            color: var(--text-light);
-            margin: 12px 0 8px;
-            display: block;
-            text-decoration: none;
-            transition: all 0.2s;
-            padding: 4px 18px;
-            position: relative;
-            border-radius: 2px;
-        }
-
-        .level-3::before {
-            content: "◦";
-            color: var(--text-gray);
-            font-size: 16px;
-            position: absolute;
-            left: 0;
-            top: 4px;
-        }
-
-        .level-3:hover {
-            color: var(--primary-color);
-            background-color: #f8f8f8;
-            transform: translateX(2px);
-        }
-
-        /* 子分类列表样式 */
-        .subcategory-list {
-            display: none;
-            margin-left: 25px;
-            padding-left: 10px;
-            border-left: 1px dashed var(--border-color);
-        }
-
-        .subcategory-list.active {
-            display: block;
-        }
-
-        /* 页码样式 */
-        .page-num {
-            font-size: 12px;
-            color: var(--text-gray);
-            margin-left: 10px;
-            font-weight: normal;
-        }
-
-        /* 响应式适配，与student.html一致 */
+        /* 响应式适配 */
         @media (max-width: 1200px) {
-            .成果-subtitle {
+            .head {
+                padding: 25px 30px;
+            }
+            .logo-group img {
+                height: 70px;
+            }
+            .head-title {
+                font-size: 24px;
+            }
+            nav {
+                height: 70px;
+                line-height: 70px;
+                padding: 0 30px;
+            }
+            nav ul li {
+                margin-right: 40px;
+            }
+            nav ul li a {
                 font-size: 20px;
+                padding: 0 15px;
+            }
+            nav ul li a.active {
+                font-size: 21px;
             }
         }
-
+        
+        @media (max-width: 992px) {
+            .banner .banner-text .main-title {
+                font-size: 38px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .成果-header {
-                padding: 20px 20px;
+            .head {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 20px 15px;
             }
-
-            .成果-title {
-                font-size: 26px;
+            .logo-group {
+                justify-content: center;
+                gap: 20px;
             }
-
-            .成果-subtitle {
+            .logo-group img {
+                height: 60px;
+            }
+            .head-title {
+                text-align: center;
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+            nav {
+                height: auto;
+                padding: 0 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin-right: 20px;
+                margin-bottom: 5px;
+            }
+            nav ul li a {
+                font-size: 18px;
+                padding: 0 10px;
+            }
+            nav ul li a.active {
+                font-size: 19px;
+            }
+            .banner {
+                height: 250px;
+            }
+            .banner .banner-text .main-title {
+                font-size: 30px;
+                padding: 8px 15px;
+            }
+            .banner .banner-text {
+                top: 10%;
+            }
+            .content {
+                padding: 40px 15px 60px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .section-desc {
                 font-size: 18px;
             }
-
-            .成果-meta {
-                flex-wrap: wrap;
-                gap: 10px;
+            .module-card::before {
+                width: 60px;
+                font-size: 32px;
             }
-
-            .nav-bar {
-                padding: 0 20px;
+            .module-content {
+                padding: 20px;
+                padding-left: 75px;
             }
-
-            .nav-category {
-                gap: 10px;
-                overflow-x: auto;
-                padding: 0 5px;
+            .module-title {
+                font-size: 20px;
             }
-
-            .nav-search input {
-                width: 140px;
+            .module-desc {
+                font-size: 16px;
             }
-
-            .main-container {
-                margin: 15px 20px;
-                padding: 25px;
-            }
-
-            .level-1, .level-2, .level-3 {
-                font-size: 14px;
-            }
-
-            .toggle-tip {
-                font-size: 10px;
+            .module-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                right: 20px;
             }
         }
+        
+@media (max-width: 480px) {
+    .module-icon {
+        display: none;
+    }
+    /* 移动端通讯栏适配 - 与student.txt一致 */
+    .copyright p {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .copyright p::before, .copyright p::after {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
-    <!-- 顶部成果标识栏，与index.html/student.html完全一致 -->
-    <div class="成果-header">
-        <div class="成果-title">教学成果奖申报网站</div>
-        <div class="成果-subtitle">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
-        <div class="成果-meta">
-            <span>成果分类：基础学科人才培养（高等教育类）</span>
-            <span>学科归属：理学（数学类）</span>
-            <span>成果起止时间：2010.01--2020.12</span>
-            <span>实践检验期：5年（2020.12-2025.12）</span>
-        </div>
+    <div class="page-container">
+        <header>
+            <div class="head">
+                <div class="logo-group">
+                    <a href="https://www.shu.edu.cn/" target="_blank">
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E5%9B%BE%E6%A0%87.png" alt="上海大学图标" title="上海大学">
+                    </a>
+                    <a href="https://www.cahe.edu.cn/site/content/13309.html" target="_blank">
+                        <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%93%E5%A7%94%E4%BC%9A%E5%9B%BE%E6%A0%87.jpg" alt="中国高等教育学会教育数学专业委员会" title="中国高等教育学会教育数学专业委员会">
+                    </a>
+                </div>
+                <div class="head-title">
+                    教学成果奖申报网站
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="student.html">学生成长</a></li>
+                    <li><a href="teacher.html" class="active">教师进阶</a></li>
+                    <li><a href="resource.html">资源建设</a></li>
+                    <li><a href="digital.html">数智赋能</a></li>
+                    <li><a href="stage.html">学段贯通</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="banner">
+            <div class="banner-slider">
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF1.png" alt="上海大学背景1">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF2.png" alt="上海大学背景2">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF3.png" alt="上海大学背景3">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF4.png" alt="上海大学背景4">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://raw.githubusercontent.com/xiaogao116/jiao20251219/main/%E4%B8%8A%E5%A4%A7%E8%83%8C%E6%99%AF5.png" alt="上海大学背景5">
+                </div>
+            </div>
+            <div class="banner-text">
+                <div class="main-title">基于“知识再发现”的本科生数学创新能力协同培养新范式</div>
+            </div>
+            <div class="banner-indicators">
+                <div class="banner-indicator active" data-index="0"></div>
+                <div class="banner-indicator" data-index="1"></div>
+                <div class="banner-indicator" data-index="2"></div>
+                <div class="banner-indicator" data-index="3"></div>
+                <div class="banner-indicator" data-index="4"></div>
+            </div>
+        </section>
+
+        <main class="content">
+            <div class="section-header">
+                <h2 class="section-title">教师进阶 精业领航 </h2>
+                <<p class="section-desc">基于“知识再发现”模式，教师在教学竞赛中斩获多项国赛大奖，获国家级教学名师、长江学者等称号，同时产出多篇高水平教学论文与教材，彰显其专业实力与引领价值。</p>
+            </div>
+
+            <div class="modules-list">
+                <!-- 模块1：国家级教学名师 -->
+                <div class="module-card" data-index="01" onclick="window.open('pdf-viewer.html?files=教师-教学名师-王卿文.pdf|教师教学名师王卿文02.pdf|教师-教学名师-刘春凤.pdf|教师-教学名师-李继成.pdf|教师-教学名师-李尚志.pdf&title=国家级教学名师(4人)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">国家级教学名师(4人)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文、刘春凤、李继成、李尚志四位教授荣获国家级教学名师称号，彰显教学团队的卓越实力，引领数学教育创新发展。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+
+                <!-- 模块2：长江学者—特聘教授 -->
+                <div class="module-card" data-index="02" onclick="window.open('pdf-viewer.html?files=教师-长江学者-樊赵兵.pdf|教师-长江学者-刘伟.pdf|教师-长江学者-史永堂.pdf|教师-长江学者-冯新龙.pdf&title=长江学者—特聘教授(4人)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">长江学者—特聘教授(4人)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">樊赵兵、刘伟、史永堂、冯新龙四位教授入选长江学者特聘教授，体现学术团队的顶尖水平和学科引领作用。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+
+                <!-- 模块3：长江学者—青年计划 -->
+                <div class="module-card" data-index="03" onclick="window.open('pdf-viewer.html?files=教师-长江学者（青年）-鲍炎红.pdf|教师-长江学者（青年）-都琳.pdf|教师-长江学者（青年）-喻后义.pdf&title=长江学者—青年计划(3人)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">长江学者—青年计划(3人)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">鲍炎红、都琳、喻后义三位青年学者入选长江学者青年计划，展现青年教师的强劲发展潜力和学术创新活力。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+
+                <!-- 模块4：全国教创赛一等奖 -->
+                <div class="module-card" data-index="04" onclick="window.open('pdf-viewer.html?files=教师-教创2022-惠周利.pdf|教师-教创2022-张莹.pdf|教师-教创2023-刘洪霞.pdf|教师-教创2025-罗来珍.pdf&title=全国教创赛一等奖(4项)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">全国教创赛一等奖(4项)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">惠周利、张莹、刘洪霞、罗来珍等教师在全国教学创新大赛中斩获4项一等奖，教学创新成果获全国认可。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+
+                <!-- 模块5：全国青教赛一等奖 -->
+                <div class="module-card" data-index="05" onclick="window.open('pdf-viewer.html?files=教师-青教2014-张玉平.pdf|教师-青教-都琳.pdf&title=全国青教赛一等奖(2项)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">全国青教赛一等奖(2项)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">张玉平、都琳两位教师在全国青年教师教学竞赛中荣获一等奖，青年教师教学水平突出，展现教学传承与创新实力。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- 模块6：全国高校数学课程教学创新示范交流活动一等奖 -->
+                <div class="module-card" data-index="06" onclick="window.open('pdf-viewer.html?files=教师-教学（全国高校数学课程教学创新示范交流活动2022）-陈建龙.pdf&title=全国高校数学课程教学创新示范交流活动一等奖(陈建龙)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">全国高校数学课程教学创新示范交流活动一等奖(陈建龙)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">陈建龙教授在全国高校数学课程教学创新示范交流活动中荣获一等奖，教学创新模式为全国高校提供借鉴。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+
+                <!-- 模块7：上海市教书育人楷模 -->
+                <div class="module-card" data-index="07" onclick="window.open('pdf-viewer.html?files=教师-王卿文-上海市教书育人楷模.pdf&title=上海市教书育人楷模(王卿文)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海市教书育人楷模(王卿文)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文教授荣获上海市教书育人楷模称号，在教书育人、师德师风建设方面发挥模范带头作用，深受师生爱戴。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+
+                <!-- 模块8：上海领军人才 -->
+                <div class="module-card" data-index="08" onclick="window.open('pdf-viewer.html?files=教师-王卿文-上海领军人才.pdf&title=上海领军人才(王卿文)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">上海领军人才(王卿文)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">王卿文教授入选上海领军人才，在学科建设、人才培养、科研创新等方面发挥领军作用，推动数学学科高质量发展。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                </div>
+
+                <!-- 模块9：全国大学生数学建模竞赛—优秀指导教师 -->
+                <div class="module-card" data-index="09" onclick="window.open('pdf-viewer.html?files=教师建模刘春凤.pdf&title=全国大学生数学建模竞赛—优秀指导教师(刘春凤)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">全国大学生数学建模竞赛—优秀指导教师(刘春凤)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">刘春凤教授荣获全国大学生数学建模竞赛优秀指导教师称号，指导学生在各类竞赛中屡获佳绩，教学实践成果丰硕。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+
+                <!-- 模块10：全国先进工作者 -->
+                <div class="module-card" data-index="10" onclick="window.open('pdf-viewer.html?files=教师-全国先进工作者-张悼霖.pdf&title=全国先进工作者(张霖)', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">全国先进工作者(张悼霖)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">张霖教授荣获全国先进工作者称号，在教学科研、社会服务等方面作出突出贡献，展现新时代教师的责任与担当。</p>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                </div>
+
+                <!-- 模块11：代表性教学论文（链接到新建的teacher-papers.html） -->
+                <div class="module-card" data-index="11" onclick="window.open('teacher-papers.html', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">代表性教学论文目录及首页(32篇)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">团队成员发表高水平教学论文32篇，其中多篇被学习强国收录，涵盖数学教学改革、课程建设、育人模式创新等多个领域，教学研究成果丰硕。</p>
+                        <a class="resource-link" href="teacher-papers.html" target="_blank">点击查看完整论文列表 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+
+                <!-- 模块12：代表性教材（链接到新建的teacher-textbooks.html） -->
+                <div class="module-card" data-index="12" onclick="window.open('teacher-textbook.html', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">代表性教材目录及封面版权页(32本)</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">团队编写出版教材32本，包括数学"101"计划系列教材、普通高中教科书、高校核心课程教材等，教材覆盖面广、影响力大。</p>
+                        <a class="resource-link" href="teacher-textbooks.html" target="_blank">点击查看完整教材列表 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                </div>
+
+                <!-- 模块13：代表性专著（链接到新建的teacher-monographs.html） -->
+                <div class="module-card" data-index="13" onclick="window.open('teacher-monographs.html', '_blank')">
+                    <div class="module-content">
+                        <h3 class="module-title">代表性专著目录及封面版权页</h3>
+                        <div class="module-divider"></div>
+                        <p class="module-desc">团队成员出版多部高水平学术专著，涵盖数学理论研究、教育教学研究等领域，学术研究成果显著，推动学科发展。</p>
+                        <a class="resource-link" href="teacher-monographs.html" target="_blank">点击查看完整专著列表 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="module-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 通讯信息栏 - 仅保留这部分，移除原footer版权信息 -->
+<footer>
+    <div class="copyright">
+        <p>通讯地址：上海市宝山区上大路99号 | 邮编：200444 | 邮箱：zhuohenghe@shu.edu.cn</p >
+    </div>
+</footer>
     </div>
 
-    <!-- 导航栏，教师进阶为激活态 -->
-    <div class="nav-bar">
-        <div class="nav-category">
-            <a href="index.html" class="nav-item">首页</a>
-            <a href="student.html" class="nav-item">学生成长</a>
-            <a href="teacher.html" class="nav-item active">教师进阶</a>
-            <a href="resource.html" class="nav-item">资源建设</a>
-            <a href="digital.html" class="nav-item">数智赋能</a>
-            <a href="stage.html" class="nav-item">学段贯通</a>
-            <a href="media.html" class="nav-item">媒体报导</a>
-        </div>
-        <div class="nav-search">
-            <input type="text" placeholder="搜索教师进阶相关内容...">
-            <button>搜索</button>
-        </div>
-    </div>
-
-    <!-- 主内容区 -->
-    <div class="main-container">
-        <h2 class="catalog-title">教师进阶 - 教学成果应用及效果证明材料</h2>
-
-        <!-- 二、教师进阶 -->
-        <div class="level-1 active" onclick="toggleCategory('teacher')">
-            2 教师进阶 <span class="toggle-tip">点击展开/收起</span> 
-        </div>
-        <div id="teacher" class="category-list active">
-            <a href="pdf-viewer.html?files=教师-教学名师-王卿文.pdf|教师教学名师王卿文02.pdf|教师-教学名师-刘春凤.pdf|教师-教学名师-李继成.pdf|教师-教学名师-李尚志.pdf&title=国家级教学名师(4人)" target="_blank" class="level-2">2.1 国家级教学名师(4人)</a>
-            <a href="pdf-viewer.html?files=教师-长江学者-樊赵兵.pdf|教师-长江学者-刘伟.pdf|教师-长江学者-史永堂.pdf|教师-长江学者-冯新龙.pdf&title=长江学者—特聘教授(4人)" target="_blank" class="level-2">2.2 长江学者—特聘教授(4人)</a>
-            <a href="pdf-viewer.html?files=教师-长江学者（青年）-鲍炎红.pdf|教师-长江学者（青年）-都琳.pdf|教师-长江学者（青年）-喻后义.pdf&title=长江学者—青年计划(3人)" target="_blank" class="level-2">2.3 长江学者—青年计划(3人)</a>
-            <a href="pdf-viewer.html?files=教师-教创2022-惠周利.pdf|教师-教创2022-张莹.pdf|教师-教创2023-刘洪霞.pdf|教师-教创2025-罗来珍.pdf&title=全国教创赛一等奖(4项)" target="_blank" class="level-2">2.4 全国教创赛一等奖(4项)</a>
-            <a href="pdf-viewer.html?files=教师-青教2014-张玉平.pdf|教师-青教-都琳.pdf&title=全国青教赛一等奖(2项)" target="_blank" class="level-2">2.5 全国青教赛一等奖(2项)</a>
-            <a href="pdf-viewer.html?files=教师-教学（全国高校数学课程教学创新示范交流活动2022）-陈建龙.pdf&title=全国高校数学课程教学创新示范交流活动一等奖(陈建龙)" target="_blank" class="level-2">2.6 全国高校数学课程教学创新示范交流活动一等奖(陈建龙)</a>
-            <a href="pdf-viewer.html?files=教师-王卿文-上海市教书育人楷模.pdf&title=上海市教书育人楷模(王卿文)" target="_blank" class="level-2">2.7 上海市教书育人楷模(王卿文)</a>
-            <a href="pdf-viewer.html?files=教师-王卿文-上海领军人才.pdf&title=上海领军人才(王卿文)" target="_blank" class="level-2">2.8 上海领军人才(王卿文)</a>
-            <a href="pdf-viewer.html?files=教师建模刘春凤.pdf&title=全国大学生数学建模竞赛—优秀指导教师(刘春凤)" target="_blank" class="level-2">2.9 全国大学生数学建模竞赛—优秀指导教师(刘春凤)</a>
-            <a href="pdf-viewer.html?files=教师-全国先进工作者-张悼霖.pdf&title=全国先进工作者(张霖)" target="_blank" class="level-2">2.10 全国先进工作者(张霖)</a>
-
-            <!-- 2.11 代表性教学论文目录及首页 -->
-            <div class="level-2 collapsible" onclick="toggleSubcategory('teacher-2-11')">
-                2.11 代表性教学论文目录及首页(32篇) <span class="toggle-tip">点击展开/收起详细论文</span>
-            </div>
-            <div id="teacher-2-11" class="subcategory-list">
-                <a href="pdf-viewer.html?files=1王卿文_1.pdf&title=王卿文，面向数学专业拔尖创新培养改革高等代数教学方法与考评方式. 大学数学课程联评论坛论文集(光盘). 高等教育出版社2011" target="_blank" class="level-3">2.11.1 王卿文，面向数学专业拔尖创新培养改革高等代数教学方法与考评方式. 大学数学课程联评论坛论文集(光盘). 高等教育出版社2011 <span class="page-num">211</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_2.pdf&title=王卿文，贯通中学和大学数学教与学集成造就学生数学素养和创新实践能力II. 大学数学，2017，33(03)：77-80. (学习强国收录)" target="_blank" class="level-3">2.11.2 王卿文，贯通中学和大学数学教与学集成造就学生数学素养和创新实践能力II. 大学数学，2017，33(03)：77-80. (学习强国收录) <span class="page-num">212</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_3.pdf&title=王卿文，张琴，杨建生. 遵循"两性一度"原则，设计线性代数课程教学—以齐次线性方程组为例I. 高等数学研究，2022，25(04)：89-92" target="_blank" class="level-3">2.11.3 王卿文，张琴，杨建生. 遵循"两性一度"原则，设计线性代数课程教学—以齐次线性方程组为例I. 高等数学研究，2022，25(04)：89-92 <span class="page-num">213</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_4.pdf&title=王卿文，杨建生，张崇权. 线性代数中两个重要定理的证明注记I1. 大学数学，2022，38(04)：83-85" target="_blank" class="level-3">2.11.4 王卿文，杨建生，张崇权. 线性代数中两个重要定理的证明注记I1. 大学数学，2022，38(04)：83-85 <span class="page-num">214</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_5.pdf&title=王卿文，张琴，杨建生. 教育数学指导下的一流课程教材建设—以线性代数为例D1. 大学数学，2022，38(04)：110-114" target="_blank" class="level-3">2.11.5 王卿文，张琴，杨建生. 教育数学指导下的一流课程教材建设—以线性代数为例D1. 大学数学，2022，38(04)：110-114 <span class="page-num">215</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_6.pdf&title=王卿文，刘龙生，张崇权. 线性代数习题课设计—以实对称矩阵正交相似定理的应用为例U1. 高等数学研究，2023，26(01)：89-91" target="_blank" class="level-3">2.11.6 王卿文，刘龙生，张崇权. 线性代数习题课设计—以实对称矩阵正交相似定理的应用为例U1. 高等数学研究，2023，26(01)：89-91 <span class="page-num">216</span></a>
-                <a href="pdf-viewer.html?files=1王卿文_7.pdf&title=王卿文，杨鸿燕. 走进新时代的教育数学—上海大学王卿文教授访谈[I. 新课程评论，2024，06：76-82. (学习强国收录)" target="_blank" class="level-3">2.11.7 王卿文，杨鸿燕. 走进新时代的教育数学—上海大学王卿文教授访谈[I. 新课程评论，2024，06：76-82. (学习强国收录) <span class="page-num">217</span></a>
-                <a href="pdf-viewer.html?files=2刘春凤_1.pdf&title=冯立超，刘春凤，张春艳，等. 数据教学模式之剖析I. 教育现代化，2020，7(56)：168-171" target="_blank" class="level-3">2.11.8 冯立超，刘春凤，张春艳，等. "数据"教学模式之剖析I. 教育现代化，2020，7(56)：168-171 <span class="page-num">218</span></a>
-                <a href="pdf-viewer.html?files=2刘春凤_2.pdf&title=龚佃选，刘春凤. 以线性代数观点看常用多项式插值方法[]. 高等数学研究，2017，20(01)：42-45" target="_blank" class="level-3">2.11.9 龚佃选，刘春凤. 以线性代数观点看常用多项式插值方法[]. 高等数学研究，2017，20(01)：42-45 <span class="page-num">219</span></a>
-                <a href="pdf-viewer.html?files=2刘春凤_3.pdf&title=屈静国，刘春风，崔玉环，等. 数学课程网络辅导答疑与考试系统的一体化设计与应用[11. 中国信息技术教育，2014，(12)：50" target="_blank" class="level-3">2.11.10 屈静国，刘春风，崔玉环，等. 数学课程网络辅导答疑与考试系统的一体化设计与应用[11. 中国信息技术教育，2014，(12)：50 <span class="page-num">220</span></a>
-                <a href="pdf-viewer.html?files=2刘春凤_4.pdf&title=刘春凤，杨爱民，崔玉环. 五环模式下《大学数学基础教程》内容模块分层布局，梯次渐进新体系的构建研究1I. 时代教育，2014，(09)：2" target="_blank" class="level-3">2.11.11 刘春凤，杨爱民，崔玉环. 五环模式下《大学数学基础教程》内容模块"分层布局，梯次渐进"新体系的构建研究1I. 时代教育，2014，(09)：2 <span class="page-num">221</span></a>
-                <a href="pdf-viewer.html?files=2刘春凤_5.pdf&title=彭亚绵，刘春风，杨爱民. 数学软件与数学实验课程教学改革研究1I. 数学学习与研究，2013，(1)：61" target="_blank" class="level-3">2.11.12 彭亚绵，刘春风，杨爱民. 数学软件与数学实验课程教学改革研究1I. 数学学习与研究，2013，(1)：61 <span class="page-num">222</span></a>
-                <a href="pdf-viewer.html?files=4杨义川_1.pdf&title=陈艳平，杨义川. 基于研究型教学的《抽象代数II》建设与实践UI. 大学数学，2017，33(01)：85-90" target="_blank" class="level-3">2.11.13 陈艳平，杨义川. 基于研究型教学的《抽象代数II》建设与实践UI. 大学数学，2017，33(01)：85-90 <span class="page-num">223</span></a>
-                <a href="pdf-viewer.html?files=4杨义川_2.pdf&title=陈艳平，杨义川，激发学生主动学习的大学《经济数学》教学探索与思考U1. 大学数学，2016，32(0)：58-64" target="_blank" class="level-3">2.11.14 陈艳平，杨义川，激发学生主动学习的大学《经济数学》教学探索与思考U1. 大学数学，2016，32(0)：58-64 <span class="page-num">224</span></a>
-                <a href="pdf-viewer.html?files=4杨义川_3.pdf&title=杨义川，对高等教育数学改革的思考[I. 高等理科教育，2023，(06)：72-80" target="_blank" class="level-3">2.11.15 杨义川，对高等教育数学改革的思考[I. 高等理科教育，2023，(06)：72-80 <span class="page-num">225</span></a>
-                <a href="pdf-viewer.html?files=3李继成_1.pdf&title=李继成，赵小艳，培养学生创新思维能力的教学设计与实践. 大学数学，2018，34(02)：63-66" target="_blank" class="level-3">2.11.16 李继成，赵小艳，培养学生创新思维能力的教学设计与实践. 大学数学，2018，34(02)：63-66 <span class="page-num">226</span></a>
-                <a href="pdf-viewer.html?files=3李继成_2.pdf&title=李继成，赵小艳，李艳馥，等. 凝练大学数学数改课题，引领指导大学数学课程建设和教学改革[]. 大学数学，2023，39(02)：125-126" target="_blank" class="level-3">2.11.17 李继成，赵小艳，李艳馥，等. 凝练大学数学数改课题，引领指导大学数学课程建设和教学改革[]. 大学数学，2023，39(02)：125-126 <span class="page-num">227</span></a>
-                <a href="pdf-viewer.html?files=3李继成_3.pdf&title=赵小艳，李继成. 科学家精神融入大学数学课程的探索与实践[]. 大学数学，2025，41(03)：32-35" target="_blank" class="level-3">2.11.18 赵小艳，李继成. 科学家精神融入大学数学课程的探索与实践[]. 大学数学，2025，41(03)：32-35 <span class="page-num">228</span></a>
-                <a href="pdf-viewer.html?files=3李继成_4.pdf&title=李继成，李茜，赵小艳. 赋能大学数学课程教学的人工智能体知识库优化与应用实践]. 大学数学，2025，41(03)：117" target="_blank" class="level-3">2.11.19 李继成，李茜，赵小艳. 赋能大学数学课程教学的人工智能体知识库优化与应用实践]. 大学数学，2025，41(03)：117 <span class="page-num">229</span></a>
-                <a href="pdf-viewer.html?files=3李继成_5.pdf&title=李继成，赵小艳，马丽，等. 项目驱动研究人工智能大模型技术对大学数学课程教学的影响与变革[]. 大学数学，2024，40(03)：123-124" target="_blank" class="level-3">2.11.20 李继成，赵小艳，马丽，等. 项目驱动研究人工智能大模型技术对大学数学课程教学的影响与变革[]. 大学数学，2024，40(03)：123-124 <span class="page-num">230</span></a>
-                <a href="pdf-viewer.html?files=5陈建龙_1.pdf&title=陈建龙，张小向. 深化教学方法改革培养学生创新能力]. 大学数学，2010，26(S1)：35-38" target="_blank" class="level-3">2.11.21 陈建龙，张小向. 深化教学方法改革培养学生创新能力]. 大学数学，2010，26(S1)：35-38 <span class="page-num">231</span></a>
-                <a href="pdf-viewer.html?files=5陈建龙_2.pdf&title=陈建龙，张小向. 金课标准下的线性代数教学]. 大学数学，2019，35(05)：73-82" target="_blank" class="level-3">2.11.22 陈建龙，张小向. "金课"标准下的线性代数教学]. 大学数学，2019，35(05)：73-82 <span class="page-num">232</span></a>
-                <a href="pdf-viewer.html?files=5陈建龙人民日报.pdf&title=陈建龙. 数学：思维的体操N]. 人民日报海外版，2020-11-23" target="_blank" class="level-3">2.11.23 陈建龙. 数学：思维的体操N]. 人民日报海外版，2020-11-23 <span class="page-num">233</span></a>
-                <a href="pdf-viewer.html?files=7张景中_1.pdf&title=张景中. 大学数学教学内容值得深入研究]. 高等数学研究，2025，28(01)：29-30+60" target="_blank" class="level-3">2.11.24 张景中. 大学数学教学内容值得深入研究]. 高等数学研究，2025，28(01)：29-30+60 <span class="page-num">234</span></a>
-                <a href="pdf-viewer.html?files=7张景中_2.pdf&title=张景中，陈如仙，陆兴华，等. 互联网+数学教师TPACK能力培训模式研究—以武侯区初中数学教师网络画板培训为例. 数学教育学报，2022，31(05)：1-8" target="_blank" class="level-3">2.11.25 张景中，陈如仙，陆兴华，等. "互联网+"数学教师TPACK能力培训模式研究—以武侯区初中数学教师网络画板培训为例. 数学教育学报，2022，31(05)：1-8 <span class="page-num">235</span></a>
-                <a href="pdf-viewer.html?files=8李尚志_1.pdf&title=李尚志. 抽象指挥具体：数学核心素养的重要内涵—以湘教版高中数学教材为例]. 新课程评论，2022，(11)：7-15" target="_blank" class="level-3">2.11.26 李尚志. 抽象指挥具体：数学核心素养的重要内涵—以湘教版高中数学教材为例]. 新课程评论，2022，(11)：7-15 <span class="page-num">236</span></a>
-                <a href="pdf-viewer.html?files=8李尚志_2.pdf&title=李尚志. 大学视角下的中学数学(泰勒展开)(续)]. 数学通报，2019，58(09)：1-5" target="_blank" class="level-3">2.11.27 李尚志. 大学视角下的中学数学(泰勒展开)(续)]. 数学通报，2019，58(09)：1-5 <span class="page-num">237</span></a>
-                <a href="pdf-viewer.html?files=8李尚志_3.pdf&title=李尚志. 大学视角下的中学数学(泰勒展开)I]. 数学通报，2019，58(08)：1-5" target="_blank" class="level-3">2.11.28 李尚志. 大学视角下的中学数学(泰勒展开)I]. 数学通报，2019，58(08)：1-5 <span class="page-num">238</span></a>
-                <a href="pdf-viewer.html?files=8李尚志_4.pdf&title=李尚志. 大学视角下的中学数学(复数)]. 数学通报，2019，58(06)：1-8" target="_blank" class="level-3">2.11.29 李尚志. 大学视角下的中学数学(复数)]. 数学通报，2019，58(06)：1-8 <span class="page-num">239</span></a>
-                <a href="pdf-viewer.html?files=9王国江_1.pdf&title=王国江. 基于课程标准的高中数学创智课堂教学实践研究. 上海中学数学，2015，(Z1)：1-4+8" target="_blank" class="level-3">2.11.30 王国江. 基于课程标准的高中数学"创智课堂"教学实践研究. 上海中学数学，2015，(Z1)：1-4+8 <span class="page-num">240</span></a>
-                <a href="pdf-viewer.html?files=9王国江_2.pdf&title=王国江. 基于数学实验为探究手的高考数学命题新视角. 数学教学，2012，(11)：31-33" target="_blank" class="level-3">2.11.31 王国江. 基于数学实验为探究手的高考数学命题新视角. 数学教学，2012，(11)：31-33 <span class="page-num">241</span></a>
-                <a href="pdf-viewer.html?files=10罗来珍_1.pdf&title=罗来珍，赵辉，王义文. 大学数学课程三维互促、六融并举育人体系的创新与实践]. 大学数学，2025，41(05)：38-" target="_blank" class="level-3">2.11.32 罗来珍，赵辉，王义文. 大学数学课程"三维互促、六融并举"育人体系的创新与实践]. 大学数学，2025，41(05)：38- <span class="page-num">242</span></a>
-            </div>
-
-            <!-- 2.12 代表性教材目录及封面版权页 -->
-            <div class="level-2 collapsible" onclick="toggleSubcategory('teacher-2-12')">
-                2.12 代表性教材目录及封面版权页(32本) <span class="toggle-tip">点击展开/收起详细教材</span>
-            </div>
-            <div id="teacher-2-12" class="subcategory-list">
-                <a href="pdf-viewer.html?files=1-线性代数(第二版).pdf&title=王卿文等编著，线性代数(第二版)，高等教育出版社，2022年" target="_blank" class="level-3">2.12.1 王卿文等编著，线性代数(第二版)，高等教育出版社，2022年 <span class="page-num">245</span></a>
-                <a href="pdf-viewer.html?files=2-线性代数核心思想及应用.pdf&title=王卿文编著，线性代数核心思想及应用，科学出版社，2012年" target="_blank" class="level-3">2.12.2 王卿文编著，线性代数核心思想及应用，科学出版社，2012年 <span class="page-num">247</span></a>
-                <a href="pdf-viewer.html?files=9-101代数学三.pdf&title=冯荣权等编著，数学101计划之代数学：代数学(三)，高等教育出版社，2024年" target="_blank" class="level-3">2.12.3 冯荣权等编著，数学"101"计划之代数学：代数学(三)，高等教育出版社，2024年 <span class="page-num">249</span></a>
-                <a href="pdf-viewer.html?files=10-101代数学四.pdf&title=冯荣权等编著，数学101计划之代数学：代数学(四)，高等教育出版社，2024年" target="_blank" class="level-3">2.12.4 冯荣权等编著，数学"101"计划之代数学：代数学(四)，高等教育出版社，2024年 <span class="page-num">251</span></a>
-                <a href="pdf-viewer.html?files=11-101代数学一.pdf&title=李方、邓少强、冯荣权等编著，数学101计划之代数学：代数学(一)，高等教育出版社，2024年" target="_blank" class="level-3">2.12.5 李方、邓少强、冯荣权等编著，数学"101"计划之代数学：代数学(一)，高等教育出版社，2024年 <span class="page-num">253</span></a>
-                <a href="pdf-viewer.html?files=12-101代数学二.pdf&title=李方、邓少强、冯荣权等编著，数学101计划之代数学：代数学(二)，高等教育出版社，2024年" target="_blank" class="level-3">2.12.6 李方、邓少强、冯荣权等编著，数学"101"计划之代数学：代数学(二)，高等教育出版社，2024年 <span class="page-num">255</span></a>
-                <a href="pdf-viewer.html?files=13-101代数学五.pdf&title=邓少强、李方、冯荣权等编著，数学101计划之代数学：代数学(五)，高等教育出版社，2024年" target="_blank" class="level-3">2.12.7 邓少强、李方、冯荣权等编著，数学"101"计划之代数学：代数学(五)，高等教育出版社，2024年 <span class="page-num">257</span></a>
-                <a href="pdf-viewer.html?files=14-普通高中教科书：数学（必修 第一册）.pdf&title=张景中等主编、李尚志执行主编，普通高中教科书：数学(必修第一册)，湖南教育出版社，2025年" target="_blank" class="level-3">2.12.8 张景中等主编、李尚志执行主编，普通高中教科书：数学(必修第一册)，湖南教育出版社，2025年 <span class="page-num">259</span></a>
-                <a href="pdf-viewer.html?files=15-普通高中教科书：数学（必修 第二册）.pdf&title=张景中等主编、李尚志执行主编，普通高中教科书：数学(必修第二册)，湖南教育出版社，2024年" target="_blank" class="level-3">2.12.9 张景中等主编、李尚志执行主编，普通高中教科书：数学(必修第二册)，湖南教育出版社，2024年 <span class="page-num">262</span></a>
-                <a href="pdf-viewer.html?files=16-普通高中教科书：数学（选择性必修 第一册）.pdf&title=张景中等主编、李尚志执行主编，普通高中教科书：数学(选择性必修第一册)，湖南教育出版社，2023年" target="_blank" class="level-3">2.12.10 张景中等主编、李尚志执行主编，普通高中教科书：数学(选择性必修第一册)，湖南教育出版社，2023年 <span class="page-num">265</span></a>
-                <a href="pdf-viewer.html?files=17-普通高中教科书：数学（选择性必修 第二册）.pdf&title=张景中等主编、李尚志执行主编，普通高中教科书：数学(选择性必修第二册)，湖南教育出版社，2022年" target="_blank" class="level-3">2.12.11 张景中等主编、李尚志执行主编，普通高中教科书：数学(选择性必修第二册)，湖南教育出版社，2022年 <span class="page-num">268</span></a>
-                <a href="pdf-viewer.html?files=20-线性代数学习指导.pdf&title=李尚志编著，线性代数学习指导，中国科学技术大学出版社，2022年" target="_blank" class="level-3">2.12.12 李尚志编著，线性代数学习指导，中国科学技术大学出版社，2022年 <span class="page-num">271</span></a>
-                <a href="pdf-viewer.html?files=21-新思路数学7上.pdf&title=张景中名誉主编、李尚志主编，新思路数学(七年级上)，湖南科学技术出版社，2021年" target="_blank" class="level-3">2.12.13 张景中名誉主编、李尚志主编，新思路数学(七年级上)，湖南科学技术出版社，2021年 <span class="page-num">273</span></a>
-                <a href="pdf-viewer.html?files=22-新思路数学7下.pdf&title=张景中名誉主编、李尚志主编，新思路数学(七年级下)，湖南科学技术出版社，2022年" target="_blank" class="level-3">2.12.14 张景中名誉主编、李尚志主编，新思路数学(七年级下)，湖南科学技术出版社，2022年 <span class="page-num">275</span></a>
-                <a href="pdf-viewer.html?files=23-新思路数学8上.pdf&title=张景中名誉主编、李尚志主编，新思路数学(八年级上)，湖南科学技术出版社，2022年" target="_blank" class="level-3">2.12.15 张景中名誉主编、李尚志主编，新思路数学(八年级上)，湖南科学技术出版社，2022年 <span class="page-num">277</span></a>
-                <a href="pdf-viewer.html?files=24-新思路数学8下.pdf&title=张景中名誉主编、李尚志主编，新思路数学(八年级下)，湖南科学技术出版社，2024年" target="_blank" class="level-3">2.12.16 张景中名誉主编、李尚志主编，新思路数学(八年级下)，湖南科学技术出版社，2024年 <span class="page-num">279</span></a>
-                <a href="pdf-viewer.html?files=25-新思路数学9上.pdf&title=张景中名誉主编、李尚志主编，新思路数学(九年级上)，湖南科学技术出版社，2024年" target="_blank" class="level-3">2.12.17 张景中名誉主编、李尚志主编，新思路数学(九年级上)，湖南科学技术出版社，2024年 <span class="page-num">281</span></a>
-                <a href="pdf-viewer.html?files=26-新思路数学9下.pdf&title=张景中名誉主编、李尚志主编，新思路数学(九年级下)，湖南科学技术出版社，2024年" target="_blank" class="level-3">2.12.18 张景中名誉主编、李尚志主编，新思路数学(九年级下)，湖南科学技术出版社，2024年 <span class="page-num">283</span></a>
-                <a href="pdf-viewer.html?files=27创新教学设计.pdf&title=王国江主编，创新教学设计(必修第一、二、三册；选择性必修第一、二册)，华东师范大学出版社，2023年" target="_blank" class="level-3">2.12.19 王国江主编，创新教学设计(必修第一、二、三册；选择性必修第一、二册)，华东师范大学出版社，2023年 <span class="page-num">285</span></a>
-                <a href="pdf-viewer.html?files=3-高等数学作业集上、下.pdf&title=刘春凤总主编，高等数学作业集(上、下册)，高等教育出版社，2023年" target="_blank" class="level-3">2.12.20 刘春凤总主编，高等数学作业集(上、下册)，高等教育出版社，2023年 <span class="page-num">286</span></a>
-                <a href="pdf-viewer.html?files=4-高等数学基础教程上、下.pdf&title=刘春凤总主编，高等数学基础教程(上、下册)，高等教育出版社，2022年" target="_blank" class="level-3">2.12.21 刘春凤总主编，高等数学基础教程(上、下册)，高等教育出版社，2022年 <span class="page-num">290</span></a>
-                <a href="pdf-viewer.html?files=5-高等数学实训教程上、下.pdf&title=刘春风总主编，高等数学实训教程(上、下册)，高等教育出版社，2023年" target="_blank" class="level-3">2.12.22 刘春风总主编，高等数学实训教程(上、下册)，高等教育出版社，2023年 <span class="page-num">294</span></a>
-                <a href="pdf-viewer.html?files=6-高等代数-杨.pdf&title=杨义川等主编，高等代数，高等教育出版社，2023年" target="_blank" class="level-3">2.12.23 杨义川等主编，高等代数，高等教育出版社，2023年 <span class="page-num">298</span></a>
-                <a href="pdf-viewer.html?files=7-解析几何与射影几何.pdf&title=杨义川等主编，解析几何与射影几何，高等教育出版社，2024年" target="_blank" class="level-3">2.12.24 杨义川等主编，解析几何与射影几何，高等教育出版社，2024年 <span class="page-num">300</span></a>
-                <a href="pdf-viewer.html?files=8-群的表示和特征标.pdf&title=杨义川等译，群的表示和特征标，科学出版社，2018年" target="_blank" class="level-3">2.12.25 杨义川等译，群的表示和特征标，科学出版社，2018年 <span class="page-num">302</span></a>
-            </div>
-
-            <!-- 2.13 代表性专著目录及封面版权页 -->
-            <div class="level-2 collapsible" onclick="toggleSubcategory('teacher-2-13')">
-                2.13 代表性专著目录及封面版权页(5部) <span class="toggle-tip">点击展开/收起详细专著</span>
-            </div>
-            <div id="teacher-2-13" class="subcategory-list">
-                <a href="pdf-viewer.html?files=18-大学视角下的中学教学.pdf&title=李尚志著，大学视角下的中学数学，华东师范大学出版社，2022年" target="_blank" class="level-3">2.13.1 李尚志著，大学视角下的中学数学，华东师范大学出版社，2022年 <span class="page-num">305</span></a>
-                <a href="pdf-viewer.html?files=19-数学大观扫描件.pdf&title=李尚志著，数学大观，高等教育出版社，2015年" target="_blank" class="level-3">2.13.2 李尚志著，数学大观，高等教育出版社，2015年 <span class="page-num">307</span></a>
-                <a href="pdf-viewer.html?files=28-高中数学核心素养.pdf&title=王国江主编，高中数学核心素养，上海社会科学院出版社，2020年" target="_blank" class="level-3">2.13.3 王国江主编，高中数学核心素养，上海社会科学院出版社，2020年 <span class="page-num">309</span></a>
-                <a href="pdf-viewer.html?files=29-高中数学实验.pdf&title=张霖、王国江等编著，高中数学实验，上海社会科学院出版社，2019年" target="_blank" class="level-3">2.13.4 张霖、王国江等编著，高中数学实验，上海社会科学院出版社，2019年 <span class="page-num">311</span></a>
-                <a href="pdf-viewer.html?files=30-高中数学新课标新教材学习活动设计研究.pdf&title=王国江主编，高中数学新课标新教材学习活动设计研究，同济大学出版社，2021年" target="_blank" class="level-3">2.13.5 王国江主编，高中数学新课标新教材学习活动设计研究，同济大学出版社，2021年 <span class="page-num">313</span></a>
-            </div>
-        </div>
-
-      
-    </div>
-
-    <!-- 交互脚本，与student.html逻辑一致 -->
     <script>
-        // 一级分类展开/收起
-        function toggleCategory(id) {
-            const el = document.getElementById(id);
-            const trigger = document.querySelector(`.level-1[onclick="toggleCategory('${id}')"]`);
-            el.classList.toggle('active');
-            trigger.classList.toggle('active');
-        }
-
-        // 二级子分类展开/收起
-        function toggleSubcategory(id) {
-            const el = document.getElementById(id);
-            const trigger = document.querySelector(`.level-2[onclick="toggleSubcategory('${id}')"]`);
-            el.classList.toggle('active');
-            trigger.classList.toggle('active');
-        }
-
-        // 搜索功能
-        document.querySelector('.nav-search button').addEventListener('click', function() {
-            const searchText = document.querySelector('.nav-search input').value.trim().toLowerCase();
-            if (!searchText) return;
-
-            // 高亮匹配的一级项
-            document.querySelectorAll('.level-2').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    item.style.backgroundColor = 'rgba(183, 28, 28, 0.1)';
-                    item.style.borderLeft = '3px solid var(--primary-color)';
+        // Banner轮播功能
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.banner-indicator');
+        const slider = document.querySelector('.banner-slider');
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // 更新指示器状态
+            indicators.forEach((indicator, i) => {
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
                 } else {
-                    item.style.backgroundColor = '';
-                    item.style.borderLeft = '';
+                    indicator.classList.remove('active');
                 }
             });
-
-            // 高亮匹配的二级项
-            document.querySelectorAll('.level-3').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    item.style.color = 'var(--primary-color)';
-                    item.style.fontWeight = '500';
-                } else {
-                    item.style.color = 'var(--text-light)';
-                    item.style.fontWeight = 'normal';
-                }
+        }
+        
+        // 自动轮播
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            goToSlide(currentSlide);
+        }, 5000);
+        
+        // 点击指示器切换轮播
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
             });
         });
     </script>
