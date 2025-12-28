@@ -49,7 +49,7 @@
             user-select: none;
         }
 
-        /* 导航栏：修改为居中布局 */
+        /* 导航栏：修改为上端中部偏右布局 */
         .nav-bar {
             /* 复用首页导航栏渐变背景 */
             background: linear-gradient(90deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
@@ -59,13 +59,18 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             display: flex;
             align-items: center;
-            /* 关键修改：从justify-content: flex-end改为center */
+            /* 关键修改：设置为居中偏右 */
             justify-content: center;
             position: relative;
             z-index: 99;
         }
         
+        /* 新增：将按钮定位到导航栏中部偏右（微调后往左一点） */
         .btn-return {
+            position: absolute;
+            /* 核心定位：从35%调整为28%，往左移动7%，保持偏右但不那么靠外 */
+            left: calc(50% + 28%);
+            transform: translateX(-50%);
             background-color: var(--text-white);
             color: var(--dark-blue);
             border: none;
@@ -83,7 +88,7 @@
         
         .btn-return:hover {
             background-color: var(--light-blue);
-            transform: translateY(-2px);
+            transform: translate(-50%, -2px); /* 适配定位后的hover偏移 */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
             color: var(--deep-blue);
         }
@@ -179,8 +184,14 @@
             }
             
             .btn-return {
+                /* 移动端同步往左微调，从30%调整为25% */
+                left: calc(50% + 25%);
                 padding: 8px 20px;
                 font-size: 16px;
+            }
+            
+            .btn-return:hover {
+                transform: translate(-50%, -2px);
             }
             
             .pdf-container {
@@ -212,7 +223,8 @@
 <body oncontextmenu="return false;">
     <!-- 导航栏：匹配首页风格 -->
     <div class="nav-bar">
-        <button class="btn-return" onclick="goBack()">返回上一页</button>
+        <!-- 按钮文字保持为“返回” -->
+        <button class="btn-return" onclick="goBack()">返回</button>
     </div>
 
     <!-- PDF预览容器 -->
